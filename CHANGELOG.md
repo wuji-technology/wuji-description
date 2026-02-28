@@ -8,6 +8,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Changed
 
+- README rewritten in English with standardized format (badges, TOC, directory table, numbered usage sections)
+- Fixed incorrect launch file references (`display.launch.py` with `robot:=` arg)
+- Fixed license reference from Apache-2.0 to MIT (matching LICENSE file)
 - Workflow `auto-release-on-pr.yml` renamed to `create_release_tag.yaml`
   - Simplified trigger: only checks `release/v*` branch (no label required)
   - Version extraction from branch name instead of PR title
