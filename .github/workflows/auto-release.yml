@@ -1,0 +1,26 @@
+# Tag push 后创建 GitHub Release
+#
+# 当 tag (v*) 被推送时，自动从 CHANGELOG.md 解析内容并创建 GitHub Release。
+
+name: Auto Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Auto Release
+        uses: wuji-technology/.github/actions/auto-release@v1
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          changelog-path: 'CHANGELOG.md'
+          feishu-webhook: ${{ secrets.FEISHU_RELEASE_WEBHOOK }}
