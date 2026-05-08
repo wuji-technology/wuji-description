@@ -1,0 +1,1321 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="wujihand-right">
+  <link
+    name="right_arm_link">
+    <inertial>
+      <origin
+        xyz="-1.54498809579184E-18 0 0.0123"
+        rpy="0 0 0" />
+      <mass
+        value="0.0816303581127138" />
+      <inertia
+        ixx="2.56721353987627E-05"
+        ixy="-1.08832599186106E-21"
+        ixz="-2.06169982951117E-21"
+        iyy="2.56721353987627E-05"
+        iyz="1.41338073851952E-21"
+        izz="4.3111032878277E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wuji_description/robots/wh120_arm/meshes/right/right_arm_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.96078431372549 0.96078431372549 0.964705882352941 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wuji_description/robots/wh120_arm/meshes/right/right_arm_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="right_arm_link1">
+    <inertial>
+      <origin
+        xyz="0.00135529984815342 0.080424020507615 0.00519107845015988"
+        rpy="0 0 0" />
+      <mass
+        value="0.447486615801287" />
+      <inertia
+        ixx="0.00139227067658257"
+        ixy="2.54179661016924E-05"
+        ixz="2.4622878974577E-06"
+        iyy="0.000198026289324208"
+        iyz="8.89128267610899E-05"
+        izz="0.00141992478800749" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wuji_description/robots/wh120_arm/meshes/right/right_arm_link1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.627450980392157 0.627450980392157 0.627450980392157 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wuji_description/robots/wh120_arm/meshes/right/right_arm_link1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_arm_joint1"
+    type="revolute">
+    <origin
+      xyz="0 0 0.0246"
+      rpy="1.5707963267949 0 0" />
+    <parent
+      link="right_arm_link" />
+    <child
+      link="right_arm_link1" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      lower="-1.5707"
+      upper="1.5707"
+      effort="2.4"
+      velocity="12.57" />
+  </joint>
+  <link
+    name="right_arm_link2">
+    <inertial>
+      <origin
+        xyz="-0.00184395939909833 0.00111278219831785 0.00325305151007358"
+        rpy="0 0 0" />
+      <mass
+        value="0.00425947385683189" />
+      <inertia
+        ixx="6.06693478315027E-07"
+        ixy="-1.93438691567827E-08"
+        ixz="5.03609163385468E-08"
+        iyy="7.11872641286794E-07"
+        iyz="1.68201915601209E-08"
+        izz="1.06157304996819E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wuji_description/robots/wh120_arm/meshes/right/right_arm_link2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wuji_description/robots/wh120_arm/meshes/right/right_arm_link2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_arm_joint2"
+    type="revolute">
+    <origin
+      xyz="0.003 0.205500452524077 0.0095001512671357"
+      rpy="-1.5707963267949 1.5707963267949 0" />
+    <parent
+      link="right_arm_link1" />
+    <child
+      link="right_arm_link2" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-1.2217"
+      upper="1.3963"
+      effort="2"
+      velocity="12.57" />
+  </joint>
+  <link
+    name="right_palm_link">
+    <inertial><origin xyz="0.00464638201985134 -0.00350423603669829 0.0355450772461747" rpy="0 0 0"/><mass value="0.16914"/><inertia ixx="0.00014" ixy="2.54e-06" ixz="6.91e-06" iyy="9.47e-05" iyz="-6.63e-06" izz="6e-05"/></inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wuji_description/robots/wh120_arm/meshes/right/right_palm_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.627450980392157 0.627450980392157 0.627450980392157 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wuji_description/robots/wh120_arm/meshes/right/right_palm_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_palm_joint"
+    type="revolute">
+    <origin
+      xyz="-0.0011852813742443 0.00280000000000555 0.0130000000000015"
+      rpy="0 0 -1.57079632679463" />
+    <parent
+      link="right_arm_link2" />
+    <child
+      link="right_palm_link" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      lower="-0.5235"
+      upper="0.349"
+      effort="2"
+      velocity="12.57" />
+  </joint>
+  <link
+    name="right_finger1_link1">
+    <inertial><origin xyz="-0.00194260655220212 0.000842657605271155 0.00731565933893352" rpy="0 0 0"/><mass value="0.0075"/><inertia ixx="3.2e-07" ixy="-2e-08" ixz="0.0" iyy="3e-07" iyz="4e-08" izz="2.3e-07"/></inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wuji_description/robots/wh120_arm/meshes/right/right_finger1_link1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.627450980392157 0.627450980392157 0.627450980392157 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wuji_description/robots/wh120_arm/meshes/right/right_finger1_link1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_finger1_joint1"
+    type="revolute">
+    <origin
+      xyz="-0.01666 0.0081297 0.017017"
+      rpy="-1.5861 -0.49942 1.2364" />
+    <parent
+      link="right_palm_link" />
+    <child
+      link="right_finger1_link1" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="0.0368"
+      upper="1.6125"
+      effort="0.4452"
+      velocity="8.587" />
+  </joint>
+  <link
+    name="right_finger1_link2">
+    <inertial><origin xyz="1.21916730206183e-05 -7.8122428943464e-06 0.0130404213177026" rpy="0 0 0"/><mass value="0.0248"/><inertia ixx="2.76e-06" ixy="2e-08" ixz="1e-08" iyy="2.81e-06" iyz="2e-08" izz="6.8e-07"/></inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wuji_description/robots/wh120_arm/meshes/right/right_finger1_link2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.627450980392157 0.627450980392157 0.627450980392157 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wuji_description/robots/wh120_arm/meshes/right/right_finger1_link2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_finger1_joint2"
+    type="revolute">
+    <origin
+      xyz="-0.00053658 0.00024788 0.014754"
+      rpy="0.20529 -0.70051 1.5456" />
+    <parent
+      link="right_finger1_link1" />
+    <child
+      link="right_finger1_link2" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-0.1576"
+      upper="0.9312"
+      effort="0.4259"
+      velocity="11.1" />
+  </joint>
+  <link
+    name="right_finger1_link3">
+    <inertial><origin xyz="-9.22346311965638e-08 -5.00305950110747e-05 0.0142927256691265" rpy="0 0 0"/><mass value="0.0165"/><inertia ixx="1.46e-06" ixy="0.0" ixz="-2e-08" iyy="1.42e-06" iyz="0.0" izz="4.5e-07"/></inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wuji_description/robots/wh120_arm/meshes/right/right_finger1_link3.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.627450980392157 0.627450980392157 0.627450980392157 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wuji_description/robots/wh120_arm/meshes/right/right_finger1_link3.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_finger1_joint3"
+    type="revolute">
+    <origin
+      xyz="0 0 0.032500002798739"
+      rpy="0.0872664625995901 0 -2.13802833369289" />
+    <parent
+      link="right_finger1_link2" />
+    <child
+      link="right_finger1_link3" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-0.4638"
+      upper="1.5607"
+      effort="0.1888"
+      velocity="12.86" />
+  </joint>
+  <link
+    name="right_finger1_link4">
+    <inertial><origin xyz="-0.000586380443481603 2.77882151560049e-08 0.0108825772528955" rpy="0 0 0"/><mass value="0.0165"/><inertia ixx="1.18e-06" ixy="0.0" ixz="1.2e-07" iyy="1.25e-06" iyz="0.0" izz="5.1e-07"/></inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wuji_description/robots/wh120_arm/meshes/right/right_finger1_link4.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.627450980392157 0.627450980392157 0.627450980392157 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wuji_description/robots/wh120_arm/meshes/right/right_finger1_link4.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_finger1_joint4"
+    type="revolute">
+    <origin
+      xyz="0 -4.99999999923513E-05 0.0349999999999992"
+      rpy="0 0 0" />
+    <parent
+      link="right_finger1_link3" />
+    <child
+      link="right_finger1_link4" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-0.4829"
+      upper="1.5451"
+      effort="0.1468"
+      velocity="13.5" />
+  </joint>
+  <link
+    name="right_finger1_tip_link">
+    <inertial><origin xyz="-2.8931521049054e-05 2.77882149374298e-08 -0.0168147128298623" rpy="0 0 0"/><mass value="0.0041"/><inertia ixx="5.5e-07" ixy="0.0" ixz="2e-08" iyy="5.2e-07" iyz="0.0" izz="2.7e-07"/></inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wuji_description/robots/wh120_arm/meshes/right/right_finger1_tip_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.627450980392157 0.627450980392157 0.627450980392157 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wuji_description/robots/wh120_arm/meshes/right/right_finger1_tip_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_finger1_tip_fixed"
+    type="fixed">
+    <origin
+      xyz="-0.000557448922432543 0 0.0276972900827579"
+      rpy="0 0 0" />
+    <parent
+      link="right_finger1_link4" />
+    <child
+      link="right_finger1_tip_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="right_finger2_link1">
+    <inertial><origin xyz="-0.00177765079713437 -1.1798188190304e-08 0.00759979510255943" rpy="0 0 0"/><mass value="0.0032"/><inertia ixx="8e-08" ixy="0.0" ixz="-3e-08" iyy="7e-08" iyz="0.0" izz="8e-08"/></inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wuji_description/robots/wh120_arm/meshes/right/right_finger2_link1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wuji_description/robots/wh120_arm/meshes/right/right_finger2_link1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_finger2_joint1"
+    type="revolute">
+    <origin
+      xyz="-0.020352865419091 -0.00336011581053779 0.0706794378978929"
+      rpy="-0.104419711399364 -0.0367832870562338 1.47457468367797" />
+    <parent
+      link="right_palm_link" />
+    <child
+      link="right_finger2_link1" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-0.1611"
+      upper="1.5588"
+      effort="0.6188"
+      velocity="8.203" />
+  </joint>
+  <link
+    name="right_finger2_link2">
+    <inertial><origin xyz="6.82662042519877e-09 4.92159312125932e-07 0.0187992451749443" rpy="0 0 0"/><mass value="0.033"/><inertia ixx="6.31e-06" ixy="0.0" ixz="-1.6e-07" iyy="6.34e-06" iyz="0.0" izz="8.9e-07"/></inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wuji_description/robots/wh120_arm/meshes/right/right_finger2_link2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wuji_description/robots/wh120_arm/meshes/right/right_finger2_link2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_finger2_joint2"
+    type="revolute">
+    <origin
+      xyz="-0.00120098018725689 0 0.0145000000001075"
+      rpy="0 0 -1.5707963311974" />
+    <parent
+      link="right_finger2_link1" />
+    <child
+      link="right_finger2_link2" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-0.4044"
+      upper="0.3054"
+      effort="0.1822"
+      velocity="8.11" />
+  </joint>
+  <link
+    name="right_finger2_link3">
+    <inertial><origin xyz="-0.000247460865469753 2.02821679208542e-08 0.0190489373641302" rpy="0 0 0"/><mass value="0.0165"/><inertia ixx="1.47e-06" ixy="0.0" ixz="3e-08" iyy="1.44e-06" iyz="0.0" izz="4.5e-07"/></inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wuji_description/robots/wh120_arm/meshes/right/right_finger2_link3.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wuji_description/robots/wh120_arm/meshes/right/right_finger2_link3.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_finger2_joint3"
+    type="revolute">
+    <origin
+      xyz="0 0 0.0376000000000001"
+      rpy="0 0 1.5707963311974" />
+    <parent
+      link="right_finger2_link2" />
+    <child
+      link="right_finger2_link3" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-0.4714"
+      upper="1.5504"
+      effort="0.2251"
+      velocity="12.86" />
+  </joint>
+  <link
+    name="right_finger2_link4">
+    <inertial><origin xyz="-0.000664006408895619 -5.48038756736924e-10 0.0119913040019319" rpy="0 0 0"/><mass value="0.014"/><inertia ixx="9.5e-07" ixy="0.0" ixz="1.4e-07" iyy="8.6e-07" iyz="-1e-08" izz="3e-07"/></inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wuji_description/robots/wh120_arm/meshes/right/right_finger2_link4.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wuji_description/robots/wh120_arm/meshes/right/right_finger2_link4.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_finger2_joint4"
+    type="revolute">
+    <origin
+      xyz="0 0 0.0295000000000005"
+      rpy="0 0 0" />
+    <parent
+      link="right_finger2_link3" />
+    <child
+      link="right_finger2_link4" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-0.4644"
+      upper="1.5753"
+      effort="0.2170"
+      velocity="13.5" />
+  </joint>
+  <link
+    name="right_finger2_tip_link">
+    <inertial><origin xyz="0.00100819105872186 -5.48588743876088e-10 -0.0130086959980681" rpy="0 0 0"/><mass value="0.00318"/><inertia ixx="2e-07" ixy="0.0" ixz="0.0" iyy="2.1e-07" iyz="0.0" izz="1.3e-07"/></inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wuji_description/robots/wh120_arm/meshes/right/right_finger2_tip_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wuji_description/robots/wh120_arm/meshes/right/right_finger2_tip_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_finger2_tip_fixed"
+    type="fixed">
+    <origin
+      xyz="-0.00167219746761747 0 0.025"
+      rpy="0 0 0" />
+    <parent
+      link="right_finger2_link4" />
+    <child
+      link="right_finger2_tip_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="right_finger3_link1">
+    <inertial><origin xyz="-0.00177764713584181 -1.1385984488143e-08 0.0075997971767947" rpy="0 0 0"/><mass value="0.0032"/><inertia ixx="8e-08" ixy="0.0" ixz="-3e-08" iyy="7e-08" iyz="0.0" izz="8e-08"/></inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wuji_description/robots/wh120_arm/meshes/right/right_finger3_link1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wuji_description/robots/wh120_arm/meshes/right/right_finger3_link1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_finger3_joint1"
+    type="revolute">
+    <origin
+      xyz="0.0014734822561641 -0.00833993676457297 0.0739026139528614"
+      rpy="0.0438782196909618 -0.0344037448784516 1.57000758936596" />
+    <parent
+      link="right_palm_link" />
+    <child
+      link="right_finger3_link1" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-0.1719"
+      upper="1.5496"
+      effort="0.6494"
+      velocity="8.203" />
+  </joint>
+  <link
+    name="right_finger3_link2">
+    <inertial><origin xyz="9.21531204340145e-09 4.93115082814653e-07 0.018799245492116" rpy="0 0 0"/><mass value="0.033"/><inertia ixx="6.31e-06" ixy="0.0" ixz="-1.6e-07" iyy="6.34e-06" iyz="0.0" izz="8.9e-07"/></inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wuji_description/robots/wh120_arm/meshes/right/right_finger3_link2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wuji_description/robots/wh120_arm/meshes/right/right_finger3_link2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_finger3_joint2"
+    type="revolute">
+    <origin
+      xyz="-0.00120098018725688 0 0.0145000000001074"
+      rpy="0 0 -1.5707963311974" />
+    <parent
+      link="right_finger3_link1" />
+    <child
+      link="right_finger3_link2" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-0.4014"
+      upper="0.2996"
+      effort="0.1827"
+      velocity="8.11" />
+  </joint>
+  <link
+    name="right_finger3_link3">
+    <inertial><origin xyz="-0.000247479669695113 6.24319347886093e-08 0.0190489179287534" rpy="0 0 0"/><mass value="0.0165"/><inertia ixx="1.47e-06" ixy="0.0" ixz="3e-08" iyy="1.44e-06" iyz="0.0" izz="4.5e-07"/></inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wuji_description/robots/wh120_arm/meshes/right/right_finger3_link3.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wuji_description/robots/wh120_arm/meshes/right/right_finger3_link3.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_finger3_joint3"
+    type="revolute">
+    <origin
+      xyz="0 0 0.0376000000000001"
+      rpy="0 0 1.5707963311974" />
+    <parent
+      link="right_finger3_link2" />
+    <child
+      link="right_finger3_link3" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-0.4632"
+      upper="1.5613"
+      effort="0.2078"
+      velocity="12.86" />
+  </joint>
+  <link
+    name="right_finger3_link4">
+    <inertial><origin xyz="-0.000663987739665497 1.07374243463534e-08 0.0119913117033854" rpy="0 0 0"/><mass value="0.014"/><inertia ixx="9.5e-07" ixy="0.0" ixz="1.4e-07" iyy="8.6e-07" iyz="-1e-08" izz="3e-07"/></inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wuji_description/robots/wh120_arm/meshes/right/right_finger3_link4.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wuji_description/robots/wh120_arm/meshes/right/right_finger3_link4.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_finger3_joint4"
+    type="revolute">
+    <origin
+      xyz="0 0 0.0295000000000004"
+      rpy="0 0 0" />
+    <parent
+      link="right_finger3_link3" />
+    <child
+      link="right_finger3_link4" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-0.4697"
+      upper="1.5702"
+      effort="0.2018"
+      velocity="13.5" />
+  </joint>
+  <link
+    name="right_finger3_tip_link">
+    <inertial><origin xyz="0.00100820972795198 1.07368743488059e-08 -0.0130086882966147" rpy="0 0 0"/><mass value="0.00318"/><inertia ixx="2e-07" ixy="0.0" ixz="0.0" iyy="2.1e-07" iyz="0.0" izz="1.3e-07"/></inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wuji_description/robots/wh120_arm/meshes/right/right_finger3_tip_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wuji_description/robots/wh120_arm/meshes/right/right_finger3_tip_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_finger3_tip_fixed"
+    type="fixed">
+    <origin
+      xyz="-0.00167219746761748 0 0.025"
+      rpy="0 0 0" />
+    <parent
+      link="right_finger3_link4" />
+    <child
+      link="right_finger3_tip_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="right_finger4_link1">
+    <inertial><origin xyz="-0.00177765485355523 -1.12434406542017e-08 0.00759979228054761" rpy="0 0 0"/><mass value="0.0032"/><inertia ixx="8e-08" ixy="0.0" ixz="-3e-08" iyy="7e-08" iyz="0.0" izz="8e-08"/></inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wuji_description/robots/wh120_arm/meshes/right/right_finger4_link1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wuji_description/robots/wh120_arm/meshes/right/right_finger4_link1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_finger4_joint1"
+    type="revolute">
+    <origin
+      xyz="0.0218788901036405 -0.00562559889000148 0.0647140852094928"
+      rpy="0.174369947828272 -0.0191403866438199 1.63617372462393" />
+    <parent
+      link="right_palm_link" />
+    <child
+      link="right_finger4_link1" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-0.1601"
+      upper="1.5534"
+      effort="0.6389"
+      velocity="8.203" />
+  </joint>
+  <link
+    name="right_finger4_link2">
+    <inertial><origin xyz="9.30944152148505e-09 4.93686217875773e-07 0.0187992455773537" rpy="0 0 0"/><mass value="0.033"/><inertia ixx="6.31e-06" ixy="0.0" ixz="-1.6e-07" iyy="6.34e-06" iyz="0.0" izz="8.9e-07"/></inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wuji_description/robots/wh120_arm/meshes/right/right_finger4_link2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wuji_description/robots/wh120_arm/meshes/right/right_finger4_link2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_finger4_joint2"
+    type="revolute">
+    <origin
+      xyz="-0.00120098018725689 0 0.0145000000001074"
+      rpy="0 0 -1.5707963311974" />
+    <parent
+      link="right_finger4_link1" />
+    <child
+      link="right_finger4_link2" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-0.4134"
+      upper="0.3161"
+      effort="0.1832"
+      velocity="8.11" />
+  </joint>
+  <link
+    name="right_finger4_link3">
+    <inertial><origin xyz="-0.000247469937955587 4.55658038175932e-08 0.0190489145414285" rpy="0 0 0"/><mass value="0.0165"/><inertia ixx="1.47e-06" ixy="0.0" ixz="3e-08" iyy="1.44e-06" iyz="0.0" izz="4.5e-07"/></inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wuji_description/robots/wh120_arm/meshes/right/right_finger4_link3.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wuji_description/robots/wh120_arm/meshes/right/right_finger4_link3.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_finger4_joint3"
+    type="revolute">
+    <origin
+      xyz="0 0 0.0376000000000002"
+      rpy="0 0 1.5707963311974" />
+    <parent
+      link="right_finger4_link2" />
+    <child
+      link="right_finger4_link3" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-0.4782"
+      upper="1.5448"
+      effort="0.2249"
+      velocity="12.86" />
+  </joint>
+  <link
+    name="right_finger4_link4">
+    <inertial><origin xyz="-0.000664001506201074 1.82618439016624e-08 0.0119913062410694" rpy="0 0 0"/><mass value="0.014"/><inertia ixx="9.5e-07" ixy="0.0" ixz="1.4e-07" iyy="8.6e-07" iyz="-1e-08" izz="3e-07"/></inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wuji_description/robots/wh120_arm/meshes/right/right_finger4_link4.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wuji_description/robots/wh120_arm/meshes/right/right_finger4_link4.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_finger4_joint4"
+    type="revolute">
+    <origin
+      xyz="0 0 0.0295000000000004"
+      rpy="0 0 0" />
+    <parent
+      link="right_finger4_link3" />
+    <child
+      link="right_finger4_link4" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-0.4825"
+      upper="1.5550"
+      effort="0.2044"
+      velocity="13.5" />
+  </joint>
+  <link
+    name="right_finger4_tip_link">
+    <inertial><origin xyz="0.0010081959614164 1.82612939075844e-08 -0.0130086937589306" rpy="0 0 0"/><mass value="0.00318"/><inertia ixx="2e-07" ixy="0.0" ixz="0.0" iyy="2.1e-07" iyz="0.0" izz="1.3e-07"/></inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wuji_description/robots/wh120_arm/meshes/right/right_finger4_tip_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wuji_description/robots/wh120_arm/meshes/right/right_finger4_tip_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_finger4_tip_fixed"
+    type="fixed">
+    <origin
+      xyz="-0.00167219746761747 0 0.025"
+      rpy="0 0 0" />
+    <parent
+      link="right_finger4_link4" />
+    <child
+      link="right_finger4_tip_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="right_finger5_link1">
+    <inertial>
+      <origin
+        xyz="-0.00177765917906567 -1.09848088646058E-08 0.00759978925577731"
+        rpy="0 0 0" />
+      <mass
+        value="0.0018545626811524" />
+      <inertia
+        ixx="1.45692110115476E-07"
+        ixy="1.24250067740205E-13"
+        ixz="-1.48535955710053E-09"
+        iyy="1.47545763374197E-07"
+        iyz="1.75826546634398E-13"
+        izz="1.26280803789977E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wuji_description/robots/wh120_arm/meshes/right/right_finger5_joint1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wuji_description/robots/wh120_arm/meshes/right/right_finger5_joint1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_finger5_joint1"
+    type="revolute">
+    <origin
+      xyz="0.039145 -0.00076138 0.054041"
+      rpy="0.28146 -0.033704 1.6984" />
+    <parent
+      link="right_palm_link" />
+    <child
+      link="right_finger5_link1" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-0.1674"
+      upper="1.5539"
+      effort="0.6441"
+      velocity="8.203" />
+  </joint>
+  <link
+    name="right_finger5_link2">
+    <inertial><origin xyz="7.38664329702488e-09 2.44707391628719e-07 0.0167866656554384" rpy="0 0 0"/><mass value="0.033"/><inertia ixx="6.31e-06" ixy="0.0" ixz="-1.6e-07" iyy="6.34e-06" iyz="0.0" izz="8.9e-07"/></inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wuji_description/robots/wh120_arm/meshes/right/right_finger5_link2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wuji_description/robots/wh120_arm/meshes/right/right_finger5_link2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_finger5_joint2"
+    type="revolute">
+    <origin
+      xyz="-0.001201 0 0.0145"
+      rpy="0 0 -1.5708" />
+    <parent
+      link="right_finger5_link1" />
+    <child
+      link="right_finger5_link2" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-0.4203"
+      upper="0.2931"
+      effort="0.1798"
+      velocity="8.11" />
+  </joint>
+  <link
+    name="right_finger5_link3">
+    <inertial><origin xyz="-0.000264216095134117 3.09184358428249e-08 0.0178973608984188" rpy="0 0 0"/><mass value="0.0165"/><inertia ixx="1.47e-06" ixy="0.0" ixz="3e-08" iyy="1.44e-06" iyz="0.0" izz="4.5e-07"/></inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wuji_description/robots/wh120_arm/meshes/right/right_finger5_link3.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wuji_description/robots/wh120_arm/meshes/right/right_finger5_link3.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_finger5_joint3"
+    type="revolute">
+    <origin
+      xyz="-0.000100000035494027 0 0.0335999999999994"
+      rpy="0 0 1.57083259982337" />
+    <parent
+      link="right_finger5_link2" />
+    <child
+      link="right_finger5_link3" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-0.4804"
+      upper="1.5420"
+      effort="0.2384"
+      velocity="12.86" />
+  </joint>
+  <link
+    name="right_finger5_link4">
+    <inertial><origin xyz="-0.000570504769795682 3.31400479003374e-08 0.0121005057681373" rpy="0 0 0"/><mass value="0.014"/><inertia ixx="9.5e-07" ixy="0.0" ixz="1.4e-07" iyy="8.6e-07" iyz="-1e-08" izz="3e-07"/></inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wuji_description/robots/wh120_arm/meshes/right/right_finger5_link4.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wuji_description/robots/wh120_arm/meshes/right/right_finger5_link4.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_finger5_joint4"
+    type="revolute">
+    <origin
+      xyz="0 0 0.0275"
+      rpy="0 0 0" />
+    <parent
+      link="right_finger5_link3" />
+    <child
+      link="right_finger5_link4" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-0.4705"
+      upper="1.5709"
+      effort="0.1866"
+      velocity="13.5" />
+  </joint>
+  <link
+    name="right_finger5_tip_link">
+    <inertial><origin xyz="0.00110169269782184 3.31501096989539e-08 -0.0128994942318628" rpy="0 0 0"/><mass value="0.00318"/><inertia ixx="2e-07" ixy="0.0" ixz="0.0" iyy="2.1e-07" iyz="0.0" izz="1.3e-07"/></inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wuji_description/robots/wh120_arm/meshes/right/right_finger5_tip_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://wuji_description/robots/wh120_arm/meshes/right/right_finger5_tip_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_finger5_tip_fixed"
+    type="fixed">
+    <origin
+      xyz="-0.00167219746761753 0 0.025"
+      rpy="0 0 0" />
+    <parent
+      link="right_finger5_link4" />
+    <child
+      link="right_finger5_tip_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+</robot>

@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+### Added
+
+- Added docking component simulation assets at `robots/docking/` (URDF, ROS URDF, MuJoCo MJCF, USD, STL mesh) with calibrated inertia
+
 ### Changed
 
 - README rewritten in English with standardized format (badges, TOC, directory table, numbered usage sections)
