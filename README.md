@@ -1,174 +1,113 @@
 # wuji-description
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Release](https://img.shields.io/github/v/release/wuji-technology/wuji-description)](https://github.com/wuji-technology/wuji-description/releases)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE) [![Release](https://img.shields.io/github/v/release/wuji-technology/wuji-description)](https://github.com/wuji-technology/wuji-description/releases)
 
-Robot model description package for WUJI robots. Provides URDF, MuJoCo (MJCF), MJX, and USD models with calibrated dynamics for simulation and visualization. Includes ROS2 launch files and RViz configuration.
+Robot model description package for the Wuji Hand and related accessories. Provides URDF, MuJoCo (MJCF), and USD assets for simulation and visualization, plus STEP/CAD files for mechanical integration. Includes a ROS2 launch and RViz configuration for quick inspection of left and right hand models.
 
-## Table of Contents
-
-- [Repository Structure](#repository-structure)
-- [Installation](#installation)
-- [Usage](#usage)
-  - [1. MuJoCo](#1-mujoco)
-  - [2. MJX (JAX)](#2-mjx-jax)
-  - [3. Isaac Sim](#3-isaac-sim)
-  - [4. ROS2 and RViz](#4-ros2-and-rviz)
-- [Model Specifications](#model-specifications)
-- [Contact](#contact)
+**Get started with [Quick Start](#quick-start). For detailed documentation, refer to [Wuji Hand Description Guide](https://docs.wuji.tech/docs/en/wuji-hand/latest/wuji-hand-description-guide/) on Wuji Docs Center.**
 
 ## Repository Structure
 
 ```text
-wuji-description/
-├── robots/
-│   └── hand/
-│       ├── urdf/           # URDF models
-│       │   ├── left.urdf / right.urdf          # Relative paths (local tools)
-│       │   └── left-ros.urdf / right-ros.urdf  # Package paths (ROS2)
-│       ├── mjcf/           # MuJoCo XML
-│       │   ├── left.xml
-│       │   └── right.xml
-│       ├── mjx/            # MJX optimized (simplified collision)
-│       │   ├── left_mjx.xml
-│       │   └── right_mjx.xml
-│       ├── usd/            # Isaac Sim USD
-│       │   ├── left.usd
-│       │   └── right.usd
-│       └── meshes/         # STL mesh files
-│           ├── left/
-│           └── right/
-├── launch/                 # ROS2 launch files
-├── rviz/                   # RViz configuration
-├── CMakeLists.txt          # ROS2 build
-└── package.xml             # ROS2 package definition
+.
+├── hand/
+│   ├── body/                                // ROS2 package: simulation and visualization assets for the hand body
+│   │   ├── launch/display.launch.py         // ROS2 launch file (selects left or right hand)
+│   │   ├── meshes/{left,right}/             // STL meshes for visual and collision geometry
+│   │   ├── mjcf/{left,right}.xml            // MuJoCo XML models
+│   │   ├── rviz/{left,right}.rviz           // RViz presets
+│   │   ├── step/                            // Simplified structural STEP files of the hand frame
+│   │   ├── urdf/{left,right}.urdf           // URDF models (relative mesh paths, for local tools)
+│   │   ├── urdf/{left,right}-ros.urdf       // URDF models (package:// paths, for ROS2)
+│   │   ├── usd/{left,right}/                // Isaac Sim USD assets
+│   │   ├── CMakeLists.txt                   // ROS2 package install rules
+│   │   └── package.xml                      // ROS2 package manifest
+│   └── attachment/
+│       ├── impact-resistant-attachment/     // Impact-resistant docking link (STL, URDF, MJCF, USD)
+│       ├── step/                            // Adapter STEP files, assembled PDFs, and installation notes
+│       └── unitree-g1-attachment/           // STL adapter for mounting on Unitree G1
+├── glove/
+│   └── attachment/                          // STEP file for glove mounting interface
+├── CHANGELOG.md
+├── LICENSE
+└── README.md
 ```
 
-### Directory Description
+## Quick Start
 
-| Directory | Description |
-|-----------|-------------|
-| `robots/hand/urdf/` | URDF files for left/right hands. `*.urdf` use relative paths for local tools; `*-ros.urdf` use package paths for ROS2. |
-| `robots/hand/mjcf/` | MuJoCo XML model files for simulation. |
-| `robots/hand/mjx/` | MJX-optimized models with simplified collision for JAX-accelerated simulation. |
-| `robots/hand/usd/` | USD models for NVIDIA Isaac Sim. |
-| `robots/hand/meshes/` | STL mesh files for visualization and collision. |
-| `launch/` | Python launch scripts for RViz visualization. |
-| `rviz/` | Default RViz configuration files. |
-
-## Installation
-
-### Option 1: Sparse Checkout (recommended, download single model only)
-
-```bash
-git clone --filter=blob:none --sparse https://github.com/wuji-technology/wuji-description.git
-cd wuji-description
-git sparse-checkout set robots/hand
-```
-
-### Option 2: Full Clone
+### Installation
 
 ```bash
 git clone https://github.com/wuji-technology/wuji-description.git
+cd wuji-description
 ```
 
-### Option 3: ROS2 Workspace
+### Hand Body
+
+#### MuJoCo
 
 ```bash
+# Right hand
+python -m mujoco.viewer --mjcf=hand/body/mjcf/right.xml
+
+# Left hand
+python -m mujoco.viewer --mjcf=hand/body/mjcf/left.xml
+```
+
+#### ROS2 and RViz
+
+`hand/body/` is the ROS2 package source (`wuji_description`). The package installs `hand/attachment/` as a sibling resource, so clone the entire repository into your workspace `src/` rather than copying `hand/body/` in isolation:
+
+```bash
+# Source ROS2 environment, replace <distro> with your installed ROS2 distribution
+source /opt/ros/<distro>/setup.bash
+
 cd ~/ros2_ws/src
 git clone https://github.com/wuji-technology/wuji-description.git
 cd ..
+
 rosdep install --from-paths src --ignore-src -r -y
 colcon build --packages-select wuji_description
 source install/setup.bash
-```
 
-## Usage
-
-### 1. MuJoCo
-
-If you only want to view the model in MuJoCo, no ROS2 installation is needed.
-
-```bash
-pip install mujoco
-```
-
-#### View in MuJoCo Viewer
-
-```bash
-python -m mujoco.viewer --mjcf=robots/hand/mjcf/right.xml
-```
-
-#### Load in Python
-
-```python
-import mujoco
-
-model = mujoco.MjModel.from_xml_path("robots/hand/mjcf/right.xml")
-data = mujoco.MjData(model)
-
-for _ in range(1000):
-    mujoco.mj_step(model, data)
-```
-
-### 2. MJX (JAX)
-
-MJX-optimized models for hardware-accelerated simulation with JAX.
-
-```python
-import mujoco
-from mujoco import mjx
-import jax
-
-model = mujoco.MjModel.from_xml_path("robots/hand/mjx/right_mjx.xml")
-mjx_model = mjx.put_model(model)
-mjx_data = mjx.make_data(mjx_model)
-
-@jax.jit
-def step(model, data):
-    return mjx.step(model, data)
-
-for _ in range(1000):
-    mjx_data = step(mjx_model, mjx_data)
-```
-
-### 3. Isaac Sim
-
-```python
-from omni.isaac.core.utils.stage import add_reference_to_stage
-
-add_reference_to_stage("robots/hand/usd/right.usd", "/World/RightHand")
-```
-
-### 4. ROS2 and RViz
-
-After installing as a ROS2 package (see [Option 3](#option-3-ros2-workspace)):
-
-```bash
-# Visualize left hand (default)
+# Left hand (default)
 ros2 launch wuji_description display.launch.py
 
-# Visualize right hand
-ros2 launch wuji_description display.launch.py robot:=right
-
-# Without GUI
-ros2 launch wuji_description display.launch.py use_gui:=false
+# Right hand
+ros2 launch wuji_description display.launch.py hand:=right
 ```
 
-## Model Specifications
+#### Isaac Sim (USD)
 
-### Hand
+Load `hand/body/usd/left/wujihand.usd` or `hand/body/usd/right/wujihand.usd` directly in Isaac Sim.
+For a complete simulation example, see [isaaclab-sim](https://github.com/wuji-technology/isaaclab-sim).
 
-| Parameter | Value |
-|-----------|-------|
-| DOF | 20 per hand |
-| Joint type | Revolute |
-| Actuation | Position control (PD) |
-| Collision groups | palm, link1-4, tip |
+### Hand Attachments
 
-## License
+`hand/attachment/` ships optional components for the Wuji Hand. They are not loaded by the default display launch file; attach them via a fixed joint when composing a full robot description.
 
-[MIT](LICENSE)
+- **`impact-resistant-attachment/`** — a docking link designed to absorb impacts before they reach the hand. Includes STL mesh, URDF (relative and `package://` variants), MJCF, and USD for full simulation integration.
+- **`step/`** — STEP source files for two adapters that connect the hand to a robotic arm flange:
+  - `Direct-Adapter-Mount.step` — rigid direct mount.
+  - `Impact-Resistant-Adapter.step` — mechanical companion to the impact-resistant attachment above.
+  - Each option ships with an assembled PDF drawing. See [Adapter-Installation-Instructions.md](hand/attachment/step/Adapter-Installation-Instructions.md) for step-by-step mounting guidance.
+- **`unitree-g1-attachment/`** — STL adapter for mounting the Wuji Hand on a Unitree G1 humanoid.
+
+Preview the impact-resistant attachment in MuJoCo:
+
+```bash
+python -m mujoco.viewer --mjcf=hand/attachment/impact-resistant-attachment/mjcf/docking.xml
+```
+
+URDF preview with a non-ROS viewer such as `urdf-viz`:
+
+```bash
+urdf-viz hand/attachment/impact-resistant-attachment/urdf/docking.urdf
+```
+
+### Glove
+
+`glove/attachment/glove-attachment.step` provides a STEP file for the Wuji Glove mounting interface. Additional glove assets are planned for future releases.
 
 ## Contact
 
