@@ -2,43 +2,22 @@
 
 All notable changes to this project will be documented in this file.
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
-
-### Added
-
-- Added docking component simulation assets at `robots/docking/` (URDF, ROS URDF, MuJoCo MJCF, USD, STL mesh) with calibrated inertia
-
-### Changed
-
-- README rewritten in English with standardized format (badges, TOC, directory table, numbered usage sections)
-- Fixed incorrect launch file references (`display.launch.py` with `robot:=` arg)
-- Fixed license reference from Apache-2.0 to MIT (matching LICENSE file)
-- Workflow `auto-release-on-pr.yml` renamed to `create_release_tag.yaml`
-  - Simplified trigger: only checks `release/v*` branch (no label required)
-  - Version extraction from branch name instead of PR title
-
-## [1.0.0] - 2026-02-11
-
-Initial public release.
+## [2026.05.18] - 2026-05-18
 
 ### Added
 
-- URDF models for WUJI Hand (left/right) with calibrated dynamics
-- MJCF models for MuJoCo simulation
-- MJX models optimized for JAX-based simulation (Brax)
-- ROS2 package structure with launch files and RViz config
-- Sparse checkout support for downloading individual models
-- GitHub Actions CI/CD workflows
-  - `sync_public.yaml`: Tag push syncs to public repo
-  - `ci_test.yaml`: MuJoCo/MJX/Isaac Sim validation tests
-  - `auto-release.yml`: Automatic GitHub Release creation
+- Added the `wuji_description` ROS2 package under `hand/body/`, with `launch/display.launch.py`, RViz presets, `CMakeLists.txt`, and `package.xml` for left and right Wuji Hand visualization.
+- Added URDF models for the left and right Wuji Hand at `hand/body/urdf/{left,right}.urdf` (relative mesh paths) and `hand/body/urdf/{left,right}-ros.urdf` (`package://` paths for ROS2).
+- Added MuJoCo MJCF models at `hand/body/mjcf/{left,right}.xml` and STL visual/collision meshes at `hand/body/meshes/{left,right}/`.
+- Added Isaac Sim USD assets at `hand/body/usd/{left,right}/`, including fused meshes, PBR materials, physics properties, and collision filter pairs.
+- Added simplified structural STEP files of the hand frame at `hand/body/step/`.
+- Added the impact-resistant docking attachment at `hand/attachment/impact-resistant-attachment/` with STL, URDF, MJCF, and USD assets, including the ROS URDF that references `package://wuji_description/attachment/impact-resistant-attachment/meshes/hand_docking_link.STL`.
+- Added the Unitree G1 mounting adapter at `hand/attachment/unitree-g1-attachment/unitree-g1-docking-adapter.stl`.
+- Added adapter STEP files, assembled PDF drawings, and installation notes at `hand/attachment/step/`.
+- Added the Wuji Glove mounting interface STEP asset at `glove/attachment/glove-attachment.step`.
+- Added the top-level `README.md`, `LICENSE` (MIT), and this `CHANGELOG.md`.
 
-### Notes
-
-- USD models for Isaac Sim are planned for future releases
-- Model parameters are based on CAD data and real-world measurements
-
-[Unreleased]: https://github.com/wuji-technology/wuji-description/compare/v1.0.0...HEAD
-[1.0.0]: https://github.com/wuji-technology/wuji-description/releases/tag/v1.0.0
+[2026.05.18]: https://github.com/wuji-technology/wuji-description/releases/tag/v2026.05.18
