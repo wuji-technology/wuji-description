@@ -31,7 +31,7 @@
   </asset>
 
   <worldbody>
-    <body name="left_palm_link"><inertial pos="-0.00297879327955292 -0.000452550870710431 0.0366547088987225" mass="0.16914" quat="-0.01772809 -0.04274722 0.09308295 0.99458230" diaginertia="1.40677446e-04 9.58896475e-05 5.81329061e-05" /><geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.6 0.8 0.9 1" mesh="left_palm_link" />
+    <body name="left_palm_link"><inertial pos="-0.002979471431 -0.0004557176227 0.03665408641" mass="0.16914" quat="-0.01772809 0.04274722 0.09308295 -0.99458230" diaginertia="0.000140677446 9.5889647500e-05 5.8132906100e-05" /><geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.6 0.8 0.9 1" mesh="left_palm_link" />
     <geom type="mesh" rgba="0.6 0.8 0.9 1" mesh="left_palm_link" contype="1" conaffinity="1" />
     <body name="left_finger1_link1" pos="0.0084399 -0.020587 0.028893" quat="0.682219 0.617669 0.0805047 0.382859">
       <inertial pos="-0.00246636 0.00124336 0.00779645" quat="0.904243 0.21652 0.0443878 -0.365368" mass="0.0075" diaginertia="3.37599e-07 3.01198e-07 2.11203e-07" />
