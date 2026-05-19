@@ -6,7 +6,7 @@
   </mujoco>
   <link
     name="left_palm_link">
-    <inertial><origin xyz="-0.002978793 -0.0004525509 0.03665471" rpy="0 0 0"/><mass value="0.16914"/><inertia ixx="0.00014" ixy="2.54e-06" ixz="6.91e-06" iyy="9.47e-05" iyz="-6.63e-06" izz="6e-05"/></inertial>
+    <inertial><origin xyz="-0.002979471 -0.0004557176 0.03665409" rpy="0 0 0"/><mass value="0.16914"/><inertia ixx="0.00014" ixy="-2.5400000000e-06" ixz="6.9100000000e-06" iyy="9.4700000000e-05" iyz="6.6300000000e-06" izz="6.0000000000e-05"/></inertial>
     <visual>
       <origin
         xyz="0 0 0"
