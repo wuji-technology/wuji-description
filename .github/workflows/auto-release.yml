@@ -1,5 +1,9 @@
 name: Auto Release
 
+# Publishes a GitHub Release when a vYYYY.MM.DD tag is pushed. Self-contained:
+# it reads the matching "## [<version>]" section straight from CHANGELOG.md and
+# uses it verbatim as the release notes (no reformatting into v.. (date) style).
+
 on:
   push:
     tags:
@@ -10,16 +14,153 @@ permissions:
 
 jobs:
   release:
-    name: Create GitHub Release
+    name: Publish GitHub Release from CHANGELOG
     runs-on: ubuntu-latest
+    env:
+      FEISHU_WEBHOOK: ${{ secrets.FEISHU_RELEASE_WEBHOOK }}
 
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Auto Release from CHANGELOG
-        uses: wuji-technology/.github/actions/auto-release@main
+      - name: Publish release
+        id: release
+        uses: actions/github-script@v7
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          prerelease: false
-          feishu-webhook: ${{ secrets.FEISHU_RELEASE_WEBHOOK }}
+          script: |
+            const fs = require('fs');
+            const { owner, repo } = context.repo;
+
+            if (!context.ref.startsWith('refs/tags/')) {
+              core.setFailed(`Must be triggered by a tag push, got ${context.ref}`);
+              return;
+            }
+            const tag = context.ref.replace('refs/tags/', '');
+            if (!tag.startsWith('v')) {
+              core.setFailed(`Tag must start with "v" (e.g. v2026.06.04): ${tag}`);
+              return;
+            }
+            const version = tag.slice(1);
+
+            const cl = fs.readFileSync('CHANGELOG.md', 'utf8').replace(/\r\n?/g, '\n');
+            const esc = version.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+            // No flags on purpose: with /m, "$" matches end-of-line and the lazy
+            // capture would stop at the blank line right after the header. The
+            // capture ends at the next "## [" section, the trailing link-reference
+            // block ("[name]: url"), or end of file.
+            const re = new RegExp(`## \\[${esc}\\][^\\n]*\\n([\\s\\S]*?)(?=\\n## \\[|\\n\\[[^\\]]+\\]:\\s|$)`);
+            const m = cl.match(re);
+            if (!m) {
+              core.setFailed(`Version ${version} not found in CHANGELOG.md`);
+              return;
+            }
+            const section = m[1].trim();
+
+            // Full Changelog compare link to the previous dated version.
+            const all = [...cl.matchAll(/^## \[(\d{4}\.\d{2}\.\d{2})\]/gm)].map(x => x[1]);
+            const idx = all.indexOf(version);
+            const prev = idx >= 0 ? all[idx + 1] : undefined;
+
+            let body = `## [${version}]\n\n${section}`;
+            if (prev) {
+              body += `\n\n---\n\n**Full Changelog**: ` +
+                `[v${prev}...${tag}](https://github.com/${owner}/${repo}/compare/v${prev}...${tag})`;
+            }
+
+            const isPrerelease = /-(rc|alpha|beta)/i.test(tag);
+
+            // Upsert: update the release if one already exists for this tag.
+            let releaseId = null;
+            try {
+              const { data } = await github.rest.repos.getReleaseByTag({ owner, repo, tag });
+              releaseId = data.id;
+              console.log(`Found existing release ${tag} (id: ${releaseId})`);
+            } catch (e) {
+              if (e.status !== 404) throw e;
+              console.log(`No existing release for ${tag}`);
+            }
+
+            const releaseData = {
+              owner,
+              repo,
+              tag_name: tag,
+              name: version,
+              body,
+              draft: false,
+              prerelease: isPrerelease,
+              make_latest: isPrerelease ? 'false' : 'true',
+            };
+
+            const res = releaseId
+              ? await github.rest.repos.updateRelease({ ...releaseData, release_id: releaseId })
+              : await github.rest.repos.createRelease(releaseData);
+
+            console.log(`${releaseId ? 'Updated' : 'Created'} release: ${res.data.html_url}`);
+            core.setOutput('tag', tag);
+            core.setOutput('version', version);
+            core.setOutput('html_url', res.data.html_url);
+            core.setOutput('notes', section);
+
+      - name: Send Feishu notification
+        if: ${{ success() && env.FEISHU_WEBHOOK != '' }}
+        uses: actions/github-script@v7
+        env:
+          RELEASE_TAG: ${{ steps.release.outputs.tag }}
+          RELEASE_URL: ${{ steps.release.outputs.html_url }}
+          RELEASE_NOTES: ${{ steps.release.outputs.notes }}
+        with:
+          script: |
+            const webhookUrl = process.env.FEISHU_WEBHOOK;
+            const tag = process.env.RELEASE_TAG;
+            const releaseUrl = process.env.RELEASE_URL;
+            const repo = context.repo.repo;
+
+            // The CHANGELOG section, with "### " sub-headers bolded for Feishu.
+            const releaseNotes = (process.env.RELEASE_NOTES || '')
+              .replace(/^### (.+)$/gm, '**$1**')
+              .trim();
+
+            const elements = [
+              {
+                tag: 'div',
+                text: { content: `**Repository**: ${repo}\n**Version**: ${tag}`, tag: 'lark_md' },
+              },
+            ];
+            if (releaseNotes) {
+              elements.push({ tag: 'hr' });
+              elements.push({ tag: 'div', text: { content: releaseNotes, tag: 'lark_md' } });
+            }
+            elements.push({
+              tag: 'action',
+              actions: [{
+                tag: 'button',
+                text: { content: 'View Release', tag: 'plain_text' },
+                url: releaseUrl,
+                type: 'primary',
+              }],
+            });
+
+            const card = {
+              msg_type: 'interactive',
+              card: {
+                header: {
+                  title: { content: `🚀 ${repo} ${tag} Released`, tag: 'plain_text' },
+                  template: 'green',
+                },
+                elements,
+              },
+            };
+
+            try {
+              const response = await fetch(webhookUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(card),
+              });
+              console.log(response.ok
+                ? '✅ Feishu notification sent'
+                : `⚠️ Feishu notification failed: ${response.status}`);
+            } catch (error) {
+              console.log(`⚠️ Feishu notification error: ${error.message}`);
+            }

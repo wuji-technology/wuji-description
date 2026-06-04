@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2026.06.04]
+
 ### Added
 
 - Added the Wuji Glove model under `glove/body/`: left and right URDF skeletons at `glove/body/urdf/{left,right}.urdf`, each with 21 revolute joints across the five fingers, an electromagnetic transmitter base on the wrist, and a receiver coil on every fingertip for hand motion tracking.
@@ -38,6 +40,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added the Glove mounting interface STEP asset at `glove/attachment/glove-attachment.step`.
 - Added the top-level `README.md`, `LICENSE` (MIT), and this `CHANGELOG.md`.
 
-[Unreleased]: https://github.com/wuji-technology/wuji-description/compare/v2026.05.19...HEAD
+[Unreleased]: https://github.com/wuji-technology/wuji-description/compare/v2026.06.04...HEAD
+[2026.06.04]: https://github.com/wuji-technology/wuji-description/releases/tag/v2026.06.04
 [2026.05.19]: https://github.com/wuji-technology/wuji-description/releases/tag/v2026.05.19
 [2026.05.18]: https://github.com/wuji-technology/wuji-description/releases/tag/v2026.05.18
