@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [2026.06.04]
 
 ### Added
 
@@ -38,6 +38,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added the Glove mounting interface STEP asset at `glove/attachment/glove-attachment.step`.
 - Added the top-level `README.md`, `LICENSE` (MIT), and this `CHANGELOG.md`.
 
-[Unreleased]: https://github.com/wuji-technology/wuji-description/compare/v2026.05.19...HEAD
+[2026.06.04]: https://github.com/wuji-technology/wuji-description/releases/tag/v2026.06.04
 [2026.05.19]: https://github.com/wuji-technology/wuji-description/releases/tag/v2026.05.19
 [2026.05.18]: https://github.com/wuji-technology/wuji-description/releases/tag/v2026.05.18
