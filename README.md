@@ -27,7 +27,10 @@ Robot model description package for the Wuji Hand and related accessories. Provi
 │       ├── step/                            // Adapter STEP files, assembled PDFs, and installation notes
 │       └── unitree-g1-attachment/           // STL adapter for mounting on Unitree G1
 ├── glove/
-│   └── attachment/                          // STEP file for glove mounting interface
+│   └── body/                                // Wuji Glove model (hand motion tracking)
+│       ├── urdf/{left,right}.urdf           // URDF skeletons (21 revolute DOF per hand)
+│       ├── mesh/base_link_{TX,RX}.STL       // Transmitter base and fingertip receiver coil
+│       └── step/EMFTXC_topcover.{step,pdf}  // Transmitter top-cover STEP and assembled drawing
 ├── CHANGELOG.md
 ├── LICENSE
 └── README.md
@@ -107,7 +110,13 @@ urdf-viz hand/attachment/impact-resistant-attachment/urdf/docking.urdf
 
 ### Glove
 
-`glove/attachment/glove-attachment.step` provides a STEP file for the Wuji Glove mounting interface. Additional glove assets are planned for future releases.
+`glove/body/` provides the Wuji Glove model used for hand motion tracking. Each hand is described by a URDF skeleton (`glove/body/urdf/{left,right}.urdf`) with 21 revolute joints across the five fingers, an electromagnetic transmitter base on the wrist (`base_link_TX.STL`), and a receiver coil on every fingertip (`base_link_RX.STL`). The transmitter top-cover STEP file and assembled drawing are under `glove/body/step/`.
+
+Preview a glove model with a non-ROS URDF viewer such as `urdf-viz`:
+
+```bash
+urdf-viz glove/body/urdf/right.urdf
+```
 
 ## Contact
 
