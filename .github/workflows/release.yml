@@ -1,0 +1,143 @@
+name: Prepare Release
+
+# Manual one-button release. You only ever maintain the "## [Unreleased]"
+# section of CHANGELOG.md; this workflow derives the version from the date,
+# moves the Unreleased entries into a dated "## [<YYYY.MM.DD>]" section, opens
+# an empty Unreleased section on top, and raises a release PR. Merging that PR
+# tags the version (auto-release-on-pr.yml) and publishes the GitHub Release
+# (auto-release.yml).
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Version as YYYY.MM.DD (leave blank to use today's date, Asia/Shanghai)"
+        required: false
+        type: string
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  prepare:
+    name: Cut [Unreleased] into a dated release PR
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Generate GitHub App token
+        id: app-token
+        uses: actions/create-github-app-token@v2
+        with:
+          app-id: ${{ vars.AUTOMATION_APP_ID }}
+          private-key: ${{ secrets.AUTOMATION_APP_PRIVATE_KEY }}
+
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ steps.app-token.outputs.token }}
+          fetch-depth: 0
+          fetch-tags: true
+
+      - name: Resolve version
+        id: version
+        env:
+          INPUT_VERSION: ${{ github.event.inputs.version }}
+        run: |
+          if [[ -n "$INPUT_VERSION" ]]; then
+            VERSION="$INPUT_VERSION"
+          else
+            VERSION="$(TZ=Asia/Shanghai date +%Y.%m.%d)"
+          fi
+
+          if [[ ! "$VERSION" =~ ^[0-9]{4}\.[0-9]{2}\.[0-9]{2}$ ]]; then
+            echo "::error::Invalid version '$VERSION' (expected YYYY.MM.DD)"
+            exit 1
+          fi
+
+          TAG="v$VERSION"
+          if git rev-parse "refs/tags/$TAG" >/dev/null 2>&1; then
+            echo "::error::Tag $TAG already exists"
+            exit 1
+          fi
+          if git ls-remote --exit-code --heads origin "release/$TAG" >/dev/null 2>&1; then
+            echo "::error::Branch release/$TAG already exists"
+            exit 1
+          fi
+
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+
+      - name: Rewrite CHANGELOG
+        uses: actions/github-script@v7
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+          TAG: ${{ steps.version.outputs.tag }}
+        with:
+          script: |
+            const fs = require('fs');
+            const version = process.env.VERSION;
+            const tag = process.env.TAG;
+            const { owner, repo } = context.repo;
+            const path = 'CHANGELOG.md';
+
+            let cl = fs.readFileSync(path, 'utf8').replace(/\r\n?/g, '\n');
+
+            const headerRe = /^## \[Unreleased\][^\n]*$/m;
+            const h = cl.match(headerRe);
+            if (!h) {
+              core.setFailed('No "## [Unreleased]" section found in CHANGELOG.md');
+              return;
+            }
+
+            // Entries currently under [Unreleased], up to the next version header.
+            const after = cl.slice(h.index + h[0].length);
+            const nextRel = after.search(/\n## \[/);
+            const notes = (nextRel === -1 ? after : after.slice(0, nextRel)).trim();
+            if (!notes) {
+              core.setFailed('[Unreleased] section is empty — nothing to release');
+              return;
+            }
+
+            // Keep an empty [Unreleased] on top, add the dated section below it.
+            cl = cl.replace(headerRe, `## [Unreleased]\n\n## [${version}]`);
+
+            // Refresh the trailing link-reference block.
+            cl = cl.replace(/^\[Unreleased\]:.*$/m, '').replace(/\n{3,}/g, '\n\n');
+            const lines = cl.replace(/\s+$/, '').split('\n');
+            let i = lines.length - 1;
+            while (i >= 0 && /^\[[^\]]+\]:\s/.test(lines[i])) i--;
+            const head = lines.slice(0, i + 1).join('\n').replace(/\s+$/, '');
+            const refs = lines.slice(i + 1).filter(Boolean);
+            const newRefs = [
+              `[Unreleased]: https://github.com/${owner}/${repo}/compare/${tag}...HEAD`,
+              `[${version}]: https://github.com/${owner}/${repo}/releases/tag/${tag}`,
+              ...refs,
+            ];
+            fs.writeFileSync(path, head + '\n\n' + newRefs.join('\n') + '\n');
+
+            const prBody =
+              `Automated release of \`${tag}\`, cut from the \`[Unreleased]\` section by date.\n\n` +
+              `Merging this PR (it carries the \`auto-release\` label) tags \`${tag}\` and ` +
+              `publishes the GitHub Release.\n\n---\n\n## [${version}]\n\n${notes}\n`;
+            fs.writeFileSync(`${process.env.RUNNER_TEMP}/pr-body.md`, prBody);
+
+      - name: Open release PR
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+          TAG: ${{ steps.version.outputs.tag }}
+        run: |
+          BRANCH="release/$TAG"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$BRANCH"
+          git add CHANGELOG.md
+          git commit -m "chore(release): $TAG"
+          git push origin "$BRANCH"
+
+          gh pr create \
+            --base main \
+            --head "$BRANCH" \
+            --label auto-release \
+            --title "Release $TAG" \
+            --body-file "$RUNNER_TEMP/pr-body.md"
