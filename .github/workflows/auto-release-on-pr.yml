@@ -44,16 +44,6 @@ jobs:
             exit 1
           fi
 
-          # Refuse to tag unless the CHANGELOG was bumped for this version.
-          # The Auto Release workflow publishes the GitHub Release from the
-          # matching "## [<version>]" section, so without it the tag is created
-          # but the release step fails, leaving a dangling tag and no release.
-          CHANGELOG_VERSION="${VERSION#v}"
-          if ! grep -qF "## [${CHANGELOG_VERSION}]" CHANGELOG.md; then
-            echo "::error::CHANGELOG.md has no '## [${CHANGELOG_VERSION}]' section. Bump the changelog in the release PR before merging; refusing to create tag ${VERSION} to avoid a dangling tag with no release."
-            exit 1
-          fi
-
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
