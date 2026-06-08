@@ -25,7 +25,8 @@ Robot model description package for the Wuji Hand and related accessories. Provi
 │   └── attachment/
 │       ├── impact-resistant-attachment/     // Impact-resistant docking link (STL, URDF, MJCF, USD)
 │       ├── step/                            // Adapter STEP files, assembled PDFs, and installation notes
-│       └── unitree-g1-attachment/           // STL adapter for mounting on Unitree G1
+│       ├── unitree-g1-attachment/           // STL adapter for mounting on Unitree G1
+│       └── wuji-hand-rl-open-source-base/   // Open-source mounting base for RL setups (3MF, STEP, PDF, BOM)
 ├── glove/
 │   └── body/                                // Wuji Glove model (hand motion tracking)
 │       ├── urdf/{left,right}.urdf           // URDF skeletons (21 revolute DOF per hand)
@@ -95,6 +96,7 @@ For a complete simulation example, see [isaaclab-sim](https://github.com/wuji-te
   - `Impact-Resistant-Adapter.step` — mechanical companion to the impact-resistant attachment above.
   - Each option ships with an assembled PDF drawing. See [Adapter-Installation-Instructions.md](hand/attachment/step/Adapter-Installation-Instructions.md) for step-by-step mounting guidance.
 - **`unitree-g1-attachment/`** — STL adapter for mounting the Wuji Hand on a Unitree G1 humanoid.
+- **`wuji-hand-rl-open-source-base/`** — an open-source mounting base for reinforcement-learning setups. Ships the 3D-printable `Base.3mf`, the `Assembly.STEP` CAD assembly, an assembled `Assembly.pdf` drawing, and a `BOM.xlsx` bill of materials for self-assembly.
 
 Preview the impact-resistant attachment in MuJoCo:
 
