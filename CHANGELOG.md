@@ -7,8 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2026.6.10]
+
 ### Added
 
+- Added the Wuji Hand soft-pad variant at `hand/body-with-soft/`, a hand body model with a soft pad fixed to the thumb (`finger1_link2_softbody`). Ships URDF (`urdf/{left,right}.urdf` relative + `{left,right}-ros.urdf` `package://`), MuJoCo MJCF (`mjcf/{left,right}.xml`), Isaac Sim USD (`usd/{left,right}/`), STL meshes (`meshes/{left,right}/`), and actuator parameters (`params.csv`).
+- Added simplified-collision variants of the soft-pad hand at `hand/body-with-soft/`: `urdf/{left,right}_simplified.urdf`, `mjcf/{left,right}_simplified.xml`, and `usd/{left,right}_simplified/`. They replace the collision geometry of each finger's `link4` and the thumb soft pad with decimated meshes for faster contact simulation. Visual geometry is unchanged.
+- Added the Wuji Hand 2 model under `hand2/body/`: left/right URDF at `urdf/{left,right}.urdf` (relative) and `{left,right}-ros.urdf` (`package://`), plus STL meshes at `meshes/{left,right}/`. Each hand has 20 revolute joints using anatomical naming: `thumb`, `index_finger`, `middle_finger`, `ring_finger`, `pinky` (with `cmc`/`mcp` flexion and abduction plus `pip`/`dip` or `mcp`/`ip` joints).
+
+## [2026.6.8]
+
+### Added
+
+- Added the Wuji Hand RL open-source base at `hand/attachment/wuji-hand-rl-open-source-base/`, an open-source mounting base for reinforcement-learning setups, shipping the 3D-printable `Base.3mf`, the `Assembly.STEP` CAD assembly, an assembled `Assembly.pdf` drawing, and a `BOM.xlsx` bill of materials.
 - Added the Wuji Glove model under `glove/body/`: left and right URDF skeletons at `glove/body/urdf/{left,right}.urdf`, each with 21 revolute joints across the five fingers, an electromagnetic transmitter base on the wrist, and a receiver coil on every fingertip for hand motion tracking.
 - Added the glove transmitter and receiver coil meshes at `glove/body/mesh/base_link_TX.STL` and `glove/body/mesh/base_link_RX.STL`.
 - Added the transmitter top-cover STEP file and assembled PDF drawing at `glove/body/step/EMFTXC_topcover.step` and `glove/body/step/EMFTXC_topcover.pdf`.
@@ -38,6 +49,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added the Glove mounting interface STEP asset at `glove/attachment/glove-attachment.step`.
 - Added the top-level `README.md`, `LICENSE` (MIT), and this `CHANGELOG.md`.
 
-[Unreleased]: https://github.com/wuji-technology/wuji-description/compare/v2026.05.19...HEAD
+[Unreleased]: https://github.com/wuji-technology/wuji-description/compare/v2026.6.10...HEAD
+[2026.6.10]: https://github.com/wuji-technology/wuji-description/compare/v2026.6.8...v2026.6.10
+[2026.6.8]: https://github.com/wuji-technology/wuji-description/compare/v2026.05.19...v2026.6.8
 [2026.05.19]: https://github.com/wuji-technology/wuji-description/releases/tag/v2026.05.19
 [2026.05.18]: https://github.com/wuji-technology/wuji-description/releases/tag/v2026.05.18
