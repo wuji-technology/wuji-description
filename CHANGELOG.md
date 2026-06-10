@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2026.6.11]
+
+### Added
+
+- Added MuJoCo MJCF models for the Wuji Hand 2 at `hand2/body/mjcf/{left,right}.xml`, using the RK4 integrator with a 0.002 s timestep, the Newton solver, and per-joint armature and actuator force ranges.
+- Added Isaac Sim USD assets for the Wuji Hand 2 at `hand2/body/usd/{left,right}/`, each shipping the `wujihand.usd` entry point with base/physics/robot/sensor sublayers under `configuration/`, position-drive joint gains, and the logo texture under `textures/`.
+
 ## [2026.6.10]
 
 ### Added
@@ -49,7 +56,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added the Glove mounting interface STEP asset at `glove/attachment/glove-attachment.step`.
 - Added the top-level `README.md`, `LICENSE` (MIT), and this `CHANGELOG.md`.
 
-[Unreleased]: https://github.com/wuji-technology/wuji-description/compare/v2026.6.10...HEAD
+[Unreleased]: https://github.com/wuji-technology/wuji-description/compare/v2026.6.11...HEAD
+[2026.6.11]: https://github.com/wuji-technology/wuji-description/compare/v2026.6.10...v2026.6.11
 [2026.6.10]: https://github.com/wuji-technology/wuji-description/compare/v2026.6.8...v2026.6.10
 [2026.6.8]: https://github.com/wuji-technology/wuji-description/compare/v2026.05.19...v2026.6.8
 [2026.05.19]: https://github.com/wuji-technology/wuji-description/releases/tag/v2026.05.19

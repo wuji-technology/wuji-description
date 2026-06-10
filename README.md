@@ -36,7 +36,9 @@ Robot model description package for the Wuji Hand and related accessories. Provi
 ├── hand2/
 │   └── body/                                // Wuji Hand 2 model
 │       ├── meshes/{left,right}/             // STL meshes with anatomical names (thumb, index_finger, ...)
-│       └── urdf/{left,right}.urdf           // URDF models (plus {left,right}-ros.urdf with package:// paths)
+│       ├── mjcf/{left,right}.xml            // MuJoCo XML models
+│       ├── urdf/{left,right}.urdf           // URDF models (plus {left,right}-ros.urdf with package:// paths)
+│       └── usd/{left,right}/                // Isaac Sim USD assets
 ├── glove/
 │   └── body/                                // Wuji Glove model (hand motion tracking)
 │       ├── urdf/{left,right}.urdf           // URDF skeletons (21 revolute DOF per hand)
@@ -112,9 +114,17 @@ For Isaac Sim, load `hand/body-with-soft/usd/{left,right}/wujihand.usd` or the `
 
 ### Wuji Hand 2
 
-`hand2/body/` provides the Wuji Hand 2 model. Each hand has 20 revolute joints named after hand anatomy (for example `r_thumb_cmc_flex`, `r_index_finger_mcp_abd`, `r_middle_finger_pip`), with URDF models in relative-path (`hand2/body/urdf/{left,right}.urdf`) and `package://` (`{left,right}-ros.urdf`) variants and STL meshes at `hand2/body/meshes/{left,right}/`.
+`hand2/body/` provides the Wuji Hand 2 model. Each hand has 20 revolute joints named after hand anatomy (for example `r_thumb_cmc_flex`, `r_index_finger_mcp_abd`, `r_middle_finger_pip`), with URDF models in relative-path (`hand2/body/urdf/{left,right}.urdf`) and `package://` (`{left,right}-ros.urdf`) variants, MuJoCo XML models at `hand2/body/mjcf/{left,right}.xml`, Isaac Sim USD assets at `hand2/body/usd/{left,right}/`, and STL meshes at `hand2/body/meshes/{left,right}/`.
 
-Preview with a non-ROS URDF viewer such as `urdf-viz`:
+Preview in MuJoCo:
+
+```bash
+python -m mujoco.viewer --mjcf=hand2/body/mjcf/right.xml
+```
+
+For Isaac Sim, load `hand2/body/usd/{left,right}/wujihand.usd` directly.
+
+URDF preview with a non-ROS viewer such as `urdf-viz`:
 
 ```bash
 urdf-viz hand2/body/urdf/right.urdf
