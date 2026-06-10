@@ -22,11 +22,21 @@ Robot model description package for the Wuji Hand and related accessories. Provi
 │   │   ├── usd/{left,right}/                // Isaac Sim USD assets
 │   │   ├── CMakeLists.txt                   // ROS2 package install rules
 │   │   └── package.xml                      // ROS2 package manifest
+│   ├── body-with-soft/                      // Hand variant with a soft pad on the thumb
+│   │   ├── meshes/{left,right}/             // STL meshes, incl. soft-pad and simplified collision meshes
+│   │   ├── mjcf/{left,right}.xml            // MuJoCo XML models (plus {left,right}_simplified.xml)
+│   │   ├── urdf/{left,right}.urdf           // URDF models (plus -ros and _simplified variants)
+│   │   ├── usd/{left,right}/                // Isaac Sim USD assets (plus {left,right}_simplified/)
+│   │   └── params.csv                       // Actuator parameters
 │   └── attachment/
 │       ├── impact-resistant-attachment/     // Impact-resistant docking link (STL, URDF, MJCF, USD)
 │       ├── step/                            // Adapter STEP files, assembled PDFs, and installation notes
 │       ├── unitree-g1-attachment/           // STL adapter for mounting on Unitree G1
 │       └── wuji-hand-rl-open-source-base/   // Open-source mounting base for RL setups (3MF, STEP, PDF, BOM)
+├── hand2/
+│   └── body/                                // Wuji Hand 2 model
+│       ├── meshes/{left,right}/             // STL meshes with anatomical names (thumb, index_finger, ...)
+│       └── urdf/{left,right}.urdf           // URDF models (plus {left,right}-ros.urdf with package:// paths)
 ├── glove/
 │   └── body/                                // Wuji Glove model (hand motion tracking)
 │       ├── urdf/{left,right}.urdf           // URDF skeletons (21 revolute DOF per hand)
@@ -85,6 +95,30 @@ ros2 launch wuji_description display.launch.py hand:=right
 
 Load `hand/body/usd/left/wujihand.usd` or `hand/body/usd/right/wujihand.usd` directly in Isaac Sim.
 For a complete simulation example, see [isaaclab-sim](https://github.com/wuji-technology/isaaclab-sim).
+
+### Hand Body with Soft Pad
+
+`hand/body-with-soft/` is a variant of the hand body with a soft pad fixed to the thumb (`finger1_link2_softbody`). Every format also ships a `_simplified` variant that replaces the collision geometry of each finger's `link4` and the thumb soft pad with decimated meshes for faster contact simulation; visual geometry is identical.
+
+```bash
+# Full collision meshes
+python -m mujoco.viewer --mjcf=hand/body-with-soft/mjcf/right.xml
+
+# Simplified collision meshes
+python -m mujoco.viewer --mjcf=hand/body-with-soft/mjcf/right_simplified.xml
+```
+
+For Isaac Sim, load `hand/body-with-soft/usd/{left,right}/wujihand.usd` or the `{left,right}_simplified` counterparts.
+
+### Wuji Hand 2
+
+`hand2/body/` provides the Wuji Hand 2 model. Each hand has 20 revolute joints named after hand anatomy (for example `r_thumb_cmc_flex`, `r_index_finger_mcp_abd`, `r_middle_finger_pip`), with URDF models in relative-path (`hand2/body/urdf/{left,right}.urdf`) and `package://` (`{left,right}-ros.urdf`) variants and STL meshes at `hand2/body/meshes/{left,right}/`.
+
+Preview with a non-ROS URDF viewer such as `urdf-viz`:
+
+```bash
+urdf-viz hand2/body/urdf/right.urdf
+```
 
 ### Hand Attachments
 
