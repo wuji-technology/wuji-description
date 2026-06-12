@@ -4,7 +4,7 @@
 
 Robot model description package for the Wuji Hand and related accessories. Provides URDF, MuJoCo (MJCF), and USD assets for simulation and visualization, plus STEP/CAD files for mechanical integration. Includes a ROS2 launch and RViz configuration for quick inspection of left and right hand models.
 
-**Get started with [Quick Start](#quick-start). For detailed documentation, refer to [Wuji Hand Description Guide](https://docs.wuji.tech/docs/en/wuji-hand/latest/wuji-hand-description-guide/) on Wuji Docs Center.**
+**Get started with [Quick Start](#quick-start). For detailed documentation, refer to [Wuji Description Guide](https://docs.wuji.tech/docs/en/wuji-hand/latest/wuji-description-guide/) on Wuji Docs Center.**
 
 ## Repository Structure
 
@@ -37,6 +37,7 @@ Robot model description package for the Wuji Hand and related accessories. Provi
 │   └── body/                                // Wuji Hand 2 model
 │       ├── meshes/{left,right}/             // STL meshes with anatomical names (thumb, index_finger, ...)
 │       ├── mjcf/{left,right}.xml            // MuJoCo XML models
+│       ├── step/                            // Structural STEP assemblies (Beta1) and adapter-mount STEP (Beta1)
 │       ├── urdf/{left,right}.urdf           // URDF models (plus {left,right}-ros.urdf with package:// paths)
 │       └── usd/{left,right}/                // Isaac Sim USD assets
 ├── glove/
@@ -129,6 +130,10 @@ URDF preview with a non-ROS viewer such as `urdf-viz`:
 ```bash
 urdf-viz hand2/body/urdf/right.urdf
 ```
+
+#### STEP Files
+
+`hand2/body/step/` ships STEP source files for mechanical integration: structural assemblies of the left and right hands (`Wuji-Hand2-Beta1-{left,right}.step`, Beta1 revision) and the adapter mount for connecting the Wuji Hand 2 to a robotic arm flange (`Wuji-Hand2-Adapter-Mount-Beta1.step`, Beta1 revision).
 
 ### Hand Attachments
 

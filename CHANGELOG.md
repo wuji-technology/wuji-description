@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2026.6.12]
+
+### Added
+
+- Added structural STEP assemblies of the left and right Wuji Hand 2 at `hand2/body/step/Wuji-Hand2-Beta1-{left,right}.step` (Beta1 revision).
+- Added the Wuji Hand 2 adapter mount at `hand2/body/step/Wuji-Hand2-Adapter-Mount-Beta1.step`, a Beta1 STEP source file for mounting the Wuji Hand 2 on a robotic arm flange.
+
 ## [2026.6.11]
 
 ### Added
@@ -18,9 +25,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Added the Wuji Hand soft-pad variant at `hand/body-with-soft/`, a hand body model with a soft pad fixed to the thumb (`finger1_link2_softbody`). Ships URDF (`urdf/{left,right}.urdf` relative + `{left,right}-ros.urdf` `package://`), MuJoCo MJCF (`mjcf/{left,right}.xml`), Isaac Sim USD (`usd/{left,right}/`), STL meshes (`meshes/{left,right}/`), and actuator parameters (`params.csv`).
-- Added simplified-collision variants of the soft-pad hand at `hand/body-with-soft/`: `urdf/{left,right}_simplified.urdf`, `mjcf/{left,right}_simplified.xml`, and `usd/{left,right}_simplified/`. They replace the collision geometry of each finger's `link4` and the thumb soft pad with decimated meshes for faster contact simulation. Visual geometry is unchanged.
-- Added the Wuji Hand 2 model under `hand2/body/`: left/right URDF at `urdf/{left,right}.urdf` (relative) and `{left,right}-ros.urdf` (`package://`), plus STL meshes at `meshes/{left,right}/`. Each hand has 20 revolute joints using anatomical naming: `thumb`, `index_finger`, `middle_finger`, `ring_finger`, `pinky` (with `cmc`/`mcp` flexion and abduction plus `pip`/`dip` or `mcp`/`ip` joints).
+- Added the Wuji Hand soft-pad variant at `hand/body-with-soft/`, a hand body model with a soft pad fixed to the thumb (`finger1_link2_softbody`). Ships URDF models at `hand/body-with-soft/urdf/{left,right}.urdf` (relative mesh paths) and `{left,right}-ros.urdf` (`package://` paths), MuJoCo MJCF models at `hand/body-with-soft/mjcf/{left,right}.xml`, Isaac Sim USD assets at `hand/body-with-soft/usd/{left,right}/`, STL meshes at `hand/body-with-soft/meshes/{left,right}/`, and actuator parameters at `hand/body-with-soft/params.csv`.
+- Added simplified-collision variants of the soft-pad hand at `hand/body-with-soft/urdf/{left,right}_simplified.urdf`, `hand/body-with-soft/mjcf/{left,right}_simplified.xml`, and `hand/body-with-soft/usd/{left,right}_simplified/`. They replace the collision geometry of each finger's `link4` and the thumb soft pad with decimated meshes for faster contact simulation; visual geometry is unchanged.
+- Added the Wuji Hand 2 model under `hand2/body/`: left and right URDF models at `hand2/body/urdf/{left,right}.urdf` (relative mesh paths) and `{left,right}-ros.urdf` (`package://` paths), each with 20 revolute joints using anatomical naming (`thumb`, `index_finger`, `middle_finger`, `ring_finger`, `pinky` with `cmc`/`mcp` flexion and abduction plus `pip`/`dip` or `mcp`/`ip` joints), and STL meshes at `hand2/body/meshes/{left,right}/`.
 
 ## [2026.6.8]
 
@@ -56,7 +63,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added the Glove mounting interface STEP asset at `glove/attachment/glove-attachment.step`.
 - Added the top-level `README.md`, `LICENSE` (MIT), and this `CHANGELOG.md`.
 
-[Unreleased]: https://github.com/wuji-technology/wuji-description/compare/v2026.6.11...HEAD
+[Unreleased]: https://github.com/wuji-technology/wuji-description/compare/v2026.6.12...HEAD
+[2026.6.12]: https://github.com/wuji-technology/wuji-description/compare/v2026.6.11...v2026.6.12
 [2026.6.11]: https://github.com/wuji-technology/wuji-description/compare/v2026.6.10...v2026.6.11
 [2026.6.10]: https://github.com/wuji-technology/wuji-description/compare/v2026.6.8...v2026.6.10
 [2026.6.8]: https://github.com/wuji-technology/wuji-description/compare/v2026.05.19...v2026.6.8
