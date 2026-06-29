@@ -33,9 +33,9 @@ Robot model description package for the Wuji Hand and related accessories. Provi
 │       ├── step/                            // Adapter STEP files, assembled PDFs, and installation notes
 │       ├── unitree-g1-attachment/           // STL adapter for mounting on Unitree G1
 │       └── wuji-hand-rl-open-source-base/   // Open-source mounting base for RL setups (3MF, STEP, PDF, BOM)
-├── hand2/
-│   └── body/                                // Wuji Hand 2 model
-│       ├── meshes/{left,right}/             // STL meshes with anatomical names (thumb, index_finger, ...)
+├── hand2_beta/
+│   └── body/                                // Wuji Hand 2 (Beta) model
+│       ├── meshes/{left,right}/             // STL meshes with anatomical names (base_link, thumb, index_finger, ...)
 │       ├── mjcf/{left,right}.xml            // MuJoCo XML models
 │       ├── step/                            // Structural STEP assemblies (Beta1) and adapter-mount STEP (Beta1)
 │       ├── urdf/{left,right}.urdf           // URDF models (plus {left,right}-ros.urdf with package:// paths)
@@ -113,27 +113,27 @@ python -m mujoco.viewer --mjcf=hand/body-with-soft/mjcf/right_simplified.xml
 
 For Isaac Sim, load `hand/body-with-soft/usd/{left,right}/wujihand.usd` or the `{left,right}_simplified` counterparts.
 
-### Wuji Hand 2
+### Wuji Hand 2 (Beta)
 
-`hand2/body/` provides the Wuji Hand 2 model. Each hand has 20 revolute joints named after hand anatomy (for example `r_thumb_cmc_flex`, `r_index_finger_mcp_abd`, `r_middle_finger_pip`), with URDF models in relative-path (`hand2/body/urdf/{left,right}.urdf`) and `package://` (`{left,right}-ros.urdf`) variants, MuJoCo XML models at `hand2/body/mjcf/{left,right}.xml`, Isaac Sim USD assets at `hand2/body/usd/{left,right}/`, and STL meshes at `hand2/body/meshes/{left,right}/`.
+`hand2_beta/body/` provides the Wuji Hand 2 (Beta) model. Each hand has 20 revolute joints named after hand anatomy (for example `r_thumb_cmc_flex`, `r_index_finger_mcp_abd`, `r_middle_finger_pip`) and is rooted at a dedicated base link (`{l,r}_base_link`), with URDF models in relative-path (`hand2_beta/body/urdf/{left,right}.urdf`) and `package://` (`{left,right}-ros.urdf`) variants, MuJoCo XML models at `hand2_beta/body/mjcf/{left,right}.xml`, Isaac Sim USD assets at `hand2_beta/body/usd/{left,right}/`, and STL meshes at `hand2_beta/body/meshes/{left,right}/`.
 
 Preview in MuJoCo:
 
 ```bash
-python -m mujoco.viewer --mjcf=hand2/body/mjcf/right.xml
+python -m mujoco.viewer --mjcf=hand2_beta/body/mjcf/right.xml
 ```
 
-For Isaac Sim, load `hand2/body/usd/{left,right}/wujihand.usd` directly.
+For Isaac Sim, load `hand2_beta/body/usd/{left,right}/wujihand.usd` directly.
 
 URDF preview with a non-ROS viewer such as `urdf-viz`:
 
 ```bash
-urdf-viz hand2/body/urdf/right.urdf
+urdf-viz hand2_beta/body/urdf/right.urdf
 ```
 
 #### STEP Files
 
-`hand2/body/step/` ships STEP source files for mechanical integration: structural assemblies of the left and right hands (`Wuji-Hand2-Beta1-{left,right}.step`, Beta1 revision) and the adapter mount for connecting the Wuji Hand 2 to a robotic arm flange (`Wuji-Hand2-Adapter-Mount-Beta1.step`, Beta1 revision).
+`hand2_beta/body/step/` ships STEP source files for mechanical integration: structural assemblies of the left and right hands (`Wuji-Hand2-Beta1-{left,right}.step`, Beta1 revision) and the adapter mount for connecting the Wuji Hand 2 to a robotic arm flange (`Wuji-Hand2-Adapter-Mount-Beta1.step`, Beta1 revision).
 
 ### Hand Attachments
 

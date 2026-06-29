@@ -7,6 +7,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2026.6.27]
+
+### Added
+
+- Added the Wuji Hand 2 (Beta) model under `hand2_beta/body/`, replacing the previous `hand2/body/` directory. Each hand has 20 anatomically named revolute joints rooted at a dedicated base link, and ships in URDF, MuJoCo MJCF, Isaac Sim USD, STL, and STEP formats.
+
+### Changed
+
+- Normalized Isaac Sim USD config codenames for consistent naming.
+- Switched Wuji Hand 2 USD configurations to relative paths so they load on any machine.
+
+### Removed
+
+- Removed the previous `hand2/body/` Wuji Hand 2 directory. Its assets now live under `hand2_beta/body/`.
+
+### Fixed
+
+- Fixed self-collision in the hand USD models for Isaac Sim.
+
 ## [2026.6.12]
 
 ### Added
@@ -63,7 +82,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added the Glove mounting interface STEP asset at `glove/attachment/glove-attachment.step`.
 - Added the top-level `README.md`, `LICENSE` (MIT), and this `CHANGELOG.md`.
 
-[Unreleased]: https://github.com/wuji-technology/wuji-description/compare/v2026.6.12...HEAD
+[Unreleased]: https://github.com/wuji-technology/wuji-description/compare/v2026.6.27...HEAD
+[2026.6.27]: https://github.com/wuji-technology/wuji-description/compare/v2026.6.12...v2026.6.27
 [2026.6.12]: https://github.com/wuji-technology/wuji-description/compare/v2026.6.11...v2026.6.12
 [2026.6.11]: https://github.com/wuji-technology/wuji-description/compare/v2026.6.10...v2026.6.11
 [2026.6.10]: https://github.com/wuji-technology/wuji-description/compare/v2026.6.8...v2026.6.10
