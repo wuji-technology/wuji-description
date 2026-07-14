@@ -41,10 +41,13 @@ Robot model description package for the Wuji Hand and related accessories. Provi
 │       ├── urdf/{left,right}.urdf           // URDF models (plus {left,right}-ros.urdf with package:// paths)
 │       └── usd/{left,right}/                // Isaac Sim USD assets
 ├── glove/
-│   └── body/                                // Wuji Glove model (hand motion tracking)
-│       ├── urdf/{left,right}.urdf           // URDF skeletons (21 revolute DOF per hand)
-│       ├── mesh/base_link_{TX,RX}.STL       // Transmitter base and fingertip receiver coil
-│       └── step/EMFTXC_topcover.{step,pdf}  // Transmitter top-cover STEP and assembled drawing
+│   ├── body/                                // Wuji Glove model (hand motion tracking)
+│   │   ├── urdf/{left,right}.urdf           // URDF skeletons (21 revolute DOF per hand)
+│   │   ├── mesh/base_link_{TX,RX}.STL       // Transmitter base and fingertip receiver coil
+│   │   └── step/EMFTXC_topcover.{step,pdf}  // Transmitter top-cover STEP and assembled drawing
+│   └── attachment/                          // Glove mounting attachments (STEP CAD assemblies)
+│       ├── Wuji-glove-attachment.STEP       // Wuji Glove mounting interface
+│       └── Pico-tracker-attachment.STEP     // Adapter for mounting a Pico tracker
 ├── CHANGELOG.md
 ├── LICENSE
 └── README.md
@@ -161,7 +164,7 @@ urdf-viz hand/attachment/impact-resistant-attachment/urdf/docking.urdf
 
 ### Glove
 
-`glove/body/` provides the Wuji Glove model used for hand motion tracking. Each hand is described by a URDF skeleton (`glove/body/urdf/{left,right}.urdf`) with 21 revolute joints across the five fingers, an electromagnetic transmitter base on the wrist (`base_link_TX.STL`), and a receiver coil on every fingertip (`base_link_RX.STL`). The transmitter top-cover STEP file and assembled drawing are under `glove/body/step/`.
+`glove/body/` provides the Wuji Glove model used for hand motion tracking. Each hand is described by a URDF skeleton (`glove/body/urdf/{left,right}.urdf`) with 21 revolute joints across the five fingers, an electromagnetic transmitter base on the wrist (`base_link_TX.STL`), and a receiver coil on every fingertip (`base_link_RX.STL`). The transmitter top-cover STEP file and assembled drawing are under `glove/body/step/`. Mounting attachments are provided as STEP CAD assemblies under `glove/attachment/`: `Wuji-glove-attachment.STEP` (the Wuji Glove mounting interface) and `Pico-tracker-attachment.STEP` (an adapter for mounting a Pico tracker).
 
 Preview a glove model with a non-ROS URDF viewer such as `urdf-viz`:
 
