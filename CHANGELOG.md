@@ -3,9 +3,19 @@
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+and this project uses calendar versioning (YYYY.M.D).
 
 ## [Unreleased]
+
+## [2026.7.14]
+
+### Added
+
+- Added glove mounting attachments under `glove/attachment/`: `Wuji-glove-attachment.STEP` (Wuji Glove mounting interface) and `Pico-tracker-attachment.STEP` (adapter for mounting a Pico tracker), both STEP AP214 CAD assemblies for mechanical integration.
+
+### Fixed
+
+- Fixed the ROS `package://` mesh paths in the Wuji Hand 2 (Beta) (`hand2_beta/body/urdf/{left,right}-ros.urdf`) and soft-pad hand (`hand/body-with-soft/urdf/{left,right}-ros.urdf`) URDFs, which previously resolved into the standalone hand's mesh directory and failed to load. The `wuji_description` package now installs both models into its share directory, and each URDF points at its own mesh path — `package://wuji_description/hand2_beta/body/meshes/` for the Wuji Hand 2 (Beta) and `package://wuji_description/body-with-soft/meshes/` for the soft-pad hand.
 
 ## [2026.6.27]
 
@@ -82,7 +92,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added the Glove mounting interface STEP asset at `glove/attachment/glove-attachment.step`.
 - Added the top-level `README.md`, `LICENSE` (MIT), and this `CHANGELOG.md`.
 
-[Unreleased]: https://github.com/wuji-technology/wuji-description/compare/v2026.6.27...HEAD
+[Unreleased]: https://github.com/wuji-technology/wuji-description/compare/v2026.7.14...HEAD
+[2026.7.14]: https://github.com/wuji-technology/wuji-description/compare/v2026.6.27...v2026.7.14
 [2026.6.27]: https://github.com/wuji-technology/wuji-description/compare/v2026.6.12...v2026.6.27
 [2026.6.12]: https://github.com/wuji-technology/wuji-description/compare/v2026.6.11...v2026.6.12
 [2026.6.11]: https://github.com/wuji-technology/wuji-description/compare/v2026.6.10...v2026.6.11
