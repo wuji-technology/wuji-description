@@ -7,11 +7,29 @@ and this project uses calendar versioning (YYYY.M.D).
 
 ## [Unreleased]
 
+## [2026.7.23]
+
+### Added
+
+- Added the Wuji Hand 2 (Beta 1) delivery under `hand2/hand2_beta1/body/` — the first revision recalibrated under the new coordinate-system rules. The following coordinate conventions — integer unit joint axes, anatomical link/joint naming (for example `r_thumb_cmc_flex`), the `{l,r}_wrist` root link, and the actuator naming scheme (`{l,r}_{THJ|FFJ|MFJ|RFJ|LFJ}{0-3}`, J0 = flexion … J3 = DIP) — follow this recalibration and are fixed from this revision on. Later revisions stay compatible and only update physical parameters and geometry details. Each hand has 20 actuated revolute joints (5 fingers × 4 joints).
+- Added URDF models at `hand2/hand2_beta1/body/urdf/{left,right}.urdf` (relative mesh paths) and `{left,right}-ros.urdf` (`package://wuji_hand2_description` paths), MuJoCo MJCF models at `hand2/hand2_beta1/body/mjcf/{left,right}.xml` whose collision geometry is the convex hull of each link mesh, layered Isaac Sim USD assets at `hand2/hand2_beta1/body/usd/{left,right}/` (base/physics/robot/sensor sublayers plus the logo texture, with drive gains that hold the pose on bare Play), and anatomically named STL meshes at `hand2/hand2_beta1/body/meshes/{left,right}/`. The kp/kv drive gains are carried over from the Wuji Hand platform calibration and will be updated once system identification on the Wuji Hand 2 hardware is complete.
+- Added five fingertip query sites per hand (`{l,r}_{finger}_tip`, display group 3) for grasp-point queries and fingertip trajectory evaluation.
+- Added full-hand STEP CAD assemblies at `hand2/hand2_beta1/body/step/WUJI-hand2_beta1_{left,right}_STEP.STEP` for mechanical integration and fixture design.
+- Added the standalone ROS2 package `wuji_hand2_description` rooted at `hand2/hand2_beta1/body/` (`CMakeLists.txt` + `package.xml`), so the Wuji Hand 2 (Beta 1) ROS URDFs resolve their meshes independently of the Wuji Hand `wuji_description` package.
+
+### Changed
+
+- Changed the collision policy of the Wuji Hand 2 (Beta 1): every link participates in collision (uniform contype/conaffinity 1/1) with only 10 assembly-overlap pairs excluded (each finger's proximal / proximal_abd against the wrist). Inter-finger and fingertip–palm contacts stay live. Display layers are group 1 visual (silver), group 2 collision (translucent light purple), and group 3 fingertip sites. The fingertip soft-pad meshes (`*_tip.STL`) ship with the package but are not attached as collision geometry yet — fingertip contact is carried by the distal-segment geometry, so the contact point sits slightly off the real finger pad.
+
+### Removed
+
+- Removed the previous Wuji Hand 2 (Beta) revision `hand2_beta/body/` (rooted at `{l,r}_base_link`). It is superseded by the recalibrated `hand2/hand2_beta1/body/` revision. This also retires the earlier structural STEP assemblies (`Wuji-Hand2-Beta1-{left,right}.step`) and the arm-flange adapter mount (`Wuji-Hand2-Adapter-Mount-Beta1.step`) that shipped under `hand2_beta/body/step/`.
+
 ## [2026.7.14]
 
 ### Added
 
-- Added glove mounting attachments under `glove/attachment/`: `Wuji-glove-attachment.STEP` (Wuji Glove mounting interface) and `Pico-tracker-attachment.STEP` (adapter for mounting a Pico tracker), both STEP AP214 CAD assemblies for mechanical integration.
+- Added glove mounting attachments under `glove/attachment/`: `Wuji-glove-attachment.STEP` (Wuji Glove mounting interface) and `Pico-tracker-attachment.STEP` (adapter for mounting a PICO tracker), both STEP AP214 CAD assemblies for mechanical integration.
 
 ### Fixed
 
@@ -55,7 +73,7 @@ and this project uses calendar versioning (YYYY.M.D).
 ### Added
 
 - Added the Wuji Hand soft-pad variant at `hand/body-with-soft/`, a hand body model with a soft pad fixed to the thumb (`finger1_link2_softbody`). Ships URDF models at `hand/body-with-soft/urdf/{left,right}.urdf` (relative mesh paths) and `{left,right}-ros.urdf` (`package://` paths), MuJoCo MJCF models at `hand/body-with-soft/mjcf/{left,right}.xml`, Isaac Sim USD assets at `hand/body-with-soft/usd/{left,right}/`, STL meshes at `hand/body-with-soft/meshes/{left,right}/`, and actuator parameters at `hand/body-with-soft/params.csv`.
-- Added simplified-collision variants of the soft-pad hand at `hand/body-with-soft/urdf/{left,right}_simplified.urdf`, `hand/body-with-soft/mjcf/{left,right}_simplified.xml`, and `hand/body-with-soft/usd/{left,right}_simplified/`. They replace the collision geometry of each finger's `link4` and the thumb soft pad with decimated meshes for faster contact simulation; visual geometry is unchanged.
+- Added simplified-collision variants of the soft-pad hand at `hand/body-with-soft/urdf/{left,right}_simplified.urdf`, `hand/body-with-soft/mjcf/{left,right}_simplified.xml`, and `hand/body-with-soft/usd/{left,right}_simplified/`. They replace the collision geometry of each finger's `link4` and the thumb soft pad with decimated meshes for faster contact simulation. Visual geometry is unchanged.
 - Added the Wuji Hand 2 model under `hand2/body/`: left and right URDF models at `hand2/body/urdf/{left,right}.urdf` (relative mesh paths) and `{left,right}-ros.urdf` (`package://` paths), each with 20 revolute joints using anatomical naming (`thumb`, `index_finger`, `middle_finger`, `ring_finger`, `pinky` with `cmc`/`mcp` flexion and abduction plus `pip`/`dip` or `mcp`/`ip` joints), and STL meshes at `hand2/body/meshes/{left,right}/`.
 
 ## [2026.6.8]
@@ -92,7 +110,8 @@ and this project uses calendar versioning (YYYY.M.D).
 - Added the Glove mounting interface STEP asset at `glove/attachment/glove-attachment.step`.
 - Added the top-level `README.md`, `LICENSE` (MIT), and this `CHANGELOG.md`.
 
-[Unreleased]: https://github.com/wuji-technology/wuji-description/compare/v2026.7.14...HEAD
+[Unreleased]: https://github.com/wuji-technology/wuji-description/compare/v2026.7.23...HEAD
+[2026.7.23]: https://github.com/wuji-technology/wuji-description/compare/v2026.7.14...v2026.7.23
 [2026.7.14]: https://github.com/wuji-technology/wuji-description/compare/v2026.6.27...v2026.7.14
 [2026.6.27]: https://github.com/wuji-technology/wuji-description/compare/v2026.6.12...v2026.6.27
 [2026.6.12]: https://github.com/wuji-technology/wuji-description/compare/v2026.6.11...v2026.6.12

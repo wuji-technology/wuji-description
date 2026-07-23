@@ -4,7 +4,7 @@
 
 Robot model description package for the Wuji Hand and related accessories. Provides URDF, MuJoCo (MJCF), and USD assets for simulation and visualization, plus STEP/CAD files for mechanical integration. Includes a ROS2 launch and RViz configuration for quick inspection of left and right hand models.
 
-**Get started with [Quick Start](#quick-start). For detailed documentation, refer to [Wuji Description Guide](https://docs.wuji.tech/docs/en/wuji-hand/latest/wuji-description-guide/) on Wuji Docs Center.**
+**Get started with [Quick Start](#quick-start). For detailed documentation, please refer to [Wuji Description](https://docs.wuji.tech/docs/en/wuji-description/latest/) on Wuji Docs Center.**
 
 ## Repository Structure
 
@@ -23,7 +23,7 @@ Robot model description package for the Wuji Hand and related accessories. Provi
 │   │   ├── CMakeLists.txt                   // ROS2 package install rules
 │   │   └── package.xml                      // ROS2 package manifest
 │   ├── body-with-soft/                      // Hand variant with a soft pad on the thumb
-│   │   ├── meshes/{left,right}/             // STL meshes, incl. soft-pad and simplified collision meshes
+│   │   ├── meshes/{left,right}/             // STL meshes, including soft-pad and simplified collision meshes
 │   │   ├── mjcf/{left,right}.xml            // MuJoCo XML models (plus {left,right}_simplified.xml)
 │   │   ├── urdf/{left,right}.urdf           // URDF models (plus -ros and _simplified variants)
 │   │   ├── usd/{left,right}/                // Isaac Sim USD assets (plus {left,right}_simplified/)
@@ -33,13 +33,16 @@ Robot model description package for the Wuji Hand and related accessories. Provi
 │       ├── step/                            // Adapter STEP files, assembled PDFs, and installation notes
 │       ├── unitree-g1-attachment/           // STL adapter for mounting on Unitree G1
 │       └── wuji-hand-rl-open-source-base/   // Open-source mounting base for RL setups (3MF, STEP, PDF, BOM)
-├── hand2_beta/
-│   └── body/                                // Wuji Hand 2 (Beta) model
-│       ├── meshes/{left,right}/             // STL meshes with anatomical names (base_link, thumb, index_finger, ...)
-│       ├── mjcf/{left,right}.xml            // MuJoCo XML models
-│       ├── step/                            // Structural STEP assemblies (Beta1) and adapter-mount STEP (Beta1)
-│       ├── urdf/{left,right}.urdf           // URDF models (plus {left,right}-ros.urdf with package:// paths)
-│       └── usd/{left,right}/                // Isaac Sim USD assets
+├── hand2/
+│   └── hand2_beta1/
+│       └── body/                            // ROS2 package wuji_hand2_description: Wuji Hand 2 (Beta 1), coordinate conventions frozen
+│           ├── meshes/{left,right}/         // STL meshes with anatomical names (rooted at {l,r}_wrist)
+│           ├── mjcf/{left,right}.xml        // MuJoCo XML models (convex-hull collision geometry)
+│           ├── step/                        // Full-hand STEP CAD assemblies
+│           ├── urdf/{left,right}.urdf       // URDF models (plus {left,right}-ros.urdf with package:// paths)
+│           ├── usd/{left,right}/            // Isaac Sim USD assets (layered wujihand2.usd)
+│           ├── CMakeLists.txt               // ROS2 package install rules
+│           └── package.xml                  // ROS2 package manifest
 ├── glove/
 │   ├── body/                                // Wuji Glove model (hand motion tracking)
 │   │   ├── urdf/{left,right}.urdf           // URDF skeletons (21 revolute DOF per hand)
@@ -47,7 +50,7 @@ Robot model description package for the Wuji Hand and related accessories. Provi
 │   │   └── step/EMFTXC_topcover.{step,pdf}  // Transmitter top-cover STEP and assembled drawing
 │   └── attachment/                          // Glove mounting attachments (STEP CAD assemblies)
 │       ├── Wuji-glove-attachment.STEP       // Wuji Glove mounting interface
-│       └── Pico-tracker-attachment.STEP     // Adapter for mounting a Pico tracker
+│       └── Pico-tracker-attachment.STEP     // Adapter for mounting a PICO tracker
 ├── CHANGELOG.md
 ├── LICENSE
 └── README.md
@@ -104,7 +107,7 @@ For a complete simulation example, see [isaaclab-sim](https://github.com/wuji-te
 
 ### Hand Body with Soft Pad
 
-`hand/body-with-soft/` is a variant of the hand body with a soft pad fixed to the thumb (`finger1_link2_softbody`). Every format also ships a `_simplified` variant that replaces the collision geometry of each finger's `link4` and the thumb soft pad with decimated meshes for faster contact simulation; visual geometry is identical.
+`hand/body-with-soft/` is a variant of the hand body with a soft pad fixed to the thumb (`finger1_link2_softbody`). Every format also ships a `_simplified` variant that replaces the collision geometry of each finger's `link4` and the thumb soft pad with decimated meshes for faster contact simulation. Visual geometry is identical.
 
 ```bash
 # Full collision meshes
@@ -116,31 +119,55 @@ python -m mujoco.viewer --mjcf=hand/body-with-soft/mjcf/right_simplified.xml
 
 For Isaac Sim, load `hand/body-with-soft/usd/{left,right}/wujihand.usd` or the `{left,right}_simplified` counterparts.
 
-### Wuji Hand 2 (Beta)
+### Wuji Hand 2 (Beta 1)
 
-`hand2_beta/body/` provides the Wuji Hand 2 (Beta) model. Each hand has 20 revolute joints named after hand anatomy (for example `r_thumb_cmc_flex`, `r_index_finger_mcp_abd`, `r_middle_finger_pip`) and is rooted at a dedicated base link (`{l,r}_base_link`), with URDF models in relative-path (`hand2_beta/body/urdf/{left,right}.urdf`) and `package://` (`{left,right}-ros.urdf`) variants, MuJoCo XML models at `hand2_beta/body/mjcf/{left,right}.xml`, Isaac Sim USD assets at `hand2_beta/body/usd/{left,right}/`, and STL meshes at `hand2_beta/body/meshes/{left,right}/`.
+`hand2/hand2_beta1/body/` provides the Wuji Hand 2 (Beta 1) model — the first revision with the coordinate conventions frozen: anatomical link/joint naming (for example `r_thumb_cmc_flex`, `r_index_finger_mcp_abd`, `r_middle_finger_pip`), integer unit joint axes, and the `{l,r}_wrist` root link are fixed from this revision on. Later revisions stay compatible and only update physical parameters and geometry details. Each hand has 20 actuated revolute joints (5 fingers × 4 joints) and five fingertip query sites (`{l,r}_{finger}_tip`).
 
-Preview in MuJoCo:
+Shipped formats:
+
+- URDF models in relative-path (`hand2/hand2_beta1/body/urdf/{left,right}.urdf`) and `package://` (`{left,right}-ros.urdf`) variants
+- MuJoCo XML models at `hand2/hand2_beta1/body/mjcf/{left,right}.xml` — convex-hull collision geometry, every link collides, with 10 assembly-overlap pairs excluded
+- Layered Isaac Sim USD assets at `hand2/hand2_beta1/body/usd/{left,right}/`
+- Anatomically named STL meshes at `hand2/hand2_beta1/body/meshes/{left,right}/`
+
+Known Beta limitations: the fingertip soft-pad meshes (`*_tip.STL`) ship with the package but are not attached as collision geometry yet, and the kp/kv drive gains are carried over from the Wuji Hand platform calibration pending Wuji Hand 2 system identification.
+
+Preview in MuJoCo (press 1/2 to toggle the visual/collision display groups):
 
 ```bash
-python -m mujoco.viewer --mjcf=hand2_beta/body/mjcf/right.xml
+python -m mujoco.viewer --mjcf=hand2/hand2_beta1/body/mjcf/right.xml
 ```
 
-For Isaac Sim, load `hand2_beta/body/usd/{left,right}/wujihand.usd` directly.
+For Isaac Sim, load `hand2/hand2_beta1/body/usd/{left,right}/wujihand2.usd` directly. Each `usd/{side}/` folder is one self-contained unit — don't split it. Drive gains are configured so the hand holds its pose on bare Play. At runtime they are overridden by your ArticulationCfg.
 
 URDF preview with a non-ROS viewer such as `urdf-viz`:
 
 ```bash
-urdf-viz hand2_beta/body/urdf/right.urdf
+urdf-viz hand2/hand2_beta1/body/urdf/right.urdf
+```
+
+#### ROS2
+
+`hand2/hand2_beta1/body/` is a standalone ROS2 package (`wuji_hand2_description`). Its `{left,right}-ros.urdf` reference meshes via `package://wuji_hand2_description/meshes/...`, independent of the Wuji Hand `wuji_description` package:
+
+```bash
+cd ~/ros2_ws/src
+git clone https://github.com/wuji-technology/wuji-description.git
+cd ..
+colcon build --packages-select wuji_hand2_description
+source install/setup.bash
+
+# Verify resolution, then load from your own launch file / robot_state_publisher
+check_urdf $(ros2 pkg prefix wuji_hand2_description)/share/wuji_hand2_description/urdf/right-ros.urdf
 ```
 
 #### STEP Files
 
-`hand2_beta/body/step/` ships STEP source files for mechanical integration: structural assemblies of the left and right hands (`Wuji-Hand2-Beta1-{left,right}.step`, Beta1 revision) and the adapter mount for connecting the Wuji Hand 2 to a robotic arm flange (`Wuji-Hand2-Adapter-Mount-Beta1.step`, Beta1 revision).
+`hand2/hand2_beta1/body/step/` ships full-hand CAD assemblies of the Beta 1 revision (`WUJI-hand2_beta1_{left,right}_STEP.STEP`) for mechanical integration and fixture design (not required for simulation).
 
 ### Hand Attachments
 
-`hand/attachment/` ships optional components for the Wuji Hand. They are not loaded by the default display launch file; attach them via a fixed joint when composing a full robot description.
+`hand/attachment/` ships optional components for the Wuji Hand. They are not loaded by the default display launch file. Attach them via a fixed joint when composing a full robot description.
 
 - **`impact-resistant-attachment/`** — a docking link designed to absorb impacts before they reach the hand. Includes STL mesh, URDF (relative and `package://` variants), MJCF, and USD for full simulation integration.
 - **`step/`** — STEP source files for two adapters that connect the hand to a robotic arm flange:
@@ -164,7 +191,7 @@ urdf-viz hand/attachment/impact-resistant-attachment/urdf/docking.urdf
 
 ### Glove
 
-`glove/body/` provides the Wuji Glove model used for hand motion tracking. Each hand is described by a URDF skeleton (`glove/body/urdf/{left,right}.urdf`) with 21 revolute joints across the five fingers, an electromagnetic transmitter base on the wrist (`base_link_TX.STL`), and a receiver coil on every fingertip (`base_link_RX.STL`). The transmitter top-cover STEP file and assembled drawing are under `glove/body/step/`. Mounting attachments are provided as STEP CAD assemblies under `glove/attachment/`: `Wuji-glove-attachment.STEP` (the Wuji Glove mounting interface) and `Pico-tracker-attachment.STEP` (an adapter for mounting a Pico tracker).
+`glove/body/` provides the Wuji Glove model used for hand motion tracking. Each hand is described by a URDF skeleton (`glove/body/urdf/{left,right}.urdf`) with 21 revolute joints across the five fingers, an electromagnetic transmitter base on the wrist (`base_link_TX.STL`), and a receiver coil on every fingertip (`base_link_RX.STL`). The transmitter top-cover STEP file and assembled drawing are under `glove/body/step/`. Mounting attachments are provided as STEP CAD assemblies under `glove/attachment/`: `Wuji-glove-attachment.STEP` (the Wuji Glove mounting interface) and `Pico-tracker-attachment.STEP` (an adapter for mounting a PICO tracker).
 
 Preview a glove model with a non-ROS URDF viewer such as `urdf-viz`:
 
