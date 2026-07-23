@@ -23,11 +23,4 @@ install(
     DESTINATION share/${PROJECT_NAME}/body-with-soft
 )
 
-# Install hand2_beta/ so that package:// URLs in its {left,right}-ros.urdf
-# resolve (e.g. package://wuji_description/hand2_beta/body/meshes/...).
-install(
-    DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/../../hand2_beta/
-    DESTINATION share/${PROJECT_NAME}/hand2_beta
-)
-
 ament_package()
