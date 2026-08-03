@@ -7,6 +7,12 @@ and this project uses calendar versioning (YYYY.M.D).
 
 ## [Unreleased]
 
+## [2026.8.3]
+
+### Added
+
+- Added `glove/attachment/Pico-controller-attachment.STEP`, a STEP AP214 CAD assembly for mounting a PICO 4 Ultra controller on the Wuji Glove. It joins the existing Wuji Glove mounting interface and PICO tracker adapter in the same directory.
+
 ## [2026.7.23]
 
 ### Added
@@ -14,7 +20,7 @@ and this project uses calendar versioning (YYYY.M.D).
 - Added the Wuji Hand 2 (Beta 1) delivery under `hand2/hand2_beta1/body/` — the first revision recalibrated under the new coordinate-system rules. The following coordinate conventions — integer unit joint axes, anatomical link/joint naming (for example `r_thumb_cmc_flex`), the `{l,r}_wrist` root link, and the actuator naming scheme (`{l,r}_{THJ|FFJ|MFJ|RFJ|LFJ}{0-3}`, J0 = flexion … J3 = DIP) — follow this recalibration and are fixed from this revision on. Later revisions stay compatible and only update physical parameters and geometry details. Each hand has 20 actuated revolute joints (5 fingers × 4 joints).
 - Added URDF models at `hand2/hand2_beta1/body/urdf/{left,right}.urdf` (relative mesh paths) and `{left,right}-ros.urdf` (`package://wuji_hand2_description` paths), MuJoCo MJCF models at `hand2/hand2_beta1/body/mjcf/{left,right}.xml` whose collision geometry is the convex hull of each link mesh, layered Isaac Sim USD assets at `hand2/hand2_beta1/body/usd/{left,right}/` (base/physics/robot/sensor sublayers plus the logo texture, with drive gains that hold the pose on bare Play), and anatomically named STL meshes at `hand2/hand2_beta1/body/meshes/{left,right}/`. The kp/kv drive gains are carried over from the Wuji Hand platform calibration and will be updated once system identification on the Wuji Hand 2 hardware is complete.
 - Added five fingertip query sites per hand (`{l,r}_{finger}_tip`, display group 3) for grasp-point queries and fingertip trajectory evaluation.
-- Added full-hand STEP CAD assemblies at `hand2/hand2_beta1/body/step/WUJI-hand2_beta1_{left,right}_STEP.STEP` for mechanical integration and fixture design.
+- Added full-hand STEP CAD assemblies at `hand2/hand2_beta1/body/step/wuji-hand2-description-{left,right}_beta1_with_mount_step.STEP` for mechanical integration and fixture design.
 - Added the standalone ROS2 package `wuji_hand2_description` rooted at `hand2/hand2_beta1/body/` (`CMakeLists.txt` + `package.xml`), so the Wuji Hand 2 (Beta 1) ROS URDFs resolve their meshes independently of the Wuji Hand `wuji_description` package.
 
 ### Changed
@@ -110,7 +116,8 @@ and this project uses calendar versioning (YYYY.M.D).
 - Added the Glove mounting interface STEP asset at `glove/attachment/glove-attachment.step`.
 - Added the top-level `README.md`, `LICENSE` (MIT), and this `CHANGELOG.md`.
 
-[Unreleased]: https://github.com/wuji-technology/wuji-description/compare/v2026.7.23...HEAD
+[Unreleased]: https://github.com/wuji-technology/wuji-description/compare/v2026.8.3...HEAD
+[2026.8.3]: https://github.com/wuji-technology/wuji-description/compare/v2026.7.23...v2026.8.3
 [2026.7.23]: https://github.com/wuji-technology/wuji-description/compare/v2026.7.14...v2026.7.23
 [2026.7.14]: https://github.com/wuji-technology/wuji-description/compare/v2026.6.27...v2026.7.14
 [2026.6.27]: https://github.com/wuji-technology/wuji-description/compare/v2026.6.12...v2026.6.27
