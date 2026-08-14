@@ -34,15 +34,26 @@ Robot model description package for the Wuji Hand and related accessories. Provi
 │       ├── unitree-g1-attachment/           // STL adapter for mounting on Unitree G1
 │       └── wuji-hand-rl-open-source-base/   // Open-source mounting base for RL setups (3MF, STEP, PDF, BOM)
 ├── hand2/
-│   └── hand2_beta1/
-│       └── body/                            // ROS2 package wuji_hand2_description: Wuji Hand 2 (Beta 1), coordinate conventions frozen
-│           ├── meshes/{left,right}/         // STL meshes with anatomical names (rooted at {l,r}_wrist)
-│           ├── mjcf/{left,right}.xml        // MuJoCo XML models (convex-hull collision geometry)
-│           ├── step/                        // Full-hand STEP CAD assemblies
-│           ├── urdf/{left,right}.urdf       // URDF models (plus {left,right}-ros.urdf with package:// paths)
-│           ├── usd/{left,right}/            // Isaac Sim USD assets (layered wujihand2.usd)
-│           ├── CMakeLists.txt               // ROS2 package install rules
-│           └── package.xml                  // ROS2 package manifest
+│   ├── hand2_beta1/
+│   │   ├── body/                            // ROS2 package wuji_hand2_description: Wuji Hand 2 (Beta 1), coordinate conventions frozen
+│   │   │   ├── meshes/{left,right}/         // STL meshes with anatomical names (+ {l,r}_mount.STL for the with-mount variant)
+│   │   │   ├── mjcf/{left,right}.xml        // MuJoCo XML models (plus {left,right}_with_mount.xml)
+│   │   │   ├── step/                        // Full-hand STEP CAD assemblies
+│   │   │   ├── urdf/{left,right}.urdf       // URDF models (plus -ros.urdf package:// and _with_mount variants)
+│   │   │   ├── usd/{left,right}/            // Isaac Sim USD assets (layered wujihand2.usd; plus {left,right}_with_mount/)
+│   │   │   ├── CMakeLists.txt               // ROS2 package install rules
+│   │   │   └── package.xml                  // ROS2 package manifest
+│   │   └── attachment/                      // Palm mounting-interface STEP + A3 dimensioned drawing, one pair per hand
+│   └── hand2_beta2/
+│       ├── body/                            // ROS2 package wuji_hand2_beta2_description: Wuji Hand 2 (Beta 2), Beta 1 + one tactile sensor pad per fingertip
+│       │   ├── meshes/{left,right}/         // STL meshes with anatomical names (+ tip sensor pads, + {l,r}_mount.STL)
+│       │   ├── mjcf/{left,right}.xml        // MuJoCo XML models (plus {left,right}_with_mount.xml)
+│       │   ├── step/                        // Full-hand with-mount STEP CAD assemblies
+│       │   ├── urdf/{left,right}.urdf       // URDF models (plus -ros.urdf package:// and _with_mount variants)
+│       │   ├── usd/{left,right}/            // Isaac Sim USD assets (layered wujihand2_beta2.usd; plus {left,right}_with_mount/)
+│       │   ├── CMakeLists.txt               // ROS2 package install rules
+│       │   └── package.xml                  // ROS2 package manifest
+│       └── attachment/                      // Palm mounting-interface STEP + A3 dimensioned drawing, one pair per hand
 ├── glove/
 │   ├── body/                                // Wuji Glove model (hand motion tracking)
 │   │   ├── urdf/{left,right}.urdf           // URDF skeletons (21 revolute DOF per hand)
@@ -130,6 +141,7 @@ Shipped formats:
 - MuJoCo XML models at `hand2/hand2_beta1/body/mjcf/{left,right}.xml` — convex-hull collision geometry, every link collides, with 10 assembly-overlap pairs excluded
 - Layered Isaac Sim USD assets at `hand2/hand2_beta1/body/usd/{left,right}/`
 - Anatomically named STL meshes at `hand2/hand2_beta1/body/meshes/{left,right}/`
+- A with-mount variant of every model format, for the hand already bolted to an arm (see below)
 
 Known Beta limitations: the fingertip soft-pad meshes (`*_tip.STL`) ship with the package but are not attached as collision geometry yet, and the kp/kv drive gains are carried over from the Wuji Hand platform calibration pending Wuji Hand 2 system identification.
 
@@ -139,13 +151,26 @@ Preview in MuJoCo (press 1/2 to toggle the visual/collision display groups):
 python -m mujoco.viewer --mjcf=hand2/hand2_beta1/body/mjcf/right.xml
 ```
 
-For Isaac Sim, load `hand2/hand2_beta1/body/usd/{left,right}/wujihand2.usd` directly. Each `usd/{side}/` folder is one self-contained unit — don't split it. Drive gains are configured so the hand holds its pose on bare Play. At runtime they are overridden by your ArticulationCfg.
+For Isaac Sim, load `hand2/hand2_beta1/body/usd/{left,right}/wujihand2.usd` directly (or `usd/{left,right}_with_mount/wujihand2.usd` for the with-mount variant). Each `usd/<variant>/` folder is one self-contained unit — don't split it. Drive gains are configured so the hand holds its pose on bare Play. At runtime they are overridden by your ArticulationCfg.
 
 URDF preview with a non-ROS viewer such as `urdf-viz`:
 
 ```bash
 urdf-viz hand2/hand2_beta1/body/urdf/right.urdf
 ```
+
+#### Assembly variants
+
+Each hand ships in two assembly variants, side by side in the same package directory and told apart by a `_with_mount` filename suffix:
+
+| | Root link | URDF | MuJoCo | Isaac Sim |
+|---|---|---|---|---|
+| No-mount | `{l,r}_wrist` | `urdf/{left,right}.urdf`, `{left,right}-ros.urdf` | `mjcf/{left,right}.xml` | `usd/{left,right}/` |
+| With-mount | `{l,r}_mount` | `urdf/{left,right}_with_mount.urdf`, `{left,right}_with_mount-ros.urdf` | `mjcf/{left,right}_with_mount.xml` | `usd/{left,right}_with_mount/` |
+
+The with-mount variant adds the arm-flange mount link (`{l,r}_mount`, 69 g) as the model root, with the wrist shell fixed-welded onto it via `{l,r}_wrist_fixed`. Use it to bolt the hand onto an arm, and the no-mount model when the wrist is the attachment point. Joint names, axes, limits and actuators are identical between the variants, and both `-ros.urdf` files resolve meshes through the same `package://wuji_hand2_description/meshes/...` prefix — so one installed package serves both, and either can be loaded at any time.
+
+The variants share all 26 hand meshes in `meshes/{left,right}/` byte for byte; the with-mount variant adds only `{l,r}_mount.STL`, bringing each directory to 27. The variants stay kinematically equivalent: with the fixed mount offset taken out, their fingertip poses agree to within 0.006 mm, so which variant you load does not change where the fingers go.
 
 #### ROS2
 
@@ -164,7 +189,69 @@ check_urdf $(ros2 pkg prefix wuji_hand2_description)/share/wuji_hand2_descriptio
 
 #### STEP Files
 
-`hand2/hand2_beta1/body/step/` ships full-hand CAD assemblies of the Beta 1 revision (`WUJI-hand2_beta1_{left,right}_STEP.STEP`) for mechanical integration and fixture design (not required for simulation).
+`hand2/hand2_beta1/body/step/` ships full-hand CAD assemblies of the Beta 1 revision (`wuji-hand2-description-{left,right}_beta1_with_mount_step.STEP`) for mechanical integration and fixture design (not required for simulation).
+
+### Wuji Hand 2 (Beta 2)
+
+`hand2/hand2_beta2/body/` provides the Wuji Hand 2 (Beta 2) model. It keeps the frozen Beta 1 coordinate contract unchanged — the same 20 actuated revolute joints (5 fingers × 4 joints), integer unit joint axes, anatomical link/joint naming, and `{l,r}_wrist` root link — and adds one tactile-sensor pad link per fingertip (`{l,r}_{finger}_tip_sensor_frame`, fixed-welded onto the distal segment, shown light blue against the silver body). The five fingertip query sites (`{l,r}_{finger}_tip`, MJCF `<site>` elements in display group 3) carry over from Beta 1 unchanged. The robot names are `wujihand2-beta2-{left,right}`.
+
+Shipped formats:
+
+- URDF models in relative-path (`hand2/hand2_beta2/body/urdf/{left,right}.urdf`) and `package://` (`{left,right}-ros.urdf`) variants
+- MuJoCo XML models at `hand2/hand2_beta2/body/mjcf/{left,right}.xml` — convex-hull collision geometry, every link collides, with 10 assembly-overlap pairs excluded
+- Layered Isaac Sim USD assets at `hand2/hand2_beta2/body/usd/{left,right}/` (entry point `wujihand2_beta2.usd`)
+- Anatomically named STL meshes at `hand2/hand2_beta2/body/meshes/{left,right}/`, including the fingertip sensor pads
+- A with-mount variant of every model format, for the hand already bolted to an arm (see below)
+- Full-hand with-mount STEP CAD assemblies at `hand2/hand2_beta2/body/step/`
+
+Preview in MuJoCo (press 1/2 to toggle the visual/collision display groups):
+
+```bash
+python -m mujoco.viewer --mjcf=hand2/hand2_beta2/body/mjcf/right.xml
+```
+
+For Isaac Sim, load `hand2/hand2_beta2/body/usd/{left,right}/wujihand2_beta2.usd` directly (or `usd/{left,right}_with_mount/wujihand2_beta2.usd` for the with-mount variant). Each `usd/<variant>/` folder is one self-contained unit — don't split it.
+
+URDF preview with a non-ROS viewer such as `urdf-viz`:
+
+```bash
+urdf-viz hand2/hand2_beta2/body/urdf/right.urdf
+```
+
+#### Assembly variants
+
+As with Beta 1, each hand ships in two assembly variants side by side in the same package directory, told apart by a `_with_mount` filename suffix:
+
+| | Root link | URDF | MuJoCo | Isaac Sim |
+|---|---|---|---|---|
+| No-mount | `{l,r}_wrist` | `urdf/{left,right}.urdf`, `{left,right}-ros.urdf` | `mjcf/{left,right}.xml` | `usd/{left,right}/` |
+| With-mount | `{l,r}_mount` | `urdf/{left,right}_with_mount.urdf`, `{left,right}_with_mount-ros.urdf` | `mjcf/{left,right}_with_mount.xml` | `usd/{left,right}_with_mount/` |
+
+The with-mount variant adds the arm-flange mount link (`{l,r}_mount`, 69 g) as the model root, with the wrist shell fixed-welded onto it via `{l,r}_wrist_fixed`. Joint names, axes, limits and actuators are identical between the variants, and both `-ros.urdf` files resolve meshes through the same `package://wuji_hand2_beta2_description/meshes/...` prefix, so one installed package serves both. The two variants share all 31 hand meshes byte for byte; the with-mount variant adds only `{l,r}_mount.STL`, bringing `meshes/{left,right}/` to 32 meshes per hand.
+
+#### ROS2
+
+`hand2/hand2_beta2/body/` is a standalone ROS2 package (`wuji_hand2_beta2_description`) — a distinct package name from Beta 1's `wuji_hand2_description`, so both revisions can coexist in one workspace. Its `{left,right}-ros.urdf` reference meshes via `package://wuji_hand2_beta2_description/meshes/...`:
+
+```bash
+cd ~/ros2_ws/src
+git clone https://github.com/wuji-technology/wuji-description.git
+cd ..
+colcon build --packages-select wuji_hand2_beta2_description
+source install/setup.bash
+
+# Verify resolution, then load from your own launch file / robot_state_publisher
+check_urdf $(ros2 pkg prefix wuji_hand2_beta2_description)/share/wuji_hand2_beta2_description/urdf/right-ros.urdf
+```
+
+### Wuji Hand 2 Palm Mounting Interface
+
+`hand2/hand2_beta1/attachment/` and `hand2/hand2_beta2/attachment/` ship the palm mounting interface, for machining your own arm-side adapter or fixture. One pair of files per hand:
+
+- `wuji-hand2-description-{left,right}-mount_beta{1,2}_step.STEP` — a STEP assembly of the palm together with its wire harness. This is the palm only, not the full hand; for the full-hand assembly use `body/step/`.
+- `wuji-hand2-description-{left,right}-mount_beta{1,2}.pdf` — a single-page A3 drawing dimensioning the threaded holes your adapter bolts into: one M3×0.5 fine-pitch 6H hole (thread depth > 5.5 mm, ⌀4 (0/+0.05) counterbore 2.35 ±0.03 deep) and two M4×0.5 fine-pitch 6H holes (thread depth > 4 mm, ⌀7 (0/+0.06) counterbore 1 mm deep), located by the 28.00 (0/−0.05) and 5.15 (+0.15/−0.05) reference dimensions.
+
+The left and right files are mirror images of each other, and the Beta 1 and Beta 2 files are identical because the palm mounting interface did not change between the two revisions. These files are for mechanical integration only — they are not needed for simulation, and `attachment/` sits outside the ROS2 package root at `body/`, so `colcon` does not install it. To simulate the hand already bolted to an arm, load the `_with_mount` model variants inside `hand2/hand2_beta1/body/` or `hand2/hand2_beta2/body/` instead.
 
 ### Hand Attachments
 
