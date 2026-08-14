@@ -62,8 +62,8 @@
     name="r_thumb_cmc_flex"
     type="revolute">
     <origin
-      xyz="0.0172096135367909 0.00813796752668306 -0.0164575402574485"
-      rpy="-1.66172905640129 -1.05903134035818 1.99212400148381" />
+      xyz="0.01721 0.008138 -0.016458"
+      rpy="-1.6617 -1.059 1.9921" />
     <parent
       link="r_wrist" />
     <child
@@ -107,8 +107,8 @@
     name="r_thumb_cmc_abd"
     type="revolute">
     <origin
-      xyz="0.000247879062961599 -0.000536579546410674 -0.0147535404706145"
-      rpy="0.205291970332105 0.70050871717831 0.0252378802492596" />
+      xyz="0.00024788 -0.00053658 -0.014754"
+      rpy="0.20529 0.70051 0.025238" />
     <parent
       link="r_thumb_proximal" />
     <child
@@ -123,7 +123,7 @@
   </joint>
   <link
     name="r_thumb_middle">
-    <inertial><origin xyz="-4.92924294004124e-05 0.00157446188107281 -0.0142186664853882" rpy="0 0 0"/><mass value="0.0358"/><inertia ixx="4.81959718207973e-06" ixy="-2.92203337868712e-10" ixz="2.96784452081092e-10" iyy="4.88496098448286e-06" iyz="3.93987891241261e-07" izz="1.37050667990248e-06"/></inertial>
+    <inertial><origin xyz="-4.92924283153409e-05 4.31168707134176e-08 -0.0143055726354766" rpy="0 0 0"/><mass value="0.0358"/><inertia ixx="4.81959717162669e-06" ixy="-2.57766425883297e-10" ixz="3.27141642541921e-10" iyy="4.92858743739004e-06" iyz="5.19951983287786e-12" izz="1.32688022322439e-06"/></inertial>
     <visual>
       <origin
         xyz="0 0 0"
@@ -152,8 +152,8 @@
     name="r_thumb_mcp"
     type="revolute">
     <origin
-      xyz="0 0 -0.032500002798739"
-      rpy="-0.11027974085231 0.0872664625995901 0.567232006897994" />
+      xyz="0 0 -0.0325"
+      rpy="0 0.087266 0.56723" />
     <parent
       link="r_thumb_proximal_abd" />
     <child
@@ -197,8 +197,8 @@
     name="r_thumb_ip"
     type="revolute">
     <origin
-      xyz="-4.99999999923513E-05 0.00385197213324594 -0.0347873872356727"
-      rpy="0.110279740852307 0 0" />
+      xyz="-5E-05 0 -0.035"
+      rpy="0 0 0" />
     <parent
       link="r_thumb_middle" />
     <child
@@ -300,7 +300,7 @@
     name="r_index_finger_mcp_abd"
     type="revolute">
     <origin
-      xyz="0 -0.00120098018725688 -0.0145000000001075"
+      xyz="0 -0.001201 -0.0145"
       rpy="0 0 0" />
     <parent
       link="r_index_finger_proximal" />
@@ -345,7 +345,7 @@
     name="r_index_finger_pip"
     type="revolute">
     <origin
-      xyz="0 0 -0.0376000000000001"
+      xyz="0 0 -0.0376"
       rpy="0 0 0" />
     <parent
       link="r_index_finger_proximal_abd" />
@@ -390,7 +390,7 @@
     name="r_index_finger_dip"
     type="revolute">
     <origin
-      xyz="0 0 -0.0295000000000005"
+      xyz="0 0 -0.0295"
       rpy="0 0 0" />
     <parent
       link="r_index_finger_middle" />
@@ -493,7 +493,7 @@
     name="r_middle_finger_mcp_abd"
     type="revolute">
     <origin
-      xyz="0 -0.00120098018725689 -0.0145000000001074"
+      xyz="0 -0.001201 -0.0145"
       rpy="0 0 0" />
     <parent
       link="r_middle_finger_proximal" />
@@ -538,7 +538,7 @@
     name="r_middle_finger_pip"
     type="revolute">
     <origin
-      xyz="0 0 -0.0376000000000002"
+      xyz="0 0 -0.0376"
       rpy="0 0 0" />
     <parent
       link="r_middle_finger_proximal_abd" />
@@ -583,7 +583,7 @@
     name="r_middle_finger_dip"
     type="revolute">
     <origin
-      xyz="0 0 -0.0295000000000004"
+      xyz="0 0 -0.0295"
       rpy="0 0 0" />
     <parent
       link="r_middle_finger_middle" />
@@ -686,7 +686,7 @@
     name="r_ring_finger_mcp_abd"
     type="revolute">
     <origin
-      xyz="0 -0.00120098018725689 -0.0145000000001074"
+      xyz="0 -0.001201 -0.0145"
       rpy="0 0 0" />
     <parent
       link="r_ring_finger_proximal" />
@@ -731,7 +731,7 @@
     name="r_ring_finger_pip"
     type="revolute">
     <origin
-      xyz="0 0 -0.0376000000000001"
+      xyz="0 0 -0.0376"
       rpy="0 0 0" />
     <parent
       link="r_ring_finger_proximal_abd" />
@@ -776,7 +776,7 @@
     name="r_ring_finger_dip"
     type="revolute">
     <origin
-      xyz="0 0 -0.0295000000000005"
+      xyz="0 0 -0.0295"
       rpy="0 0 0" />
     <parent
       link="r_ring_finger_middle" />
@@ -834,8 +834,8 @@
     name="r_pinky_mcp_flex"
     type="revolute">
     <origin
-      xyz="-0.0373506128592677 -0.000733757744184354 -0.0552962100243675"
-      rpy="-0.029937505027186 0.24885623067687 -0.136021040523522" />
+      xyz="-0.037351 -0.00073376 -0.055296"
+      rpy="-0.029938 0.24886 -0.13602" />
     <parent
       link="r_wrist" />
     <child
@@ -879,8 +879,8 @@
     name="r_pinky_mcp_abd"
     type="revolute">
     <origin
-      xyz="0 -0.00120098018724169 -0.0145000000001571"
-      rpy="0 0 3.62730676665863E-05" />
+      xyz="0 -0.001201 -0.0145"
+      rpy="0 0 3.6273E-05" />
     <parent
       link="r_pinky_proximal" />
     <child
@@ -924,8 +924,8 @@
     name="r_pinky_pip"
     type="revolute">
     <origin
-      xyz="0.000100000035494024 0 -0.0335999999999994"
-      rpy="0 0 -3.62730284749225E-05" />
+      xyz="0.0001 0 -0.0336"
+      rpy="0 0 -3.6273E-05" />
     <parent
       link="r_pinky_proximal_abd" />
     <child
@@ -969,7 +969,7 @@
     name="r_pinky_dip"
     type="revolute">
     <origin
-      xyz="0 0 -0.0275000000000001"
+      xyz="0 0 -0.0275"
       rpy="0 0 0" />
     <parent
       link="r_pinky_middle" />
