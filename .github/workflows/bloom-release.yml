@@ -266,6 +266,9 @@ jobs:
 
       - name: Run Bloom release
         env:
+          BLOOM_DONT_ASK_FOR_DOCS: "1"
+          BLOOM_DONT_ASK_FOR_MAINTENANCE_STATUS: "1"
+          BLOOM_DONT_ASK_FOR_SOURCE: "1"
           GH_TOKEN: ${{ secrets.BLOOM_GITHUB_TOKEN }}
           PULL_REQUEST_ONLY: ${{ inputs.pull_request_only }}
           RELEASE_REPOSITORY: https://github.com/wuji-technology/wuji-description-release.git
