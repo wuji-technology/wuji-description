@@ -165,6 +165,7 @@ jobs:
       - name: Prepare Bloom release repository
         id: release-repository
         env:
+          GH_TOKEN: ${{ secrets.BLOOM_GITHUB_TOKEN }}
           RELEASE_REPOSITORY: https://github.com/wuji-technology/wuji-description-release.git
         run: |
           python3 trusted/.github/scripts/prepare_release_repository.py \
@@ -237,6 +238,7 @@ jobs:
 
       - name: Push prepared release repository
         env:
+          GH_TOKEN: ${{ secrets.BLOOM_GITHUB_TOKEN }}
           RELEASE_REPOSITORY_EMPTY: ${{ steps.release-repository.outputs.release_repository_empty }}
         run: |
           if [[ "$RELEASE_REPOSITORY_EMPTY" == "false" ]] && \
