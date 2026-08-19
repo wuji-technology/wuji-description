@@ -114,7 +114,7 @@ jobs:
             --config source/.ros-release.yaml \
             --print-ros-distro-matrix)"
           container_image="$(jq -r --arg distro "$ROS_DISTRO" \
-            '[.[] | select(.ros_distro == $distro)] \
+            '[.[] | select(.ros_distro == $distro)]
             | if length == 1 then .[0].container_image else empty end' \
             <<< "$MATRIX")"
           if [[ -z "$container_image" ]]; then
