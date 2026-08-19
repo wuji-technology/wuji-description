@@ -6,7 +6,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://wuji_hand2_description/meshes/left/l_mount.STL" />
+        <mesh filename="package://wuji_hand2_beta1_description/meshes/left/l_mount.STL" />
       </geometry>
       <material name="">
         <color rgba="0.627450980392157 0.627450980392157 0.627450980392157 1" />
@@ -15,7 +15,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://wuji_hand2_description/meshes/left/l_mount.STL" />
+        <mesh filename="package://wuji_hand2_beta1_description/meshes/left/l_mount.STL" />
       </geometry>
     </collision>
   </link>
@@ -25,7 +25,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://wuji_hand2_description/meshes/left/l_wrist.STL" />
+        <mesh filename="package://wuji_hand2_beta1_description/meshes/left/l_wrist.STL" />
       </geometry>
       <material name="">
         <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
@@ -34,7 +34,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://wuji_hand2_description/meshes/left/l_wrist.STL" />
+        <mesh filename="package://wuji_hand2_beta1_description/meshes/left/l_wrist.STL" />
       </geometry>
     </collision>
   </link>
@@ -53,7 +53,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://wuji_hand2_description/meshes/left/l_thumb_proximal.STL" />
+        <mesh filename="package://wuji_hand2_beta1_description/meshes/left/l_thumb_proximal.STL" />
       </geometry>
       <material name="">
         <color rgba="0.627450980392157 0.627450980392157 0.627450980392157 1" />
@@ -62,7 +62,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://wuji_hand2_description/meshes/left/l_thumb_proximal.STL" />
+        <mesh filename="package://wuji_hand2_beta1_description/meshes/left/l_thumb_proximal.STL" />
       </geometry>
     </collision>
   </link>
@@ -83,7 +83,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://wuji_hand2_description/meshes/left/l_thumb_proximal_abd.STL" />
+        <mesh filename="package://wuji_hand2_beta1_description/meshes/left/l_thumb_proximal_abd.STL" />
       </geometry>
       <material name="">
         <color rgba="0.627450980392157 0.627450980392157 0.627450980392157 1" />
@@ -92,7 +92,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://wuji_hand2_description/meshes/left/l_thumb_proximal_abd.STL" />
+        <mesh filename="package://wuji_hand2_beta1_description/meshes/left/l_thumb_proximal_abd.STL" />
       </geometry>
     </collision>
   </link>
@@ -113,7 +113,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://wuji_hand2_description/meshes/left/l_thumb_middle.STL" />
+        <mesh filename="package://wuji_hand2_beta1_description/meshes/left/l_thumb_middle.STL" />
       </geometry>
       <material name="">
         <color rgba="0.627450980392157 0.627450980392157 0.627450980392157 1" />
@@ -122,7 +122,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://wuji_hand2_description/meshes/left/l_thumb_middle.STL" />
+        <mesh filename="package://wuji_hand2_beta1_description/meshes/left/l_thumb_middle.STL" />
       </geometry>
     </collision>
   </link>
@@ -143,7 +143,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://wuji_hand2_description/meshes/left/l_thumb_distal.STL" />
+        <mesh filename="package://wuji_hand2_beta1_description/meshes/left/l_thumb_distal.STL" />
       </geometry>
       <material name="">
         <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
@@ -152,7 +152,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://wuji_hand2_description/meshes/left/l_thumb_distal.STL" />
+        <mesh filename="package://wuji_hand2_beta1_description/meshes/left/l_thumb_distal.STL" />
       </geometry>
     </collision>
   </link>
@@ -184,7 +184,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://wuji_hand2_description/meshes/left/l_index_finger_proximal.STL" />
+        <mesh filename="package://wuji_hand2_beta1_description/meshes/left/l_index_finger_proximal.STL" />
       </geometry>
       <material name="">
         <color rgba="1 1 1 1" />
@@ -193,7 +193,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://wuji_hand2_description/meshes/left/l_index_finger_proximal.STL" />
+        <mesh filename="package://wuji_hand2_beta1_description/meshes/left/l_index_finger_proximal.STL" />
       </geometry>
     </collision>
   </link>
@@ -214,7 +214,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://wuji_hand2_description/meshes/left/l_index_finger_proximal_abd.STL" />
+        <mesh filename="package://wuji_hand2_beta1_description/meshes/left/l_index_finger_proximal_abd.STL" />
       </geometry>
       <material name="">
         <color rgba="1 1 1 1" />
@@ -223,7 +223,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://wuji_hand2_description/meshes/left/l_index_finger_proximal_abd.STL" />
+        <mesh filename="package://wuji_hand2_beta1_description/meshes/left/l_index_finger_proximal_abd.STL" />
       </geometry>
     </collision>
   </link>
@@ -244,7 +244,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://wuji_hand2_description/meshes/left/l_index_finger_middle.STL" />
+        <mesh filename="package://wuji_hand2_beta1_description/meshes/left/l_index_finger_middle.STL" />
       </geometry>
       <material name="">
         <color rgba="1 1 1 1" />
@@ -253,7 +253,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://wuji_hand2_description/meshes/left/l_index_finger_middle.STL" />
+        <mesh filename="package://wuji_hand2_beta1_description/meshes/left/l_index_finger_middle.STL" />
       </geometry>
     </collision>
   </link>
@@ -274,7 +274,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://wuji_hand2_description/meshes/left/l_index_finger_distal.STL" />
+        <mesh filename="package://wuji_hand2_beta1_description/meshes/left/l_index_finger_distal.STL" />
       </geometry>
       <material name="">
         <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
@@ -283,7 +283,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://wuji_hand2_description/meshes/left/l_index_finger_distal.STL" />
+        <mesh filename="package://wuji_hand2_beta1_description/meshes/left/l_index_finger_distal.STL" />
       </geometry>
     </collision>
   </link>
@@ -315,7 +315,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://wuji_hand2_description/meshes/left/l_middle_finger_proximal.STL" />
+        <mesh filename="package://wuji_hand2_beta1_description/meshes/left/l_middle_finger_proximal.STL" />
       </geometry>
       <material name="">
         <color rgba="1 1 1 1" />
@@ -324,7 +324,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://wuji_hand2_description/meshes/left/l_middle_finger_proximal.STL" />
+        <mesh filename="package://wuji_hand2_beta1_description/meshes/left/l_middle_finger_proximal.STL" />
       </geometry>
     </collision>
   </link>
@@ -345,7 +345,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://wuji_hand2_description/meshes/left/l_middle_finger_proximal_abd.STL" />
+        <mesh filename="package://wuji_hand2_beta1_description/meshes/left/l_middle_finger_proximal_abd.STL" />
       </geometry>
       <material name="">
         <color rgba="1 1 1 1" />
@@ -354,7 +354,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://wuji_hand2_description/meshes/left/l_middle_finger_proximal_abd.STL" />
+        <mesh filename="package://wuji_hand2_beta1_description/meshes/left/l_middle_finger_proximal_abd.STL" />
       </geometry>
     </collision>
   </link>
@@ -375,7 +375,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://wuji_hand2_description/meshes/left/l_middle_finger_middle.STL" />
+        <mesh filename="package://wuji_hand2_beta1_description/meshes/left/l_middle_finger_middle.STL" />
       </geometry>
       <material name="">
         <color rgba="1 1 1 1" />
@@ -384,7 +384,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://wuji_hand2_description/meshes/left/l_middle_finger_middle.STL" />
+        <mesh filename="package://wuji_hand2_beta1_description/meshes/left/l_middle_finger_middle.STL" />
       </geometry>
     </collision>
   </link>
@@ -405,7 +405,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://wuji_hand2_description/meshes/left/l_middle_finger_distal.STL" />
+        <mesh filename="package://wuji_hand2_beta1_description/meshes/left/l_middle_finger_distal.STL" />
       </geometry>
       <material name="">
         <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
@@ -414,7 +414,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://wuji_hand2_description/meshes/left/l_middle_finger_distal.STL" />
+        <mesh filename="package://wuji_hand2_beta1_description/meshes/left/l_middle_finger_distal.STL" />
       </geometry>
     </collision>
   </link>
@@ -446,7 +446,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://wuji_hand2_description/meshes/left/l_ring_finger_proximal.STL" />
+        <mesh filename="package://wuji_hand2_beta1_description/meshes/left/l_ring_finger_proximal.STL" />
       </geometry>
       <material name="">
         <color rgba="1 1 1 1" />
@@ -455,7 +455,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://wuji_hand2_description/meshes/left/l_ring_finger_proximal.STL" />
+        <mesh filename="package://wuji_hand2_beta1_description/meshes/left/l_ring_finger_proximal.STL" />
       </geometry>
     </collision>
   </link>
@@ -476,7 +476,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://wuji_hand2_description/meshes/left/l_ring_finger_proximal_abd.STL" />
+        <mesh filename="package://wuji_hand2_beta1_description/meshes/left/l_ring_finger_proximal_abd.STL" />
       </geometry>
       <material name="">
         <color rgba="1 1 1 1" />
@@ -485,7 +485,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://wuji_hand2_description/meshes/left/l_ring_finger_proximal_abd.STL" />
+        <mesh filename="package://wuji_hand2_beta1_description/meshes/left/l_ring_finger_proximal_abd.STL" />
       </geometry>
     </collision>
   </link>
@@ -506,7 +506,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://wuji_hand2_description/meshes/left/l_ring_finger_middle.STL" />
+        <mesh filename="package://wuji_hand2_beta1_description/meshes/left/l_ring_finger_middle.STL" />
       </geometry>
       <material name="">
         <color rgba="1 1 1 1" />
@@ -515,7 +515,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://wuji_hand2_description/meshes/left/l_ring_finger_middle.STL" />
+        <mesh filename="package://wuji_hand2_beta1_description/meshes/left/l_ring_finger_middle.STL" />
       </geometry>
     </collision>
   </link>
@@ -536,7 +536,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://wuji_hand2_description/meshes/left/l_ring_finger_distal.STL" />
+        <mesh filename="package://wuji_hand2_beta1_description/meshes/left/l_ring_finger_distal.STL" />
       </geometry>
       <material name="">
         <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
@@ -545,7 +545,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://wuji_hand2_description/meshes/left/l_ring_finger_distal.STL" />
+        <mesh filename="package://wuji_hand2_beta1_description/meshes/left/l_ring_finger_distal.STL" />
       </geometry>
     </collision>
   </link>
@@ -577,7 +577,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://wuji_hand2_description/meshes/left/l_pinky_proximal.STL" />
+        <mesh filename="package://wuji_hand2_beta1_description/meshes/left/l_pinky_proximal.STL" />
       </geometry>
       <material name="">
         <color rgba="1 1 1 1" />
@@ -586,7 +586,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://wuji_hand2_description/meshes/left/l_pinky_proximal.STL" />
+        <mesh filename="package://wuji_hand2_beta1_description/meshes/left/l_pinky_proximal.STL" />
       </geometry>
     </collision>
   </link>
@@ -607,7 +607,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://wuji_hand2_description/meshes/left/l_pinky_proximal_abd.STL" />
+        <mesh filename="package://wuji_hand2_beta1_description/meshes/left/l_pinky_proximal_abd.STL" />
       </geometry>
       <material name="">
         <color rgba="1 1 1 1" />
@@ -616,7 +616,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://wuji_hand2_description/meshes/left/l_pinky_proximal_abd.STL" />
+        <mesh filename="package://wuji_hand2_beta1_description/meshes/left/l_pinky_proximal_abd.STL" />
       </geometry>
     </collision>
   </link>
@@ -637,7 +637,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://wuji_hand2_description/meshes/left/l_pinky_middle.STL" />
+        <mesh filename="package://wuji_hand2_beta1_description/meshes/left/l_pinky_middle.STL" />
       </geometry>
       <material name="">
         <color rgba="1 1 1 1" />
@@ -646,7 +646,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://wuji_hand2_description/meshes/left/l_pinky_middle.STL" />
+        <mesh filename="package://wuji_hand2_beta1_description/meshes/left/l_pinky_middle.STL" />
       </geometry>
     </collision>
   </link>
@@ -667,7 +667,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://wuji_hand2_description/meshes/left/l_pinky_distal.STL" />
+        <mesh filename="package://wuji_hand2_beta1_description/meshes/left/l_pinky_distal.STL" />
       </geometry>
       <material name="">
         <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
@@ -676,7 +676,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://wuji_hand2_description/meshes/left/l_pinky_distal.STL" />
+        <mesh filename="package://wuji_hand2_beta1_description/meshes/left/l_pinky_distal.STL" />
       </geometry>
     </collision>
   </link>

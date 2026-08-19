@@ -35,7 +35,7 @@ Robot model description package for the Wuji Hand and related accessories. Provi
 │       └── wuji-hand-rl-open-source-base/   // Open-source mounting base for RL setups (3MF, STEP, PDF, BOM)
 ├── hand2/
 │   ├── hand2_beta1/
-│   │   ├── body/                            // ROS2 package wuji_hand2_description: Wuji Hand 2 (Beta 1), coordinate conventions frozen
+│   │   ├── body/                            // ROS2 package wuji_hand2_beta1_description: Wuji Hand 2 (Beta 1), coordinate conventions frozen
 │   │   │   ├── meshes/{left,right}/         // STL meshes with anatomical names (+ {l,r}_mount.STL for the with-mount variant)
 │   │   │   ├── mjcf/{left,right}.xml        // MuJoCo XML models (plus {left,right}_with_mount.xml)
 │   │   │   ├── step/                        // Full-hand STEP CAD assemblies
@@ -168,23 +168,23 @@ Each hand ships in two assembly variants, side by side in the same package direc
 | No-mount | `{l,r}_wrist` | `urdf/{left,right}.urdf`, `{left,right}-ros.urdf` | `mjcf/{left,right}.xml` | `usd/{left,right}/` |
 | With-mount | `{l,r}_mount` | `urdf/{left,right}_with_mount.urdf`, `{left,right}_with_mount-ros.urdf` | `mjcf/{left,right}_with_mount.xml` | `usd/{left,right}_with_mount/` |
 
-The with-mount variant adds the arm-flange mount link (`{l,r}_mount`, 69 g) as the model root, with the wrist shell fixed-welded onto it via `{l,r}_wrist_fixed`. Use it to bolt the hand onto an arm, and the no-mount model when the wrist is the attachment point. Joint names, axes, limits and actuators are identical between the variants, and both `-ros.urdf` files resolve meshes through the same `package://wuji_hand2_description/meshes/...` prefix — so one installed package serves both, and either can be loaded at any time.
+The with-mount variant adds the arm-flange mount link (`{l,r}_mount`, 69 g) as the model root, with the wrist shell fixed-welded onto it via `{l,r}_wrist_fixed`. Use it to bolt the hand onto an arm, and the no-mount model when the wrist is the attachment point. Joint names, axes, limits and actuators are identical between the variants, and both `-ros.urdf` files resolve meshes through the same `package://wuji_hand2_beta1_description/meshes/...` prefix — so one installed package serves both, and either can be loaded at any time.
 
 The variants share all 26 hand meshes in `meshes/{left,right}/` byte for byte; the with-mount variant adds only `{l,r}_mount.STL`, bringing each directory to 27. The variants stay kinematically equivalent: with the fixed mount offset taken out, their fingertip poses agree to within 0.006 mm, so which variant you load does not change where the fingers go.
 
 #### ROS2
 
-`hand2/hand2_beta1/body/` is a standalone ROS2 package (`wuji_hand2_description`). Its `{left,right}-ros.urdf` reference meshes via `package://wuji_hand2_description/meshes/...`, independent of the Wuji Hand `wuji_description` package:
+`hand2/hand2_beta1/body/` is a standalone ROS2 package (`wuji_hand2_beta1_description`). Its `{left,right}-ros.urdf` reference meshes via `package://wuji_hand2_beta1_description/meshes/...`, independent of the Wuji Hand `wuji_description` package:
 
 ```bash
 cd ~/ros2_ws/src
 git clone https://github.com/wuji-technology/wuji-description.git
 cd ..
-colcon build --packages-select wuji_hand2_description
+colcon build --packages-select wuji_hand2_beta1_description
 source install/setup.bash
 
 # Verify resolution, then load from your own launch file / robot_state_publisher
-check_urdf $(ros2 pkg prefix wuji_hand2_description)/share/wuji_hand2_description/urdf/right-ros.urdf
+check_urdf $(ros2 pkg prefix wuji_hand2_beta1_description)/share/wuji_hand2_beta1_description/urdf/right-ros.urdf
 ```
 
 #### STEP Files
@@ -231,7 +231,7 @@ The with-mount variant adds the arm-flange mount link (`{l,r}_mount`, 69 g) as t
 
 #### ROS2
 
-`hand2/hand2_beta2/body/` is a standalone ROS2 package (`wuji_hand2_beta2_description`) — a distinct package name from Beta 1's `wuji_hand2_description`, so both revisions can coexist in one workspace. Its `{left,right}-ros.urdf` reference meshes via `package://wuji_hand2_beta2_description/meshes/...`:
+`hand2/hand2_beta2/body/` is a standalone ROS2 package (`wuji_hand2_beta2_description`) — a distinct package name from Beta 1's `wuji_hand2_beta1_description`, so both revisions can coexist in one workspace. Its `{left,right}-ros.urdf` reference meshes via `package://wuji_hand2_beta2_description/meshes/...`:
 
 ```bash
 cd ~/ros2_ws/src

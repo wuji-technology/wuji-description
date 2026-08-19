@@ -1,0 +1,247 @@
+# Purpose: prepare every configured Bloom track before a public ROS release.
+# Entry: a stable public source tag, either from auto-release-on-pr.yml or a
+# manual empty-repository preparation or retry. Missing tracks are created with
+# git-bloom-config. Existing tracks are validated but never rewritten.
+#
+# Remote effects: may push generated metadata and tracks.yaml to the release
+# repository master branch. This workflow never runs bloom-release.
+
+name: Prepare Bloom Release
+
+on:
+  workflow_call:
+    inputs:
+      tag:
+        description: Public source tag whose release repository should be prepared
+        required: true
+        type: string
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Existing public source tag to prepare
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ros-bloom-release
+  cancel-in-progress: false
+  queue: max
+
+jobs:
+  # Validate the tag and configuration before the protected environment makes
+  # the release credential available.
+  verify-source:
+    name: Verify source tag
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout trusted release tooling
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          path: trusted
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Checkout source tag
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.tag }}
+          path: source
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Verify exact source tag
+        working-directory: source
+        env:
+          DEFAULT_BRANCH: main
+          RELEASE_TAG: ${{ inputs.tag }}
+        run: |
+          if [[ ! "$RELEASE_TAG" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "::error::Release tag must match vX.Y.Z"
+            exit 1
+          fi
+          ACTUAL_TAG="$(git describe --tags --exact-match HEAD)"
+          if [[ "$ACTUAL_TAG" != "$RELEASE_TAG" ]]; then
+            echo "::error::Checked out $ACTUAL_TAG instead of $RELEASE_TAG"
+            exit 1
+          fi
+          git fetch origin "$DEFAULT_BRANCH"
+          if ! git merge-base --is-ancestor HEAD "origin/${DEFAULT_BRANCH}"; then
+            echo "::error::Release tag is not reachable from $DEFAULT_BRANCH"
+            exit 1
+          fi
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install configuration dependency
+        run: python3 -m pip install --disable-pip-version-check PyYAML
+
+      - name: Verify configured ROS distributions
+        run: |
+          set -euo pipefail
+          ROS_DISTROS="$(python3 trusted/.github/scripts/check_bloom_release.py \
+            --config source/.ros-release.yaml \
+            --print-ros-distros)"
+          if [[ -z "$ROS_DISTROS" ]]; then
+            echo "::error::No ROS distributions configured for release"
+            exit 1
+          fi
+
+  # The protected credential writes only trusted, generated release-repository
+  # state. Preparation is idempotent and pushes only when the result changed.
+  prepare:
+    name: Prepare release repository
+    needs: verify-source
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    environment: ros-release
+
+    steps:
+      - name: Checkout trusted release tooling
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          path: trusted
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Checkout source tag
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.tag }}
+          path: source
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Verify exact source tag
+        working-directory: source
+        env:
+          DEFAULT_BRANCH: main
+          RELEASE_TAG: ${{ inputs.tag }}
+        run: |
+          if [[ ! "$RELEASE_TAG" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "::error::Release tag must match vX.Y.Z"
+            exit 1
+          fi
+          ACTUAL_TAG="$(git describe --tags --exact-match HEAD)"
+          if [[ "$ACTUAL_TAG" != "$RELEASE_TAG" ]]; then
+            echo "::error::Checked out $ACTUAL_TAG instead of $RELEASE_TAG"
+            exit 1
+          fi
+          git fetch origin "$DEFAULT_BRANCH"
+          if ! git merge-base --is-ancestor HEAD "origin/${DEFAULT_BRANCH}"; then
+            echo "::error::Release tag is not reachable from $DEFAULT_BRANCH"
+            exit 1
+          fi
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install preparation dependencies
+        run: |
+          python3 -m pip install --disable-pip-version-check \
+            PyYAML bloom==0.14.3 pexpect==4.9.0
+
+      - name: Configure GitHub credentials
+        env:
+          GH_TOKEN: ${{ secrets.BLOOM_GITHUB_TOKEN }}
+        run: |
+          BLOOM_GITHUB_USER="$(gh api user --jq .login)"
+          BLOOM_GITHUB_ID="$(gh api user --jq .id)"
+          git config --global user.name "$BLOOM_GITHUB_USER"
+          git config --global user.email "${BLOOM_GITHUB_ID}+${BLOOM_GITHUB_USER}@users.noreply.github.com"
+          umask 077
+          gh auth setup-git
+
+      - name: Prepare Bloom release repository
+        id: release-repository
+        env:
+          RELEASE_REPOSITORY: https://github.com/wuji-technology/wuji-description-release.git
+        run: |
+          python3 trusted/.github/scripts/prepare_release_repository.py \
+            --repository "$RELEASE_REPOSITORY" \
+            --destination release_repository \
+            --branch master \
+            --github-output "$GITHUB_OUTPUT"
+
+      # Commit metadata locally first because git-bloom-config requires a clean
+      # worktree. All generated commits are pushed together after validation.
+      - name: Generate release repository metadata
+        env:
+          RELEASE_TAG: ${{ inputs.tag }}
+        run: |
+          VERSION="${RELEASE_TAG#v}"
+          python3 trusted/.github/scripts/generate_release_repository.py \
+            --config source/.ros-release.yaml \
+            --root source \
+            --template trusted/.github/templates/release-repository-README.md \
+            --release-root release_repository \
+            --version "$VERSION"
+          git -C release_repository add -- README.md '*.ignored'
+          if ! git -C release_repository diff --cached --quiet; then
+            git -C release_repository commit \
+              -m "Update ROS release metadata for ${RELEASE_TAG}"
+          fi
+
+      - name: Initialize missing Bloom tracks
+        run: |
+          python3 trusted/.github/scripts/initialize_bloom_tracks.py \
+            --config source/.ros-release.yaml \
+            --release-root release_repository
+
+      - name: Validate prepared release repository
+        env:
+          RELEASE_REPOSITORY_EMPTY: ${{ steps.release-repository.outputs.release_repository_empty }}
+          RELEASE_TAG: ${{ inputs.tag }}
+        run: |
+          set -euo pipefail
+          while IFS= read -r ROS_DISTRO; do
+            python3 trusted/.github/scripts/check_bloom_release.py \
+              --config source/.ros-release.yaml \
+              --root source \
+              --release-root release_repository \
+              --tag "$RELEASE_TAG" \
+              --ros-distro "$ROS_DISTRO" \
+              --prepare-only
+          done < <(python3 trusted/.github/scripts/check_bloom_release.py \
+            --config source/.ros-release.yaml \
+            --print-ros-distros)
+
+          if [[ -n "$(git -C release_repository status --porcelain)" ]]; then
+            echo "::error::Release repository has uncommitted changes"
+            git -C release_repository status --short
+            exit 1
+          fi
+
+          if [[ "$RELEASE_REPOSITORY_EMPTY" == "true" ]]; then
+            CHANGED_PATHS="$(git -C release_repository ls-tree -r --name-only HEAD)"
+          else
+            CHANGED_PATHS="$(git -C release_repository diff --name-only origin/master..HEAD)"
+          fi
+          while IFS= read -r path; do
+            [[ -z "$path" ]] && continue
+            if [[ "$path" != "README.md" && "$path" != "tracks.yaml" && ! "$path" =~ ^[a-z][a-z0-9_]*\.ignored$ ]]; then
+              echo "::error::Unexpected generated path: $path"
+              exit 1
+            fi
+          done <<< "$CHANGED_PATHS"
+
+      - name: Push prepared release repository
+        env:
+          RELEASE_REPOSITORY_EMPTY: ${{ steps.release-repository.outputs.release_repository_empty }}
+        run: |
+          if [[ "$RELEASE_REPOSITORY_EMPTY" == "false" ]] && \
+             git -C release_repository diff --quiet origin/master..HEAD; then
+            echo "Release repository is already prepared"
+            exit 0
+          fi
+          git -C release_repository push origin master

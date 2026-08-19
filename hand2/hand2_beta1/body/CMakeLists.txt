@@ -1,10 +1,10 @@
 cmake_minimum_required(VERSION 3.10)
-project(wuji_hand2_description)
+project(wuji_hand2_beta1_description)
 
 find_package(ament_cmake REQUIRED)
 
 # Asset-only package: URDF references resolve as
-# package://wuji_hand2_description/meshes/{left,right}/<link>.STL
+# package://wuji_hand2_beta1_description/meshes/{left,right}/<link>.STL
 #
 # Both assembly variants live in these same directories, told apart by a
 # _with_mount filename suffix (no-mount {left,right}.* rooted at {l,r}_wrist,

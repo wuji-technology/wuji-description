@@ -1,0 +1,19 @@
+ros_distros:
+  - name: lyrical
+    container_image: ubuntu:resolute
+repository_name: wuji_description
+source_repository: https://github.com/wuji-technology/wuji-description.git
+release_repository: https://github.com/wuji-technology/wuji-description-release.git
+rosdistro_fork_owner: wuji-technology
+release_tag: "v:{version}"
+
+packages:
+  - name: wuji_description
+    path: hand/body
+    publish: false
+  - name: wuji_hand2_beta1_description
+    path: hand2/hand2_beta1/body
+    publish: true
+  - name: wuji_hand2_beta2_description
+    path: hand2/hand2_beta2/body
+    publish: true
