@@ -229,6 +229,7 @@ jobs:
       - name: Prepare Bloom release repository
         id: release-repository
         env:
+          GH_TOKEN: ${{ secrets.BLOOM_GITHUB_TOKEN }}
           RELEASE_REPOSITORY: https://github.com/wuji-technology/wuji-description-release.git
         run: |
           python3 trusted/.github/scripts/prepare_release_repository.py \
