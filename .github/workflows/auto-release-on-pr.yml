@@ -1,3 +1,13 @@
+# Purpose: turn a merged public Release PR into a source tag and optional
+# per-distribution Bloom releases.
+# Entry: a merged release/vX.Y.Z PR carrying the auto-release label.
+# Stable releases prepare the release repository once, then call
+# bloom-release.yml for each configured distribution when
+# ROS_RELEASE_AUTOMATION_ENABLED is true. auto-release.yml separately creates
+# the GitHub Release from the tag.
+#
+# Remote effects: creates the public tag and may start Bloom release jobs.
+
 name: Auto Release on PR Merge
 
 on:
@@ -13,6 +23,9 @@ jobs:
       contains(github.event.pull_request.labels.*.name, 'auto-release') &&
       startsWith(github.event.pull_request.head.ref, 'release/v')
     runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.tag.outputs.version }}
+      is_prerelease: ${{ steps.tag.outputs.is_prerelease }}
 
     steps:
       - name: Generate GitHub App token
@@ -28,7 +41,8 @@ jobs:
           token: ${{ steps.app-token.outputs.token }}
           fetch-tags: true
 
-      - name: Extract version and create tag
+      - name: Extract version
+        id: tag
         env:
           BRANCH_NAME: ${{ github.event.pull_request.head.ref }}
         run: |
@@ -39,6 +53,19 @@ jobs:
             exit 1
           fi
 
+          if [[ "$VERSION" == *-* ]]; then
+            IS_PRERELEASE=true
+          else
+            IS_PRERELEASE=false
+          fi
+
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "is_prerelease=$IS_PRERELEASE" >> "$GITHUB_OUTPUT"
+
+      - name: Create tag
+        env:
+          VERSION: ${{ steps.tag.outputs.version }}
+        run: |
           if git rev-parse "refs/tags/$VERSION" >/dev/null 2>&1; then
             echo "::error::Tag $VERSION already exists"
             exit 1
@@ -51,3 +78,74 @@ jobs:
           git push origin "${VERSION}"
 
           echo "✅ Tag ${VERSION} created"
+
+  # Read distribution names from the tagged public configuration. The reusable
+  # Bloom workflow independently resolves and validates each container image.
+  resolve-ros-distros:
+    name: Resolve ROS distributions
+    needs: create-tag
+    if: >-
+      vars.ROS_RELEASE_AUTOMATION_ENABLED == 'true' &&
+      needs.create-tag.outputs.is_prerelease == 'false'
+    runs-on: ubuntu-latest
+    outputs:
+      ros_distros: ${{ steps.ros-distros.outputs.matrix }}
+
+    steps:
+      - name: Checkout source tag
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.create-tag.outputs.version }}
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install configuration dependency
+        run: python3 -m pip install --disable-pip-version-check PyYAML
+
+      - name: Resolve configured ROS distributions
+        id: ros-distros
+        run: |
+          set -euo pipefail
+          ROS_DISTROS="$(python3 .github/scripts/check_bloom_release.py \
+            --config .ros-release.yaml \
+            --print-ros-distros | jq -Rsc 'split("\n") | map(select(length > 0))')"
+          if [[ "${ROS_DISTROS}" == "[]" ]]; then
+            echo "::error::No ROS distributions configured for release"
+            exit 1
+          fi
+          echo "matrix=${ROS_DISTROS}" >> "${GITHUB_OUTPUT}"
+
+  prepare-release-repository:
+    name: Prepare Bloom release repository
+    needs: create-tag
+    if: >-
+      vars.ROS_RELEASE_AUTOMATION_ENABLED == 'true' &&
+      needs.create-tag.outputs.is_prerelease == 'false'
+    uses: ./.github/workflows/prepare-bloom-release.yml
+    permissions:
+      contents: read
+    with:
+      tag: ${{ needs.create-tag.outputs.version }}
+
+  bloom-release:
+    name: Release stable tag to ROS 2 ${{ matrix.ros_distro }}
+    needs: [create-tag, resolve-ros-distros, prepare-release-repository]
+    strategy:
+      fail-fast: false
+      # Bloom tracks share one release repository and must not write in parallel.
+      max-parallel: 1
+      matrix:
+        ros_distro: ${{ fromJSON(needs.resolve-ros-distros.outputs.ros_distros) }}
+    if: >-
+      vars.ROS_RELEASE_AUTOMATION_ENABLED == 'true' &&
+      needs.create-tag.outputs.is_prerelease == 'false'
+    uses: ./.github/workflows/bloom-release.yml
+    permissions:
+      contents: read
+    with:
+      tag: ${{ needs.create-tag.outputs.version }}
+      ros_distro: ${{ matrix.ros_distro }}

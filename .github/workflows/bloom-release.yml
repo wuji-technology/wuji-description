@@ -1,0 +1,286 @@
+# Purpose: release one public source tag to one configured ROS distribution.
+# Entry: the public Release workflow or a manual retry with an existing tag.
+# The resolver verifies the tag from trusted main before selecting an official
+# Ubuntu container. The Bloom job runs behind the ros-release environment gate.
+#
+# Remote effects: updates wuji-description-release and opens a ros/rosdistro PR.
+# This workflow does not initialize a new Bloom track.
+
+name: Bloom Release
+
+on:
+  workflow_call:
+    inputs:
+      tag:
+        description: Public source tag to release
+        required: true
+        type: string
+      ros_distro:
+        description: ROS distribution to release
+        required: true
+        type: string
+      pull_request_only:
+        description: Retry only the rosdistro pull request after release data exists
+        required: false
+        default: false
+        type: boolean
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Existing public source tag to retry
+        required: true
+        type: string
+      ros_distro:
+        description: ROS distribution to release
+        required: true
+        type: string
+      pull_request_only:
+        description: Retry only the rosdistro pull request after release data exists
+        required: false
+        default: false
+        type: boolean
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ros-bloom-release
+  cancel-in-progress: false
+  queue: max
+
+jobs:
+  # Resolve the image outside the tag-selected container. Only trusted main
+  # decides whether the source tag's distribution mapping is acceptable.
+  resolve-container:
+    name: Resolve ROS container
+    runs-on: ubuntu-latest
+    outputs:
+      container_image: ${{ steps.resolve.outputs.container_image }}
+      rosdistro_fork_owner: ${{ steps.resolve.outputs.rosdistro_fork_owner }}
+
+    steps:
+      - name: Checkout trusted release tooling
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          path: trusted
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Checkout source tag
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.tag }}
+          path: source
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Verify exact source tag
+        working-directory: source
+        env:
+          DEFAULT_BRANCH: main
+          RELEASE_TAG: ${{ inputs.tag }}
+        run: |
+          if [[ ! "$RELEASE_TAG" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "::error::Release tag must match vX.Y.Z"
+            exit 1
+          fi
+          ACTUAL_TAG="$(git describe --tags --exact-match HEAD)"
+          if [[ "$ACTUAL_TAG" != "$RELEASE_TAG" ]]; then
+            echo "::error::Checked out $ACTUAL_TAG instead of $RELEASE_TAG"
+            exit 1
+          fi
+          git fetch origin "$DEFAULT_BRANCH"
+          if ! git merge-base --is-ancestor HEAD "origin/${DEFAULT_BRANCH}"; then
+            echo "::error::Release tag is not reachable from $DEFAULT_BRANCH"
+            exit 1
+          fi
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install resolver dependencies
+        run: python3 -m pip install --disable-pip-version-check PyYAML
+
+      - name: Resolve configured container
+        id: resolve
+        env:
+          ROS_DISTRO: ${{ inputs.ros_distro }}
+        run: |
+          set -euo pipefail
+          MATRIX="$(python3 trusted/.github/scripts/check_bloom_release.py \
+            --config source/.ros-release.yaml \
+            --print-ros-distro-matrix)"
+          container_image="$(jq -r --arg distro "$ROS_DISTRO" \
+            '[.[] | select(.ros_distro == $distro)] \
+            | if length == 1 then .[0].container_image else empty end' \
+            <<< "$MATRIX")"
+          if [[ -z "$container_image" ]]; then
+            echo "::error::ROS distribution $ROS_DISTRO is not configured"
+            exit 1
+          fi
+          rosdistro_fork_owner="$(python3 \
+            trusted/.github/scripts/check_bloom_release.py \
+            --config source/.ros-release.yaml \
+            --print-rosdistro-fork-owner)"
+          echo "container_image=$container_image" >> "$GITHUB_OUTPUT"
+          echo "rosdistro_fork_owner=$rosdistro_fork_owner" >> "$GITHUB_OUTPUT"
+
+  # Secrets become available only in this protected environment and only after
+  # the resolver validates the tag and container mapping.
+  bloom:
+    name: Release to ROS 2 ${{ inputs.ros_distro }}
+    needs: resolve-container
+    runs-on: ubuntu-latest
+    container:
+      image: ${{ needs.resolve-container.outputs.container_image }}
+    defaults:
+      run:
+        shell: bash
+    timeout-minutes: 60
+    environment: ros-release
+
+    steps:
+      - name: Install checkout and release dependencies
+        env:
+          DEBIAN_FRONTEND: noninteractive
+        run: |
+          apt-get update
+          apt-get install --yes ca-certificates curl gh git git-lfs jq python3-venv python3-yaml
+
+      - name: Checkout trusted release tooling
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          path: trusted
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Checkout source tag
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.tag }}
+          path: source
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Verify exact source tag
+        working-directory: source
+        env:
+          DEFAULT_BRANCH: main
+          RELEASE_TAG: ${{ inputs.tag }}
+        run: |
+          if [[ ! "$RELEASE_TAG" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "::error::Release tag must match vX.Y.Z"
+            exit 1
+          fi
+          ACTUAL_TAG="$(git describe --tags --exact-match HEAD)"
+          if [[ "$ACTUAL_TAG" != "$RELEASE_TAG" ]]; then
+            echo "::error::Checked out $ACTUAL_TAG instead of $RELEASE_TAG"
+            exit 1
+          fi
+          git fetch origin "$DEFAULT_BRANCH"
+          if ! git merge-base --is-ancestor HEAD "origin/${DEFAULT_BRANCH}"; then
+            echo "::error::Release tag is not reachable from $DEFAULT_BRANCH"
+            exit 1
+          fi
+
+      - name: Set up ROS 2
+        uses: ros-tooling/setup-ros@0.7.19
+        with:
+          required-ros-distributions: ${{ inputs.ros_distro }}
+
+      - name: Install Bloom in virtual environment
+        run: |
+          python3 -m venv /opt/ros-release-venv
+          /opt/ros-release-venv/bin/python -m pip install --disable-pip-version-check PyYAML bloom==0.14.3
+          echo "/opt/ros-release-venv/bin" >> "$GITHUB_PATH"
+
+      - name: Fetch Git LFS objects
+        run: |
+          git lfs install
+          git -C source lfs pull
+
+      # The release repository stays private during initial validation, so the
+      # protected token is configured before cloning. No remote write happens
+      # until the trusted preflight below succeeds.
+      - name: Configure GitHub credentials
+        env:
+          GH_TOKEN: ${{ secrets.BLOOM_GITHUB_TOKEN }}
+          BLOOM_GITHUB_TOKEN: ${{ secrets.BLOOM_GITHUB_TOKEN }}
+          ROSDISTRO_FORK_OWNER: ${{ needs.resolve-container.outputs.rosdistro_fork_owner }}
+        run: |
+          BLOOM_GITHUB_USER="$(gh api user --jq .login)"
+          BLOOM_GITHUB_ID="$(gh api user --jq .id)"
+          git config --global user.name "$BLOOM_GITHUB_USER"
+          git config --global user.email "${BLOOM_GITHUB_ID}+${BLOOM_GITHUB_USER}@users.noreply.github.com"
+          umask 077
+          gh auth setup-git
+          mkdir -p "$HOME/.config"
+          jq -n \
+            --arg github_user "$ROSDISTRO_FORK_OWNER" \
+            --arg oauth_token "$BLOOM_GITHUB_TOKEN" \
+            '{github_user: $github_user, oauth_token: $oauth_token}' \
+            > "$HOME/.config/bloom"
+          chmod 600 "$HOME/.config/bloom"
+
+      - name: Prepare Bloom release repository
+        id: release-repository
+        env:
+          RELEASE_REPOSITORY: https://github.com/wuji-technology/wuji-description-release.git
+        run: |
+          python3 trusted/.github/scripts/prepare_release_repository.py \
+            --repository "$RELEASE_REPOSITORY" \
+            --destination release_repository \
+            --branch master \
+            --github-output "$GITHUB_OUTPUT"
+
+      # Credentials are already needed to clone the initially private release
+      # repository. This trusted preflight still blocks every remote write.
+      - name: Validate Bloom inputs
+        env:
+          PULL_REQUEST_ONLY: ${{ inputs.pull_request_only }}
+          RELEASE_REPOSITORY_EMPTY: ${{ steps.release-repository.outputs.release_repository_empty }}
+          RELEASE_TAG: ${{ inputs.tag }}
+          ROS_DISTRO: ${{ inputs.ros_distro }}
+        run: |
+          if [[ "$RELEASE_REPOSITORY_EMPTY" == "true" ]]; then
+            echo "::error::Release repository must be prepared before Bloom publishing"
+            exit 1
+          fi
+          PREFLIGHT_ARGS=(
+            --config source/.ros-release.yaml
+            --root source
+            --release-root release_repository
+            --tag "$RELEASE_TAG"
+            --ros-distro "$ROS_DISTRO"
+          )
+          if [[ "$PULL_REQUEST_ONLY" == "true" ]]; then
+            PREFLIGHT_ARGS+=(--pull-request-only)
+          fi
+          python3 trusted/.github/scripts/check_bloom_release.py \
+            "${PREFLIGHT_ARGS[@]}"
+
+      - name: Run Bloom release
+        env:
+          GH_TOKEN: ${{ secrets.BLOOM_GITHUB_TOKEN }}
+          PULL_REQUEST_ONLY: ${{ inputs.pull_request_only }}
+          RELEASE_REPOSITORY: https://github.com/wuji-technology/wuji-description-release.git
+          REPOSITORY_NAME: wuji_description
+          ROSDISTRO_INDEX_URL: https://raw.githubusercontent.com/ros/rosdistro/master/index-v4.yaml
+          ROS_DISTRO: ${{ inputs.ros_distro }}
+        run: |
+          BLOOM_ARGS=(
+            --rosdistro "$ROS_DISTRO"
+            --track "$ROS_DISTRO"
+            --non-interactive
+          )
+          if [[ "$PULL_REQUEST_ONLY" == "true" ]]; then
+            BLOOM_ARGS+=(--pull-request-only)
+          fi
+          bloom-release \
+            "${BLOOM_ARGS[@]}" \
+            --override-release-repository-url "$RELEASE_REPOSITORY" \
+            "$REPOSITORY_NAME"

@@ -7,6 +7,13 @@ and this project uses calendar versioning (YYYY.M.D).
 
 ## [Unreleased]
 
+## [2026.8.19]
+
+### Changed
+
+- Renamed the Wuji Hand 2 Beta 1 ROS 2 package from `wuji_hand2_description` to `wuji_hand2_beta1_description`. When upgrading, update `colcon --packages-select` arguments, `package://` URIs, dependent `package.xml` entries, launch configuration, and package lookup calls. Remove the workspace `build/`, `install/`, and `log/` directories before rebuilding.
+- Marked the Wuji Hand 2 Beta 1 and Beta 2 description packages as architecture-independent resources.
+
 ## [2026.8.14]
 
 ### Added
@@ -149,7 +156,8 @@ and this project uses calendar versioning (YYYY.M.D).
 - Added the Glove mounting interface STEP asset at `glove/attachment/glove-attachment.step`.
 - Added the top-level `README.md`, `LICENSE` (MIT), and this `CHANGELOG.md`.
 
-[Unreleased]: https://github.com/wuji-technology/wuji-description/compare/v2026.8.14...HEAD
+[Unreleased]: https://github.com/wuji-technology/wuji-description/compare/v2026.8.19...HEAD
+[2026.8.19]: https://github.com/wuji-technology/wuji-description/compare/v2026.8.14...v2026.8.19
 [2026.8.14]: https://github.com/wuji-technology/wuji-description/compare/v2026.8.3...v2026.8.14
 [2026.8.3]: https://github.com/wuji-technology/wuji-description/compare/v2026.7.23...v2026.8.3
 [2026.7.23]: https://github.com/wuji-technology/wuji-description/compare/v2026.7.14...v2026.7.23
