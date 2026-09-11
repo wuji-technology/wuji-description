@@ -2,7 +2,7 @@
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
   <name>wuji_hand2_beta1_description</name>
-  <version>2026.8.19</version>
+  <version>2026.9.11</version>
   <description>Robot model description package for Wuji Hand 2 (Beta 1) with URDF, MJCF, and USD assets for simulation and ROS2 visualization.</description>
 
   <maintainer email="support@wuji.tech">Wuji Technology</maintainer>

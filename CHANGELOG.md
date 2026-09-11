@@ -7,6 +7,12 @@ and this project uses calendar versioning (YYYY.M.D).
 
 ## [Unreleased]
 
+## [2026.9.11]
+
+### Changed
+
+- Changed the Wuji Glove back-of-hand transmitter coil housing mesh so that its origin sits 9 mm below the housing top surface, previously 11.125 mm, and its cross-section at Y = 0 spans X = [-15.6, 15.4] mm and Z = [-17.3, 13.7] mm (31 mm along each axis).
+
 ## [2026.8.19]
 
 ### Changed
@@ -156,7 +162,8 @@ and this project uses calendar versioning (YYYY.M.D).
 - Added the Glove mounting interface STEP asset at `glove/attachment/glove-attachment.step`.
 - Added the top-level `README.md`, `LICENSE` (MIT), and this `CHANGELOG.md`.
 
-[Unreleased]: https://github.com/wuji-technology/wuji-description/compare/v2026.8.19...HEAD
+[Unreleased]: https://github.com/wuji-technology/wuji-description/compare/v2026.9.11...HEAD
+[2026.9.11]: https://github.com/wuji-technology/wuji-description/compare/v2026.8.19...v2026.9.11
 [2026.8.19]: https://github.com/wuji-technology/wuji-description/compare/v2026.8.14...v2026.8.19
 [2026.8.14]: https://github.com/wuji-technology/wuji-description/compare/v2026.8.3...v2026.8.14
 [2026.8.3]: https://github.com/wuji-technology/wuji-description/compare/v2026.7.23...v2026.8.3
