@@ -7,11 +7,25 @@ and this project uses calendar versioning (YYYY.M.D).
 
 ## [Unreleased]
 
+## [2026.10.12]
+
+This release provides Hand 2.1 and Hand 2.2 models for both hands.
+
+### Added
+
+- Added Wuji Hand 2.1 under `hand2/hand2_1/body/` as the standalone ROS2 package `wuji_hand2_1_description`, with left- and right-hand URDF, MuJoCo MJCF, Isaac Sim USD, and mesh assets.
+- Added Wuji Hand 2.2 under `hand2/hand2_2/body/` as the standalone ROS2 package `wuji_hand2_2_description`.
+- Added palm mounting-interface STEP assemblies for Hand 2.1 and Hand 2.2 under their respective `attachment/` directories. These files remain outside the ROS2 package roots.
+
+### Removed
+
+- Removed the Wuji Hand 2 Beta 1 and Beta 2 packages (`hand2/hand2_beta1/` and `hand2/hand2_beta2/`), their `_with_mount` variants, and their full-hand STEP assemblies. Hand 2.1 and Hand 2.2 replace them with models rooted at the arm-flange mount. The palm mounting-interface files remain available. Pin release `v2026.9.11` to use the Beta assets. When upgrading, update `colcon --packages-select`, `package://` URIs, dependent `package.xml` entries, and launch configuration to use `wuji_hand2_1_description` or `wuji_hand2_2_description`.
+
 ## [2026.9.11]
 
-### Changed
+### Fixed
 
-- Changed the Wuji Glove back-of-hand transmitter coil housing mesh so that its origin sits 9 mm below the housing top surface, previously 11.125 mm, and its cross-section at Y = 0 spans X = [-15.6, 15.4] mm and Z = [-17.3, 13.7] mm (31 mm along each axis).
+- Fixed the placement of the Wuji Glove transmitter housing mesh relative to the mesh origin.
 
 ## [2026.8.19]
 
@@ -162,7 +176,8 @@ and this project uses calendar versioning (YYYY.M.D).
 - Added the Glove mounting interface STEP asset at `glove/attachment/glove-attachment.step`.
 - Added the top-level `README.md`, `LICENSE` (MIT), and this `CHANGELOG.md`.
 
-[Unreleased]: https://github.com/wuji-technology/wuji-description/compare/v2026.9.11...HEAD
+[Unreleased]: https://github.com/wuji-technology/wuji-description/compare/v2026.10.12...HEAD
+[2026.10.12]: https://github.com/wuji-technology/wuji-description/compare/v2026.9.11...v2026.10.12
 [2026.9.11]: https://github.com/wuji-technology/wuji-description/compare/v2026.8.19...v2026.9.11
 [2026.8.19]: https://github.com/wuji-technology/wuji-description/compare/v2026.8.14...v2026.8.19
 [2026.8.14]: https://github.com/wuji-technology/wuji-description/compare/v2026.8.3...v2026.8.14

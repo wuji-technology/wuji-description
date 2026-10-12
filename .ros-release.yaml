@@ -11,9 +11,9 @@ packages:
   - name: wuji_description
     path: hand/body
     publish: false
-  - name: wuji_hand2_beta1_description
-    path: hand2/hand2_beta1/body
+  - name: wuji_hand2_1_description
+    path: hand2/hand2_1/body
     publish: true
-  - name: wuji_hand2_beta2_description
-    path: hand2/hand2_beta2/body
+  - name: wuji_hand2_2_description
+    path: hand2/hand2_2/body
     publish: true
