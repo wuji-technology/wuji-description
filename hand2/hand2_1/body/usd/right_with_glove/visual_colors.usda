@@ -1,0 +1,355 @@
+#usda 1.0
+
+def "wujihand2_1_right_cover"
+{
+    def "Looks"
+    {
+        def Material "VisualBlackShell"
+        {
+            token outputs:mdl:surface.connect = </wujihand2_1_right_cover/Looks/VisualBlackShell/OmniPBR.outputs:out>
+            token outputs:surface.connect = </wujihand2_1_right_cover/Looks/VisualBlackShell/PreviewSurface.outputs:surface>
+
+            def Shader "OmniPBR"
+            {
+                uniform token info:id = "OmniPBR"
+                uniform token info:implementationSource = "sourceAsset"
+                uniform asset info:mdl:sourceAsset = @OmniPBR.mdl@
+                uniform token info:mdl:sourceAsset:subIdentifier = "OmniPBR"
+                color3f inputs:diffuse_color_constant = (0.02, 0.02, 0.02)
+                float inputs:metallic_constant = 0
+                float inputs:reflection_roughness_constant = 0.45
+                token outputs:out
+            }
+
+            def Shader "PreviewSurface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.02, 0.02, 0.02)
+                float inputs:metallic = 0
+                float inputs:roughness = 0.45
+                token outputs:surface
+            }
+        }
+    }
+
+    over "r_index_finger_proximal"
+    {
+        over "visuals"
+        {
+            over "r_index_finger_proximal"
+            {
+                over "mesh" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </wujihand2_1_right_cover/Looks/VisualBlackShell>
+                }
+            }
+        }
+    }
+
+    over "r_index_finger_proximal_abd"
+    {
+        over "visuals"
+        {
+            over "r_index_finger_proximal_abd"
+            {
+                over "mesh" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </wujihand2_1_right_cover/Looks/VisualBlackShell>
+                }
+            }
+        }
+    }
+
+    over "r_index_finger_middle"
+    {
+        over "visuals"
+        {
+            over "r_index_finger_middle"
+            {
+                over "mesh" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </wujihand2_1_right_cover/Looks/VisualBlackShell>
+                }
+            }
+        }
+    }
+
+    over "r_index_finger_distal"
+    {
+        over "visuals"
+        {
+            over "r_index_finger_distal"
+            {
+                over "mesh" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </wujihand2_1_right_cover/Looks/VisualBlackShell>
+                }
+            }
+        }
+    }
+
+    over "r_middle_finger_proximal"
+    {
+        over "visuals"
+        {
+            over "r_middle_finger_proximal"
+            {
+                over "mesh" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </wujihand2_1_right_cover/Looks/VisualBlackShell>
+                }
+            }
+        }
+    }
+
+    over "r_middle_finger_proximal_abd"
+    {
+        over "visuals"
+        {
+            over "r_middle_finger_proximal_abd"
+            {
+                over "mesh" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </wujihand2_1_right_cover/Looks/VisualBlackShell>
+                }
+            }
+        }
+    }
+
+    over "r_middle_finger_middle"
+    {
+        over "visuals"
+        {
+            over "r_middle_finger_middle"
+            {
+                over "mesh" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </wujihand2_1_right_cover/Looks/VisualBlackShell>
+                }
+            }
+        }
+    }
+
+    over "r_middle_finger_distal"
+    {
+        over "visuals"
+        {
+            over "r_middle_finger_distal"
+            {
+                over "mesh" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </wujihand2_1_right_cover/Looks/VisualBlackShell>
+                }
+            }
+        }
+    }
+
+    over "r_pinky_proximal"
+    {
+        over "visuals"
+        {
+            over "r_pinky_proximal"
+            {
+                over "mesh" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </wujihand2_1_right_cover/Looks/VisualBlackShell>
+                }
+            }
+        }
+    }
+
+    over "r_pinky_proximal_abd"
+    {
+        over "visuals"
+        {
+            over "r_pinky_proximal_abd"
+            {
+                over "mesh" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </wujihand2_1_right_cover/Looks/VisualBlackShell>
+                }
+            }
+        }
+    }
+
+    over "r_pinky_middle"
+    {
+        over "visuals"
+        {
+            over "r_pinky_middle"
+            {
+                over "mesh" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </wujihand2_1_right_cover/Looks/VisualBlackShell>
+                }
+            }
+        }
+    }
+
+    over "r_pinky_distal"
+    {
+        over "visuals"
+        {
+            over "r_pinky_distal"
+            {
+                over "mesh" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </wujihand2_1_right_cover/Looks/VisualBlackShell>
+                }
+            }
+        }
+    }
+
+    over "r_ring_finger_proximal"
+    {
+        over "visuals"
+        {
+            over "r_ring_finger_proximal"
+            {
+                over "mesh" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </wujihand2_1_right_cover/Looks/VisualBlackShell>
+                }
+            }
+        }
+    }
+
+    over "r_ring_finger_proximal_abd"
+    {
+        over "visuals"
+        {
+            over "r_ring_finger_proximal_abd"
+            {
+                over "mesh" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </wujihand2_1_right_cover/Looks/VisualBlackShell>
+                }
+            }
+        }
+    }
+
+    over "r_ring_finger_middle"
+    {
+        over "visuals"
+        {
+            over "r_ring_finger_middle"
+            {
+                over "mesh" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </wujihand2_1_right_cover/Looks/VisualBlackShell>
+                }
+            }
+        }
+    }
+
+    over "r_ring_finger_distal"
+    {
+        over "visuals"
+        {
+            over "r_ring_finger_distal"
+            {
+                over "mesh" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </wujihand2_1_right_cover/Looks/VisualBlackShell>
+                }
+            }
+        }
+    }
+
+    over "r_thumb_proximal"
+    {
+        over "visuals"
+        {
+            over "r_thumb_proximal"
+            {
+                over "mesh" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </wujihand2_1_right_cover/Looks/VisualBlackShell>
+                }
+            }
+        }
+    }
+
+    over "r_thumb_proximal_abd"
+    {
+        over "visuals"
+        {
+            over "r_thumb_proximal_abd"
+            {
+                over "mesh" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </wujihand2_1_right_cover/Looks/VisualBlackShell>
+                }
+            }
+        }
+    }
+
+    over "r_thumb_middle"
+    {
+        over "visuals"
+        {
+            over "r_thumb_middle"
+            {
+                over "mesh" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </wujihand2_1_right_cover/Looks/VisualBlackShell>
+                }
+            }
+        }
+    }
+
+    over "r_thumb_distal"
+    {
+        over "visuals"
+        {
+            over "r_thumb_distal"
+            {
+                over "mesh" (
+                    prepend apiSchemas = ["MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </wujihand2_1_right_cover/Looks/VisualBlackShell>
+                }
+            }
+        }
+    }
+}
+
