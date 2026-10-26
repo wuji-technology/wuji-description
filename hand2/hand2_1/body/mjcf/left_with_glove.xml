@@ -1,0 +1,635 @@
+<mujoco model="wujihand2_1-left-glove">
+  <compiler angle="radian" meshdir="../meshes/left/" />
+  <option jacobian="sparse" integrator="RK4" timestep="0.002" solver="Newton" iterations="50" tolerance="1e-10" />
+  <default>
+    <joint armature="0.0002" damping="0.0" />
+  </default>
+  <asset>
+    <mesh name="l_mount" content_type="model/stl" file="l_mount.STL" />
+    <mesh name="l_wrist" content_type="model/stl" file="l_wrist.STL" />
+    <mesh name="l_thumb_proximal" content_type="model/stl" file="l_thumb_proximal.STL" />
+    <mesh name="l_thumb_proximal_abd" content_type="model/stl" file="l_thumb_proximal_abd.STL" />
+    <mesh name="l_thumb_middle" content_type="model/stl" file="l_thumb_middle.STL" />
+    <mesh name="l_thumb_distal" content_type="model/stl" file="l_thumb_distal.STL" />
+    <mesh name="l_thumb_middle_cover" content_type="model/stl" file="l_thumb_middle_cover.STL" />
+    <mesh name="l_thumb_palm_cover" content_type="model/stl" file="l_thumb_palm_cover.STL" />
+    <mesh name="l_index_finger_proximal" content_type="model/stl" file="l_index_finger_proximal.STL" />
+    <mesh name="l_index_finger_proximal_abd" content_type="model/stl" file="l_index_finger_proximal_abd.STL" />
+    <mesh name="l_index_finger_middle" content_type="model/stl" file="l_index_finger_middle.STL" />
+    <mesh name="l_index_finger_distal" content_type="model/stl" file="l_index_finger_distal.STL" />
+    <mesh name="l_index_finger_middle_cover" content_type="model/stl" file="l_index_finger_middle_cover.STL" />
+    <mesh name="l_index_finger_proximal_abd_cover" content_type="model/stl" file="l_index_finger_proximal_abd_cover.STL" />
+    <mesh name="l_index_palm_cover" content_type="model/stl" file="l_index_palm_cover.STL" />
+    <mesh name="l_middle_finger_proximal" content_type="model/stl" file="l_middle_finger_proximal.STL" />
+    <mesh name="l_middle_finger_proximal_abd" content_type="model/stl" file="l_middle_finger_proximal_abd.STL" />
+    <mesh name="l_middle_finger_middle" content_type="model/stl" file="l_middle_finger_middle.STL" />
+    <mesh name="l_middle_finger_distal" content_type="model/stl" file="l_middle_finger_distal.STL" />
+    <mesh name="l_middle_finger_middle_cover" content_type="model/stl" file="l_middle_finger_middle_cover.STL" />
+    <mesh name="l_middle_finger_proximal_abd_cover" content_type="model/stl" file="l_middle_finger_proximal_abd_cover.STL" />
+    <mesh name="l_middle_palm_cover" content_type="model/stl" file="l_middle_palm_cover.STL" />
+    <mesh name="l_ring_finger_proximal" content_type="model/stl" file="l_ring_finger_proximal.STL" />
+    <mesh name="l_ring_finger_proximal_abd" content_type="model/stl" file="l_ring_finger_proximal_abd.STL" />
+    <mesh name="l_ring_finger_middle" content_type="model/stl" file="l_ring_finger_middle.STL" />
+    <mesh name="l_ring_finger_distal" content_type="model/stl" file="l_ring_finger_distal.STL" />
+    <mesh name="l_ring_finger_middle_cover" content_type="model/stl" file="l_ring_finger_middle_cover.STL" />
+    <mesh name="l_ring_finger_proximal_abd_cover" content_type="model/stl" file="l_ring_finger_proximal_abd_cover.STL" />
+    <mesh name="l_ring_palm_cover" content_type="model/stl" file="l_ring_palm_cover.STL" />
+    <mesh name="l_pinky_proximal" content_type="model/stl" file="l_pinky_proximal.STL" />
+    <mesh name="l_pinky_proximal_abd" content_type="model/stl" file="l_pinky_proximal_abd.STL" />
+    <mesh name="l_pinky_middle" content_type="model/stl" file="l_pinky_middle.STL" />
+    <mesh name="l_pinky_distal" content_type="model/stl" file="l_pinky_distal.STL" />
+    <mesh name="l_pinky_middle_cover" content_type="model/stl" file="l_pinky_middle_cover.STL" />
+    <mesh name="l_pinky_proximal_abd_cover" content_type="model/stl" file="l_pinky_proximal_abd_cover.STL" />
+    <mesh name="l_pinky_proximal_cover" content_type="model/stl" file="l_pinky_proximal_cover.STL" />
+    <mesh name="l_adductor_pollicis_cover" content_type="model/stl" file="l_adductor_pollicis_cover.STL" />
+    <mesh name="l_thenar_cover" content_type="model/stl" file="l_thenar_cover.STL" />
+    <mesh name="l_midpalm_cover" content_type="model/stl" file="l_midpalm_cover.STL" />
+    <mesh name="l_hypothenar_cover" content_type="model/stl" file="l_hypothenar_cover.STL" />
+    <mesh name="l_palm_index_cover" content_type="model/stl" file="l_palm_index_cover.STL" />
+    <mesh name="l_palm_middle_cover" content_type="model/stl" file="l_palm_middle_cover.STL" />
+    <mesh name="l_palm_ring_cover" content_type="model/stl" file="l_palm_ring_cover.STL" />
+    <material name="matte_black" rgba="0 0 0 1" specular="0.2" shininess="0.1" reflectance="0" />
+    <material name="metal_silver" rgba="0.64 0.66 0.69 1" specular="1" shininess="0.8" reflectance="0.2" />
+    <material name="soft_rubber" rgba="0 0 0 1" specular="0.1" shininess="0.05" reflectance="0" />
+  <material name="visual_black_shell" rgba="0.02 0.02 0.02 1" specular="0.25" shininess="0.2" reflectance="0" />
+  <mesh name="l_index_finger_distal_nail_cap" content_type="model/stl" file="visual_nails/l_index_finger_distal_nail_cap.STL" />
+<mesh name="l_index_finger_distal_black_remainder" content_type="model/stl" file="visual_nails/l_index_finger_distal_black_remainder.STL" />
+<mesh name="l_middle_finger_distal_nail_cap" content_type="model/stl" file="visual_nails/l_middle_finger_distal_nail_cap.STL" />
+<mesh name="l_middle_finger_distal_black_remainder" content_type="model/stl" file="visual_nails/l_middle_finger_distal_black_remainder.STL" />
+<mesh name="l_pinky_distal_nail_cap" content_type="model/stl" file="visual_nails/l_pinky_distal_nail_cap.STL" />
+<mesh name="l_pinky_distal_black_remainder" content_type="model/stl" file="visual_nails/l_pinky_distal_black_remainder.STL" />
+<mesh name="l_ring_finger_distal_nail_cap" content_type="model/stl" file="visual_nails/l_ring_finger_distal_nail_cap.STL" />
+<mesh name="l_ring_finger_distal_black_remainder" content_type="model/stl" file="visual_nails/l_ring_finger_distal_black_remainder.STL" />
+<mesh name="l_thumb_distal_nail_cap" content_type="model/stl" file="visual_nails/l_thumb_distal_nail_cap.STL" />
+<mesh name="l_thumb_distal_black_remainder" content_type="model/stl" file="visual_nails/l_thumb_distal_black_remainder.STL" />
+  </asset>
+  <worldbody>
+    <body name="l_mount">
+      <inertial pos="-0.0028522763392 0.00108479281306 -0.0169637652923" mass="0.069" quat="0.06068677 0.83355757 -0.18140747 -0.51825691" diaginertia="2.60473092e-05 2.50880832e-05 1.69284673e-05" />
+      <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0 0 0 1" mesh="l_mount" material="matte_black" />
+      <geom type="mesh" rgba="0.8 0.6 1 0.3" mesh="l_mount" group="2" />
+      <body name="l_wrist" pos="0.00300066278665 0 -0.0285015084627" quat="1 0 0 -8.16917936e-06">
+        <inertial pos="-0.00231818979509 0.00322549328424 -0.036414568905" mass="0.2323" quat="-0.68484107 -0.15427429 0.08933392 0.70654908" diaginertia="1.49960227e-04 9.35661525e-05 7.76782770e-05" />
+        <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0 0 0 1" mesh="l_wrist" material="matte_black" />
+        <geom type="mesh" rgba="0.8 0.6 1 0.3" mesh="l_wrist" group="2" />
+        <body name="l_thumb_proximal" pos="0.0177341751 -0.00843768025 -0.0158889915" quat="0.617674343 0.0652633672 -0.730220488 -0.284599962">
+          <inertial pos="-0.000478234896315 0.000999067553197 -0.00724395038733" mass="0.011" quat="0.08105475 0.96390182 -0.13633448 0.21386050" diaginertia="8.28215915e-07 7.73490196e-07 6.26396633e-07" />
+          <joint name="l_thumb_cmc_flex" pos="0 0 0" axis="-1 0 0" range="-1.187 1.291" actuatorfrcrange="-0.6 0.6" armature="0.0005" />
+          <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.02 0.02 0.02 1" mesh="l_thumb_proximal" material="visual_black_shell" />
+          <geom type="mesh" rgba="0.8 0.6 1 0.3" mesh="l_thumb_proximal" group="2" />
+          <body name="l_thumb_proximal_abd" pos="0.000247878 0.000536583 -0.0147535" quat="0.934711 -0.0919298 0.342518 0.023367">
+            <inertial pos="-0.000160945 0.000312786 -0.01309" quat="0.863259 0.0053859 0.0176988 0.504422" mass="0.0336" diaginertia="4.1533e-06 4.02389e-06 1.2778e-06" />
+            <joint name="l_thumb_cmc_abd" pos="0 0 0" axis="0 1 0" range="-1.484 0.698" actuatorfrcrange="-0.6 0.6" armature="0.0005" />
+            <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.02 0.02 0.02 1" mesh="l_thumb_proximal_abd" material="visual_black_shell" />
+            <geom type="mesh" rgba="0.8 0.6 1 0.3" mesh="l_thumb_proximal_abd" group="2" />
+            <body name="l_thumb_middle" pos="-4.20091e-05 2.67627e-05 -0.0324956" quat="0.959136 0.012206 0.0418768 -0.279563">
+              <inertial pos="3.99333893286e-05 4.24938021858e-09 -0.0174991064458" mass="0.0381" quat="0.99979628 0.00000213 0.02018413 0.00006527" diaginertia="6.39540583e-06 6.36000287e-06 1.28150183e-06" />
+              <joint name="l_thumb_mcp" pos="0 0 0" axis="-1 0 0" range="-1.047 1.57" actuatorfrcrange="-0.3 0.3" />
+              <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.02 0.02 0.02 1" mesh="l_thumb_middle" material="visual_black_shell" />
+              <geom type="mesh" rgba="0.8 0.6 1 0.3" mesh="l_thumb_middle" group="2" />
+              <body name="l_thumb_distal" pos="5e-05 0 -0.035">
+                <inertial pos="0.000248914 -0.000167868 -0.0147116" quat="0.682334 0.069432 0.00152552 0.727734" mass="0.0117" diaginertia="1.0001e-06 9.27152e-07 5.13909e-07" />
+                <joint name="l_thumb_ip" pos="0 0 0" axis="-1 0 0" range="-1.047 1.57" actuatorfrcrange="-0.3 0.3" />
+                <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.02 0.02 0.02 1" mesh="l_thumb_distal_black_remainder" material="visual_black_shell" />
+<geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.64 0.66 0.69 1" mesh="l_thumb_distal_nail_cap" material="metal_silver" name="visual_nail_l_thumb_distal" />
+                <geom type="mesh" rgba="0.8 0.6 1 0.3" mesh="l_thumb_distal" group="2" />
+                <site name="l_thumb_tip" pos="0.000441885683058085 0.00147203036358472 -0.0298671735300184" group="3" size="0.002" rgba="1 0 0 1" />
+              </body>
+              <body name="l_thumb_middle_cover" pos="0 0 0">
+                <inertial pos="4.93553480301e-05 -0.0080706058583 -0.0123895034479" mass="0.001" quat="0.03394405 -0.70617273 0.70640836 0.03398691" diaginertia="1.33565625e-07 1.09373094e-07 4.16128893e-08" />
+                <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0 0 0 1" mesh="l_thumb_middle_cover" material="soft_rubber" />
+                <geom type="mesh" rgba="0.8 0.6 1 0.3" mesh="l_thumb_middle_cover" group="2" />
+              </body>
+            </body>
+          </body>
+          <body name="l_thumb_palm_cover" pos="0 0 0">
+            <inertial pos="0.00367377968186 -0.0146022037391 -0.00660999482518" mass="0.001" quat="0.43485027 0.63766747 -0.49437528 -0.39984811" diaginertia="3.88934352e-07 2.79950630e-07 1.42410329e-07" />
+            <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0 0 0 1" mesh="l_thumb_palm_cover" material="soft_rubber" />
+            <geom type="mesh" rgba="0.8 0.6 1 0.3" mesh="l_thumb_palm_cover" group="2" />
+          </body>
+        </body>
+        <body name="l_index_finger_proximal" pos="0.0249176878 0.00302554711 -0.0692017915" quat="0.99501199 0.0171757916 -0.0855119248 -0.0484132518">
+          <inertial pos="0.000867682025093 0.00162695832169 -0.007156216648" mass="0.0116" quat="0.97772983 0.08612160 0.15919409 0.10622941" diaginertia="9.41146394e-07 8.91018672e-07 7.28080063e-07" />
+          <joint name="l_index_finger_mcp_flex" pos="0 0 0" axis="-1 0 0" range="-1.047 1.57" actuatorfrcrange="-2 2" armature="0.0005" />
+          <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.02 0.02 0.02 1" mesh="l_index_finger_proximal" material="visual_black_shell" />
+          <geom type="mesh" rgba="0.8 0.6 1 0.3" mesh="l_index_finger_proximal" group="2" />
+          <body name="l_index_finger_proximal_abd" pos="0 0.0012 -0.0145">
+            <inertial pos="8.23907672802e-08 -1.25841824314e-07 -0.0187997673442" mass="0.0339" quat="0.00000273 -0.26000856 0.96560631 0.00001729" diaginertia="7.01476540e-06 7.01412212e-06 9.14585346e-07" />
+            <joint name="l_index_finger_mcp_abd" pos="0 0 0" axis="0 1 0" range="-0.698 0.698" actuatorfrcrange="-0.2 0.2" />
+            <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.02 0.02 0.02 1" mesh="l_index_finger_proximal_abd" material="visual_black_shell" />
+            <geom type="mesh" rgba="0.8 0.6 1 0.3" mesh="l_index_finger_proximal_abd" group="2" />
+            <body name="l_index_finger_middle" pos="0 0 -0.0376">
+              <inertial pos="1.42719932012e-07 0.000247723983793 -0.0190365013543" mass="0.0212" quat="-0.01078657 -0.70671321 0.70733541 -0.01080277" diaginertia="2.47796213e-06 2.40526343e-06 6.52492914e-07" />
+              <joint name="l_index_finger_pip" pos="0 0 0" axis="-1 0 0" range="-1.047 2.094" actuatorfrcrange="-0.3 0.3" />
+              <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.02 0.02 0.02 1" mesh="l_index_finger_middle" material="visual_black_shell" />
+              <geom type="mesh" rgba="0.8 0.6 1 0.3" mesh="l_index_finger_middle" group="2" />
+              <body name="l_index_finger_distal" pos="0 0 -0.0295">
+                <inertial pos="1.82235e-05 0.000414398 -0.0118304" quat="0.70114 0.0302402 -0.0320938 0.711659" mass="0.0078" diaginertia="5.71318e-07 5.31417e-07 2.7055e-07" />
+                <joint name="l_index_finger_dip" pos="0 0 0" axis="-1 0 0" range="-1.047 1.57" actuatorfrcrange="-0.3 0.3" />
+                <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.02 0.02 0.02 1" mesh="l_index_finger_distal_black_remainder" material="visual_black_shell" />
+<geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.64 0.66 0.69 1" mesh="l_index_finger_distal_nail_cap" material="metal_silver" name="visual_nail_l_index_finger_distal" />
+                <geom type="mesh" rgba="0.8 0.6 1 0.3" mesh="l_index_finger_distal" group="2" />
+                <site name="l_index_finger_tip" pos="-3.35365900396567E-05 -0.000137600691732409 -0.0245946067668388" group="3" size="0.002" rgba="1 0 0 1" />
+              </body>
+              <body name="l_index_finger_middle_cover" pos="0 0 0">
+                <inertial pos="0.000157246534023 -0.00568382471376 -0.0142973734129" mass="0.001" quat="-0.51772928 0.47408914 0.52359102 -0.48275080" diaginertia="5.74443772e-08 4.92806075e-08 3.29463886e-08" />
+                <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0 0 0 1" mesh="l_index_finger_middle_cover" material="soft_rubber" />
+                <geom type="mesh" rgba="0.8 0.6 1 0.3" mesh="l_index_finger_middle_cover" group="2" />
+              </body>
+            </body>
+            <body name="l_index_finger_proximal_abd_cover" pos="0 0 0">
+              <inertial pos="0.000104033344031 -0.00680689334204 -0.0140112727286" mass="0.001" quat="-0.01466343 0.71013409 -0.70381202 -0.01196623" diaginertia="1.10436174e-07 8.44318499e-08 5.34058351e-08" />
+              <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0 0 0 1" mesh="l_index_finger_proximal_abd_cover" material="soft_rubber" />
+              <geom type="mesh" rgba="0.8 0.6 1 0.3" mesh="l_index_finger_proximal_abd_cover" group="2" />
+            </body>
+          </body>
+          <body name="l_index_palm_cover" pos="0 0 0">
+            <inertial pos="0.0037146817147 -0.00912825069671 -0.00169804452529" mass="0.001" quat="-0.39809088 0.28465299 0.64582869 -0.58600480" diaginertia="8.60593631e-08 6.08469146e-08 4.45034526e-08" />
+            <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0 0 0 1" mesh="l_index_palm_cover" material="soft_rubber" />
+            <geom type="mesh" rgba="0.8 0.6 1 0.3" mesh="l_index_palm_cover" group="2" />
+          </body>
+        </body>
+        <body name="l_middle_finger_proximal" pos="0.00334794646 0.0080030447 -0.0738434915" quat="0.999799104 0.0169471892 -0.0106885627 0.000547001597">
+          <inertial pos="0.000867682025093 0.00162695832169 -0.007156216648" mass="0.0116" quat="0.97772983 0.08612160 0.15919409 0.10622941" diaginertia="9.41146394e-07 8.91018672e-07 7.28080063e-07" />
+          <joint name="l_middle_finger_mcp_flex" pos="0 0 0" axis="-1 0 0" range="-1.047 1.57" actuatorfrcrange="-2 2" armature="0.0005" />
+          <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.02 0.02 0.02 1" mesh="l_middle_finger_proximal" material="visual_black_shell" />
+          <geom type="mesh" rgba="0.8 0.6 1 0.3" mesh="l_middle_finger_proximal" group="2" />
+          <body name="l_middle_finger_proximal_abd" pos="0 0.0012 -0.0145">
+            <inertial pos="8.23907672802e-08 -1.25841824314e-07 -0.0187997673442" mass="0.0339" quat="0.00000273 -0.26000856 0.96560631 0.00001729" diaginertia="7.01476540e-06 7.01412212e-06 9.14585346e-07" />
+            <joint name="l_middle_finger_mcp_abd" pos="0 0 0" axis="0 1 0" range="-0.698 0.698" actuatorfrcrange="-0.2 0.2" />
+            <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.02 0.02 0.02 1" mesh="l_middle_finger_proximal_abd" material="visual_black_shell" />
+            <geom type="mesh" rgba="0.8 0.6 1 0.3" mesh="l_middle_finger_proximal_abd" group="2" />
+            <body name="l_middle_finger_middle" pos="0 0 -0.0376">
+              <inertial pos="1.42719932012e-07 0.000247723983793 -0.0190365013543" mass="0.0212" quat="-0.01078657 -0.70671321 0.70733541 -0.01080277" diaginertia="2.47796213e-06 2.40526343e-06 6.52492914e-07" />
+              <joint name="l_middle_finger_pip" pos="0 0 0" axis="-1 0 0" range="-1.047 2.094" actuatorfrcrange="-0.3 0.3" />
+              <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.02 0.02 0.02 1" mesh="l_middle_finger_middle" material="visual_black_shell" />
+              <geom type="mesh" rgba="0.8 0.6 1 0.3" mesh="l_middle_finger_middle" group="2" />
+              <body name="l_middle_finger_distal" pos="0 0 -0.0295">
+                <inertial pos="1.82235e-05 0.000414398 -0.0118304" quat="0.70114 0.0302402 -0.0320938 0.711659" mass="0.0078" diaginertia="5.71318e-07 5.31417e-07 2.7055e-07" />
+                <joint name="l_middle_finger_dip" pos="0 0 0" axis="-1 0 0" range="-1.047 1.57" actuatorfrcrange="-0.3 0.3" />
+                <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.02 0.02 0.02 1" mesh="l_middle_finger_distal_black_remainder" material="visual_black_shell" />
+<geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.64 0.66 0.69 1" mesh="l_middle_finger_distal_nail_cap" material="metal_silver" name="visual_nail_l_middle_finger_distal" />
+                <geom type="mesh" rgba="0.8 0.6 1 0.3" mesh="l_middle_finger_distal" group="2" />
+                <site name="l_middle_finger_tip" pos="-3.35365900397677E-05 -0.000137600691732465 -0.0245946067668388" group="3" size="0.002" rgba="1 0 0 1" />
+              </body>
+              <body name="l_middle_finger_middle_cover" pos="0 0 0">
+                <inertial pos="0.000157246534023 -0.00568382471376 -0.0142973734129" mass="0.001" quat="-0.51772928 0.47408914 0.52359102 -0.48275080" diaginertia="5.74443772e-08 4.92806075e-08 3.29463886e-08" />
+                <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0 0 0 1" mesh="l_middle_finger_middle_cover" material="soft_rubber" />
+                <geom type="mesh" rgba="0.8 0.6 1 0.3" mesh="l_middle_finger_middle_cover" group="2" />
+              </body>
+            </body>
+            <body name="l_middle_finger_proximal_abd_cover" pos="0 0 0">
+              <inertial pos="0.000104033344031 -0.00680689334204 -0.0140112727286" mass="0.001" quat="-0.01466343 0.71013409 -0.70381202 -0.01196623" diaginertia="1.10436174e-07 8.44318499e-08 5.34058351e-08" />
+              <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0 0 0 1" mesh="l_middle_finger_proximal_abd_cover" material="soft_rubber" />
+              <geom type="mesh" rgba="0.8 0.6 1 0.3" mesh="l_middle_finger_proximal_abd_cover" group="2" />
+            </body>
+          </body>
+          <body name="l_middle_palm_cover" pos="0 0 0">
+            <inertial pos="0.000226759452817 -0.0132240526041 -0.00173646446336" mass="0.001" quat="-0.19150164 0.70881616 0.67247750 -0.09317070" diaginertia="6.38710564e-08 3.96282458e-08 3.74552969e-08" />
+            <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0 0 0 1" mesh="l_middle_palm_cover" material="soft_rubber" />
+            <geom type="mesh" rgba="0.8 0.6 1 0.3" mesh="l_middle_palm_cover" group="2" />
+          </body>
+        </body>
+        <body name="l_ring_finger_proximal" pos="-0.0176131493 0.00529263223 -0.0660037915" quat="0.997917028 0.00534081375 0.0548241602 0.0335766623">
+          <inertial pos="0.000867682025093 0.00162695832169 -0.007156216648" mass="0.0116" quat="0.97772983 0.08612160 0.15919409 0.10622941" diaginertia="9.41146394e-07 8.91018672e-07 7.28080063e-07" />
+          <joint name="l_ring_finger_mcp_flex" pos="0 0 0" axis="-1 0 0" range="-1.047 1.57" actuatorfrcrange="-2 2" armature="0.0005" />
+          <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.02 0.02 0.02 1" mesh="l_ring_finger_proximal" material="visual_black_shell" />
+          <geom type="mesh" rgba="0.8 0.6 1 0.3" mesh="l_ring_finger_proximal" group="2" />
+          <body name="l_ring_finger_proximal_abd" pos="0 0.0012 -0.0145">
+            <inertial pos="8.23907672803e-08 -1.25841824314e-07 -0.0187997673442" mass="0.0339" quat="0.00000273 -0.26000856 0.96560631 0.00001729" diaginertia="7.01476540e-06 7.01412212e-06 9.14585346e-07" />
+            <joint name="l_ring_finger_mcp_abd" pos="0 0 0" axis="0 1 0" range="-0.698 0.698" actuatorfrcrange="-0.2 0.2" />
+            <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.02 0.02 0.02 1" mesh="l_ring_finger_proximal_abd" material="visual_black_shell" />
+            <geom type="mesh" rgba="0.8 0.6 1 0.3" mesh="l_ring_finger_proximal_abd" group="2" />
+            <body name="l_ring_finger_middle" pos="0 0 -0.0376">
+              <inertial pos="1.42719932012e-07 0.000247723983793 -0.0190365013543" mass="0.0212" quat="-0.01078657 -0.70671321 0.70733541 -0.01080277" diaginertia="2.47796213e-06 2.40526343e-06 6.52492914e-07" />
+              <joint name="l_ring_finger_pip" pos="0 0 0" axis="-1 0 0" range="-1.047 2.094" actuatorfrcrange="-0.3 0.3" />
+              <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.02 0.02 0.02 1" mesh="l_ring_finger_middle" material="visual_black_shell" />
+              <geom type="mesh" rgba="0.8 0.6 1 0.3" mesh="l_ring_finger_middle" group="2" />
+              <body name="l_ring_finger_distal" pos="0 0 -0.0295">
+                <inertial pos="1.82235e-05 0.000414398 -0.0118304" quat="0.70114 0.0302402 -0.0320938 0.711659" mass="0.0078" diaginertia="5.71318e-07 5.31417e-07 2.7055e-07" />
+                <joint name="l_ring_finger_dip" pos="0 0 0" axis="-1 0 0" range="-1.047 1.57" actuatorfrcrange="-0.3 0.3" />
+                <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.02 0.02 0.02 1" mesh="l_ring_finger_distal_black_remainder" material="visual_black_shell" />
+<geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.64 0.66 0.69 1" mesh="l_ring_finger_distal_nail_cap" material="metal_silver" name="visual_nail_l_ring_finger_distal" />
+                <geom type="mesh" rgba="0.8 0.6 1 0.3" mesh="l_ring_finger_distal" group="2" />
+                <site name="l_ring_finger_tip" pos="-3.35365634959658E-05 -0.000137600691743345 -0.024594606766875" group="3" size="0.002" rgba="1 0 0 1" />
+              </body>
+              <body name="l_ring_finger_middle_cover" pos="0 0 0">
+                <inertial pos="0.000157246534023 -0.00568382471376 -0.0142973734129" mass="0.001" quat="-0.51772928 0.47408914 0.52359102 -0.48275080" diaginertia="5.74443772e-08 4.92806075e-08 3.29463886e-08" />
+                <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0 0 0 1" mesh="l_ring_finger_middle_cover" material="soft_rubber" />
+                <geom type="mesh" rgba="0.8 0.6 1 0.3" mesh="l_ring_finger_middle_cover" group="2" />
+              </body>
+            </body>
+            <body name="l_ring_finger_proximal_abd_cover" pos="0 0 0">
+              <inertial pos="0.000104033344031 -0.00680689334204 -0.0140112727286" mass="0.001" quat="-0.01466343 0.71013409 -0.70381202 -0.01196623" diaginertia="1.10436174e-07 8.44318499e-08 5.34058351e-08" />
+              <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0 0 0 1" mesh="l_ring_finger_proximal_abd_cover" material="soft_rubber" />
+              <geom type="mesh" rgba="0.8 0.6 1 0.3" mesh="l_ring_finger_proximal_abd_cover" group="2" />
+            </body>
+          </body>
+          <body name="l_ring_palm_cover" pos="0 0 0">
+            <inertial pos="-0.000724525899558 -0.0126207896835 -0.00206943111222" mass="0.001" quat="0.73577942 -0.02429823 0.08137662 -0.67187506" diaginertia="6.27874352e-08 4.38819922e-08 3.23715280e-08" />
+            <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0 0 0 1" mesh="l_ring_palm_cover" material="soft_rubber" />
+            <geom type="mesh" rgba="0.8 0.6 1 0.3" mesh="l_ring_palm_cover" group="2" />
+          </body>
+        </body>
+        <body name="l_pinky_proximal" pos="-0.0355381699 0.000433168365 -0.0564762915" quat="0.991883522 0.00528714195 0.10874505 0.0656783067">
+          <inertial pos="0.000882017267177 0.00163629513041 -0.0071536348949" mass="0.0116" quat="0.97739624 0.08687122 0.15815776 0.11016401" diaginertia="9.42399288e-07 8.91189366e-07 7.27819242e-07" />
+          <joint name="l_pinky_mcp_flex" pos="0 0 0" axis="-1 0 0" range="-1.047 1.57" actuatorfrcrange="-2 2" armature="0.0005" />
+          <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.02 0.02 0.02 1" mesh="l_pinky_proximal" material="visual_black_shell" />
+          <geom type="mesh" rgba="0.8 0.6 1 0.3" mesh="l_pinky_proximal" group="2" />
+          <body name="l_pinky_proximal_abd" pos="0 0.0012 -0.0145">
+            <inertial pos="1.15975338441e-06 4.56538610191e-07 -0.0167851563063" mass="0.0304" quat="0.00000518 -0.63159043 0.77530221 0.00002745" diaginertia="5.37984173e-06 5.37904692e-06 8.17724894e-07" />
+            <joint name="l_pinky_mcp_abd" pos="0 0 0" axis="0 1 0" range="-0.698 0.698" actuatorfrcrange="-0.2 0.2" />
+            <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.02 0.02 0.02 1" mesh="l_pinky_proximal_abd" material="visual_black_shell" />
+            <geom type="mesh" rgba="0.8 0.6 1 0.3" mesh="l_pinky_proximal_abd" group="2" />
+            <body name="l_pinky_middle" pos="0 0 -0.0336">
+              <inertial pos="-2.87239936298e-08 0.000264300886789 -0.0178856192571" mass="0.0188" quat="-0.01127106 -0.70677705 0.70725637 -0.01129572" diaginertia="2.05981057e-06 1.98682246e-06 5.85023227e-07" />
+              <joint name="l_pinky_pip" pos="0 0 0" axis="-1 0 0" range="-1.047 2.094" actuatorfrcrange="-0.3 0.3" />
+              <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.02 0.02 0.02 1" mesh="l_pinky_middle" material="visual_black_shell" />
+              <geom type="mesh" rgba="0.8 0.6 1 0.3" mesh="l_pinky_middle" group="2" />
+              <body name="l_pinky_distal" pos="0 0 -0.0275">
+                <inertial pos="1.82235e-05 0.000718558 -0.0118158" quat="0.700693 0.0392557 -0.0412444 0.711187" mass="0.0078" diaginertia="5.71318e-07 5.31417e-07 2.7055e-07" />
+                <joint name="l_pinky_dip" pos="0 0 0" axis="-1 0 0" range="-1.047 1.57" actuatorfrcrange="-0.3 0.3" />
+                <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.02 0.02 0.02 1" mesh="l_pinky_distal_black_remainder" material="visual_black_shell" />
+<geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.64 0.66 0.69 1" mesh="l_pinky_distal_nail_cap" material="metal_silver" name="visual_nail_l_pinky_distal" />
+                <geom type="mesh" rgba="0.8 0.6 1 0.3" mesh="l_pinky_distal" group="2" />
+                <site name="l_pinky_tip" pos="-3.35366128460107E-05 0.000495057777001429 -0.0245900088198784" group="3" size="0.002" rgba="1 0 0 1" />
+              </body>
+              <body name="l_pinky_middle_cover" pos="0 0 0">
+                <inertial pos="-0.000101158926373 -0.00559213886366 -0.013398122145" mass="0.001" quat="-0.52407606 0.47465465 0.52411144 -0.47471512" diaginertia="5.14980709e-08 4.77986176e-08 2.75707169e-08" />
+                <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0 0 0 1" mesh="l_pinky_middle_cover" material="soft_rubber" />
+                <geom type="mesh" rgba="0.8 0.6 1 0.3" mesh="l_pinky_middle_cover" group="2" />
+              </body>
+            </body>
+            <body name="l_pinky_proximal_abd_cover" pos="0 0 0">
+              <inertial pos="-1.06898802197e-06 -0.00669258402898 -0.0120938434425" mass="0.001" quat="0.01952837 -0.70679442 0.70687884 0.01956018" diaginertia="9.08902185e-08 6.58120215e-08 5.08731221e-08" />
+              <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0 0 0 1" mesh="l_pinky_proximal_abd_cover" material="soft_rubber" />
+              <geom type="mesh" rgba="0.8 0.6 1 0.3" mesh="l_pinky_proximal_abd_cover" group="2" />
+            </body>
+          </body>
+          <body name="l_pinky_proximal_cover" pos="0 0 0">
+            <inertial pos="-0.00357146630247 -0.0104082821504 -0.00293772082793" mass="0.001" quat="0.63254139 -0.58794910 -0.37626762 0.33560381" diaginertia="8.35344615e-08 6.66326309e-08 3.61833868e-08" />
+            <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0 0 0 1" mesh="l_pinky_proximal_cover" material="soft_rubber" />
+            <geom type="mesh" rgba="0.8 0.6 1 0.3" mesh="l_pinky_proximal_cover" group="2" />
+          </body>
+        </body>
+        <body name="l_adductor_pollicis_cover" pos="0 0 0">
+          <inertial pos="0.037648146911 -0.000697612822087 -0.0306995970617" mass="0.001" quat="-0.00122595 -0.39587104 0.91740137 0.04073501" diaginertia="1.05667869e-07 8.42327396e-08 3.52248864e-08" />
+          <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0 0 0 1" mesh="l_adductor_pollicis_cover" material="soft_rubber" />
+          <geom type="mesh" rgba="0.8 0.6 1 0.3" mesh="l_adductor_pollicis_cover" group="2" />
+        </body>
+        <body name="l_thenar_cover" pos="0 0 0">
+          <inertial pos="0.0148237528252 -0.0232480647162 -0.0189733313342" mass="0.001" quat="-0.63453707 -0.19839155 -0.00045907 0.74699618" diaginertia="3.65094857e-07 2.97182330e-07 1.01725415e-07" />
+          <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0 0 0 1" mesh="l_thenar_cover" material="soft_rubber" />
+          <geom type="mesh" rgba="0.8 0.6 1 0.3" mesh="l_thenar_cover" group="2" />
+        </body>
+        <body name="l_midpalm_cover" pos="0 0 0">
+          <inertial pos="-0.0038802867333 -0.0121457595298 -0.0424905664748" mass="0.001" quat="0.08131626 0.69669648 0.66042560 0.26802931" diaginertia="1.00392773e-07 7.29209271e-08 4.06097461e-08" />
+          <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0 0 0 1" mesh="l_midpalm_cover" material="soft_rubber" />
+          <geom type="mesh" rgba="0.8 0.6 1 0.3" mesh="l_midpalm_cover" group="2" />
+        </body>
+        <body name="l_hypothenar_cover" pos="0 0 0">
+          <inertial pos="-0.0273107320648 -0.0164067851136 -0.021659684113" mass="0.001" quat="-0.19302626 0.80313556 0.55931066 -0.06989788" diaginertia="3.11321118e-07 2.46643272e-07 1.10834917e-07" />
+          <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0 0 0 1" mesh="l_hypothenar_cover" material="soft_rubber" />
+          <geom type="mesh" rgba="0.8 0.6 1 0.3" mesh="l_hypothenar_cover" group="2" />
+        </body>
+        <body name="l_palm_index_cover" pos="0 0 0">
+          <inertial pos="0.0287363880983 -0.00778221283973 -0.0642172348435" mass="0.001" quat="0.36674388 0.79569462 -0.32149120 -0.35918298" diaginertia="9.93684273e-08 7.41817857e-08 4.93915273e-08" />
+          <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0 0 0 1" mesh="l_palm_index_cover" material="soft_rubber" />
+          <geom type="mesh" rgba="0.8 0.6 1 0.3" mesh="l_palm_index_cover" group="2" />
+        </body>
+        <body name="l_palm_middle_cover" pos="0 0 0">
+          <inertial pos="0.00402354854428 -0.0103283146595 -0.0635870253992" mass="0.001" quat="-0.53264379 -0.40836452 0.50996865 0.53801579" diaginertia="5.15669709e-08 3.31902959e-08 2.48613778e-08" />
+          <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0 0 0 1" mesh="l_palm_middle_cover" material="soft_rubber" />
+          <geom type="mesh" rgba="0.8 0.6 1 0.3" mesh="l_palm_middle_cover" group="2" />
+        </body>
+        <body name="l_palm_ring_cover" pos="0 0 0">
+          <inertial pos="-0.0172129453634 -0.00779571788904 -0.0664263142104" mass="0.001" quat="0.74937886 -0.03850809 0.19937715 -0.63023583" diaginertia="6.94255513e-08 5.20144620e-08 3.12263255e-08" />
+          <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0 0 0 1" mesh="l_palm_ring_cover" material="soft_rubber" />
+          <geom type="mesh" rgba="0.8 0.6 1 0.3" mesh="l_palm_ring_cover" group="2" />
+        </body>
+        <site name="l_wrist_imu_frame" pos="-0.0128367 0.00768247 -0.0309845" quat="0.4033462967 0.56372615048 -0.442106809079 0.569268092879" group="4" size="0.002" rgba="0 1 0 1" />
+      </body>
+    </body>
+  </worldbody>
+  <actuator>
+    <position name="l_THJ0" joint="l_thumb_cmc_flex" kp="0.40844710645048043" kv="0.020882010257063675" ctrlrange="-1.187 1.291" forcerange="-0.6 0.6" />
+    <position name="l_THJ1" joint="l_thumb_cmc_abd" kp="0.6858601063643346" kv="0.030610939996373314" ctrlrange="-1.484 0.698" forcerange="-0.6 0.6" />
+    <position name="l_THJ2" joint="l_thumb_mcp" kp="0.2391112196099482" kv="0.010181475050560962" ctrlrange="-1.047 1.57" forcerange="-0.3 0.3" />
+    <position name="l_THJ3" joint="l_thumb_ip" kp="0.20736128319711747" kv="0.00909698844675045" ctrlrange="-1.047 1.57" forcerange="-0.3 0.3" />
+    <position name="l_FFJ0" joint="l_index_finger_mcp_flex" kp="0.37352218155860073" kv="0.01882274330029718" ctrlrange="-1.047 1.57" forcerange="-2 2" />
+    <position name="l_FFJ1" joint="l_index_finger_mcp_abd" kp="0.45592448909027794" kv="0.019798167597016643" ctrlrange="-0.698 0.698" forcerange="-0.2 0.2" />
+    <position name="l_FFJ2" joint="l_index_finger_pip" kp="0.24368366649522863" kv="0.010477031953162727" ctrlrange="-1.047 2.094" forcerange="-0.3 0.3" />
+    <position name="l_FFJ3" joint="l_index_finger_dip" kp="0.18026971340925335" kv="0.008240212147903584" ctrlrange="-1.047 1.57" forcerange="-0.3 0.3" />
+    <position name="l_MFJ0" joint="l_middle_finger_mcp_flex" kp="0.3687093483646485" kv="0.01848622487024593" ctrlrange="-1.047 1.57" forcerange="-2 2" />
+    <position name="l_MFJ1" joint="l_middle_finger_mcp_abd" kp="0.4164253443634641" kv="0.018032947229953678" ctrlrange="-0.698 0.698" forcerange="-0.2 0.2" />
+    <position name="l_MFJ2" joint="l_middle_finger_pip" kp="0.22218607502059182" kv="0.009592200014076666" ctrlrange="-1.047 2.094" forcerange="-0.3 0.3" />
+    <position name="l_MFJ3" joint="l_middle_finger_dip" kp="0.19427606072023446" kv="0.009152994605972402" ctrlrange="-1.047 1.57" forcerange="-0.3 0.3" />
+    <position name="l_RFJ0" joint="l_ring_finger_mcp_flex" kp="0.35718151495111794" kv="0.018376606800780005" ctrlrange="-1.047 1.57" forcerange="-2 2" />
+    <position name="l_RFJ1" joint="l_ring_finger_mcp_abd" kp="0.42977315313086895" kv="0.01867700966212433" ctrlrange="-0.698 0.698" forcerange="-0.2 0.2" />
+    <position name="l_RFJ2" joint="l_ring_finger_pip" kp="0.24930151196247122" kv="0.01059512121009555" ctrlrange="-1.047 2.094" forcerange="-0.3 0.3" />
+    <position name="l_RFJ3" joint="l_ring_finger_dip" kp="0.2285032688178066" kv="0.009917602877441107" ctrlrange="-1.047 1.57" forcerange="-0.3 0.3" />
+    <position name="l_LFJ0" joint="l_pinky_mcp_flex" kp="0.3655325975433942" kv="0.018616960278988272" ctrlrange="-1.047 1.57" forcerange="-2 2" />
+    <position name="l_LFJ1" joint="l_pinky_mcp_abd" kp="0.41393113081120425" kv="0.018732177029667153" ctrlrange="-0.698 0.698" forcerange="-0.2 0.2" />
+    <position name="l_LFJ2" joint="l_pinky_pip" kp="0.22729367621965954" kv="0.00951005441616486" ctrlrange="-1.047 2.094" forcerange="-0.3 0.3" />
+    <position name="l_LFJ3" joint="l_pinky_dip" kp="0.1964723550341816" kv="0.009017295241756363" ctrlrange="-1.047 1.57" forcerange="-0.3 0.3" />
+  </actuator>
+  <sensor>
+    <accelerometer name="l_wrist_imu_acc" site="l_wrist_imu_frame" />
+    <gyro name="l_wrist_imu_gyro" site="l_wrist_imu_frame" />
+  </sensor>
+  <contact>
+    <exclude body1="l_adductor_pollicis_cover" body2="l_index_palm_cover" />
+    <exclude body1="l_adductor_pollicis_cover" body2="l_palm_index_cover" />
+    <exclude body1="l_adductor_pollicis_cover" body2="l_thumb_middle" />
+    <exclude body1="l_adductor_pollicis_cover" body2="l_thumb_middle_cover" />
+    <exclude body1="l_adductor_pollicis_cover" body2="l_thumb_palm_cover" />
+    <exclude body1="l_adductor_pollicis_cover" body2="l_thumb_proximal" />
+    <exclude body1="l_adductor_pollicis_cover" body2="l_thumb_proximal_abd" />
+    <exclude body1="l_adductor_pollicis_cover" body2="l_wrist" />
+    <exclude body1="l_hypothenar_cover" body2="l_middle_finger_distal" />
+    <exclude body1="l_hypothenar_cover" body2="l_middle_finger_middle" />
+    <exclude body1="l_hypothenar_cover" body2="l_midpalm_cover" />
+    <exclude body1="l_hypothenar_cover" body2="l_mount" />
+    <exclude body1="l_hypothenar_cover" body2="l_palm_ring_cover" />
+    <exclude body1="l_hypothenar_cover" body2="l_pinky_distal" />
+    <exclude body1="l_hypothenar_cover" body2="l_pinky_middle" />
+    <exclude body1="l_hypothenar_cover" body2="l_pinky_proximal" />
+    <exclude body1="l_hypothenar_cover" body2="l_pinky_proximal_abd" />
+    <exclude body1="l_hypothenar_cover" body2="l_pinky_proximal_abd_cover" />
+    <exclude body1="l_hypothenar_cover" body2="l_pinky_proximal_cover" />
+    <exclude body1="l_hypothenar_cover" body2="l_ring_finger_distal" />
+    <exclude body1="l_hypothenar_cover" body2="l_ring_finger_middle" />
+    <exclude body1="l_hypothenar_cover" body2="l_ring_finger_middle_cover" />
+    <exclude body1="l_hypothenar_cover" body2="l_ring_finger_proximal_abd_cover" />
+    <exclude body1="l_hypothenar_cover" body2="l_ring_palm_cover" />
+    <exclude body1="l_hypothenar_cover" body2="l_thenar_cover" />
+    <exclude body1="l_hypothenar_cover" body2="l_thumb_palm_cover" />
+    <exclude body1="l_hypothenar_cover" body2="l_wrist" />
+    <exclude body1="l_index_finger_distal" body2="l_index_finger_middle_cover" />
+    <exclude body1="l_index_finger_distal" body2="l_index_finger_proximal_abd_cover" />
+    <exclude body1="l_index_finger_distal" body2="l_index_palm_cover" />
+    <exclude body1="l_index_finger_distal" body2="l_middle_finger_middle_cover" />
+    <exclude body1="l_index_finger_distal" body2="l_midpalm_cover" />
+    <exclude body1="l_index_finger_distal" body2="l_palm_index_cover" />
+    <exclude body1="l_index_finger_distal" body2="l_palm_middle_cover" />
+    <exclude body1="l_index_finger_distal" body2="l_ring_finger_middle_cover" />
+    <exclude body1="l_index_finger_distal" body2="l_thenar_cover" />
+    <exclude body1="l_index_finger_distal" body2="l_thumb_middle_cover" />
+    <exclude body1="l_index_finger_distal" body2="l_thumb_palm_cover" />
+    <exclude body1="l_index_finger_middle" body2="l_index_finger_middle_cover" />
+    <exclude body1="l_index_finger_middle" body2="l_index_finger_proximal_abd_cover" />
+    <exclude body1="l_index_finger_middle" body2="l_middle_finger_middle_cover" />
+    <exclude body1="l_index_finger_middle" body2="l_middle_finger_proximal_abd_cover" />
+    <exclude body1="l_index_finger_middle" body2="l_midpalm_cover" />
+    <exclude body1="l_index_finger_middle" body2="l_ring_finger_middle_cover" />
+    <exclude body1="l_index_finger_middle" body2="l_thumb_palm_cover" />
+    <exclude body1="l_index_finger_middle_cover" body2="l_index_finger_proximal_abd" />
+    <exclude body1="l_index_finger_middle_cover" body2="l_index_finger_proximal_abd_cover" />
+    <exclude body1="l_index_finger_middle_cover" body2="l_middle_finger_distal" />
+    <exclude body1="l_index_finger_middle_cover" body2="l_middle_finger_middle" />
+    <exclude body1="l_index_finger_middle_cover" body2="l_middle_finger_middle_cover" />
+    <exclude body1="l_index_finger_middle_cover" body2="l_middle_finger_proximal_abd" />
+    <exclude body1="l_index_finger_middle_cover" body2="l_middle_finger_proximal_abd_cover" />
+    <exclude body1="l_index_finger_middle_cover" body2="l_ring_finger_distal" />
+    <exclude body1="l_index_finger_middle_cover" body2="l_ring_finger_middle" />
+    <exclude body1="l_index_finger_proximal" body2="l_index_finger_proximal_abd_cover" />
+    <exclude body1="l_index_finger_proximal" body2="l_index_palm_cover" />
+    <exclude body1="l_index_finger_proximal" body2="l_middle_palm_cover" />
+    <exclude body1="l_index_finger_proximal" body2="l_palm_index_cover" />
+    <exclude body1="l_index_finger_proximal" body2="l_palm_middle_cover" />
+    <exclude body1="l_index_finger_proximal" body2="l_thumb_middle_cover" />
+    <exclude body1="l_index_finger_proximal" body2="l_wrist" />
+    <exclude body1="l_index_finger_proximal_abd" body2="l_index_finger_proximal_abd_cover" />
+    <exclude body1="l_index_finger_proximal_abd" body2="l_index_palm_cover" />
+    <exclude body1="l_index_finger_proximal_abd" body2="l_middle_finger_middle_cover" />
+    <exclude body1="l_index_finger_proximal_abd" body2="l_middle_finger_proximal_abd_cover" />
+    <exclude body1="l_index_finger_proximal_abd" body2="l_middle_palm_cover" />
+    <exclude body1="l_index_finger_proximal_abd" body2="l_palm_index_cover" />
+    <exclude body1="l_index_finger_proximal_abd" body2="l_palm_middle_cover" />
+    <exclude body1="l_index_finger_proximal_abd" body2="l_thumb_middle_cover" />
+    <exclude body1="l_index_finger_proximal_abd" body2="l_wrist" />
+    <exclude body1="l_index_finger_proximal_abd_cover" body2="l_index_palm_cover" />
+    <exclude body1="l_index_finger_proximal_abd_cover" body2="l_middle_finger_middle" />
+    <exclude body1="l_index_finger_proximal_abd_cover" body2="l_middle_finger_middle_cover" />
+    <exclude body1="l_index_finger_proximal_abd_cover" body2="l_middle_finger_proximal" />
+    <exclude body1="l_index_finger_proximal_abd_cover" body2="l_middle_finger_proximal_abd" />
+    <exclude body1="l_index_finger_proximal_abd_cover" body2="l_middle_finger_proximal_abd_cover" />
+    <exclude body1="l_index_finger_proximal_abd_cover" body2="l_middle_palm_cover" />
+    <exclude body1="l_index_finger_proximal_abd_cover" body2="l_palm_index_cover" />
+    <exclude body1="l_index_finger_proximal_abd_cover" body2="l_palm_middle_cover" />
+    <exclude body1="l_index_finger_proximal_abd_cover" body2="l_thumb_distal" />
+    <exclude body1="l_index_finger_proximal_abd_cover" body2="l_thumb_middle" />
+    <exclude body1="l_index_finger_proximal_abd_cover" body2="l_thumb_middle_cover" />
+    <exclude body1="l_index_finger_proximal_abd_cover" body2="l_thumb_proximal_abd" />
+    <exclude body1="l_index_finger_proximal_abd_cover" body2="l_wrist" />
+    <exclude body1="l_index_palm_cover" body2="l_middle_finger_proximal_abd_cover" />
+    <exclude body1="l_index_palm_cover" body2="l_middle_palm_cover" />
+    <exclude body1="l_index_palm_cover" body2="l_palm_index_cover" />
+    <exclude body1="l_index_palm_cover" body2="l_palm_middle_cover" />
+    <exclude body1="l_index_palm_cover" body2="l_thenar_cover" />
+    <exclude body1="l_index_palm_cover" body2="l_thumb_distal" />
+    <exclude body1="l_index_palm_cover" body2="l_thumb_middle" />
+    <exclude body1="l_index_palm_cover" body2="l_thumb_middle_cover" />
+    <exclude body1="l_index_palm_cover" body2="l_thumb_palm_cover" />
+    <exclude body1="l_index_palm_cover" body2="l_thumb_proximal_abd" />
+    <exclude body1="l_index_palm_cover" body2="l_wrist" />
+    <exclude body1="l_middle_finger_distal" body2="l_middle_finger_middle_cover" />
+    <exclude body1="l_middle_finger_distal" body2="l_middle_finger_proximal_abd_cover" />
+    <exclude body1="l_middle_finger_distal" body2="l_middle_palm_cover" />
+    <exclude body1="l_middle_finger_distal" body2="l_midpalm_cover" />
+    <exclude body1="l_middle_finger_distal" body2="l_palm_middle_cover" />
+    <exclude body1="l_middle_finger_distal" body2="l_palm_ring_cover" />
+    <exclude body1="l_middle_finger_distal" body2="l_ring_finger_middle_cover" />
+    <exclude body1="l_middle_finger_distal" body2="l_ring_finger_proximal_abd_cover" />
+    <exclude body1="l_middle_finger_distal" body2="l_ring_palm_cover" />
+    <exclude body1="l_middle_finger_distal" body2="l_thumb_middle_cover" />
+    <exclude body1="l_middle_finger_distal" body2="l_thumb_palm_cover" />
+    <exclude body1="l_middle_finger_middle" body2="l_middle_finger_middle_cover" />
+    <exclude body1="l_middle_finger_middle" body2="l_middle_finger_proximal_abd_cover" />
+    <exclude body1="l_middle_finger_middle" body2="l_midpalm_cover" />
+    <exclude body1="l_middle_finger_middle" body2="l_palm_ring_cover" />
+    <exclude body1="l_middle_finger_middle" body2="l_ring_finger_middle_cover" />
+    <exclude body1="l_middle_finger_middle" body2="l_ring_finger_proximal_abd_cover" />
+    <exclude body1="l_middle_finger_middle_cover" body2="l_middle_finger_proximal_abd" />
+    <exclude body1="l_middle_finger_middle_cover" body2="l_middle_finger_proximal_abd_cover" />
+    <exclude body1="l_middle_finger_middle_cover" body2="l_palm_ring_cover" />
+    <exclude body1="l_middle_finger_middle_cover" body2="l_pinky_distal" />
+    <exclude body1="l_middle_finger_middle_cover" body2="l_pinky_middle" />
+    <exclude body1="l_middle_finger_middle_cover" body2="l_ring_finger_distal" />
+    <exclude body1="l_middle_finger_middle_cover" body2="l_ring_finger_middle" />
+    <exclude body1="l_middle_finger_middle_cover" body2="l_ring_finger_middle_cover" />
+    <exclude body1="l_middle_finger_middle_cover" body2="l_ring_finger_proximal" />
+    <exclude body1="l_middle_finger_middle_cover" body2="l_ring_finger_proximal_abd" />
+    <exclude body1="l_middle_finger_middle_cover" body2="l_ring_finger_proximal_abd_cover" />
+    <exclude body1="l_middle_finger_proximal" body2="l_middle_finger_proximal_abd_cover" />
+    <exclude body1="l_middle_finger_proximal" body2="l_middle_palm_cover" />
+    <exclude body1="l_middle_finger_proximal" body2="l_palm_middle_cover" />
+    <exclude body1="l_middle_finger_proximal" body2="l_palm_ring_cover" />
+    <exclude body1="l_middle_finger_proximal" body2="l_ring_finger_proximal_abd_cover" />
+    <exclude body1="l_middle_finger_proximal" body2="l_ring_palm_cover" />
+    <exclude body1="l_middle_finger_proximal" body2="l_thumb_middle_cover" />
+    <exclude body1="l_middle_finger_proximal" body2="l_wrist" />
+    <exclude body1="l_middle_finger_proximal_abd" body2="l_middle_finger_proximal_abd_cover" />
+    <exclude body1="l_middle_finger_proximal_abd" body2="l_middle_palm_cover" />
+    <exclude body1="l_middle_finger_proximal_abd" body2="l_palm_middle_cover" />
+    <exclude body1="l_middle_finger_proximal_abd" body2="l_palm_ring_cover" />
+    <exclude body1="l_middle_finger_proximal_abd" body2="l_pinky_middle_cover" />
+    <exclude body1="l_middle_finger_proximal_abd" body2="l_ring_finger_middle_cover" />
+    <exclude body1="l_middle_finger_proximal_abd" body2="l_ring_finger_proximal_abd_cover" />
+    <exclude body1="l_middle_finger_proximal_abd" body2="l_ring_palm_cover" />
+    <exclude body1="l_middle_finger_proximal_abd" body2="l_wrist" />
+    <exclude body1="l_middle_finger_proximal_abd_cover" body2="l_middle_palm_cover" />
+    <exclude body1="l_middle_finger_proximal_abd_cover" body2="l_palm_index_cover" />
+    <exclude body1="l_middle_finger_proximal_abd_cover" body2="l_palm_middle_cover" />
+    <exclude body1="l_middle_finger_proximal_abd_cover" body2="l_palm_ring_cover" />
+    <exclude body1="l_middle_finger_proximal_abd_cover" body2="l_pinky_distal" />
+    <exclude body1="l_middle_finger_proximal_abd_cover" body2="l_pinky_middle" />
+    <exclude body1="l_middle_finger_proximal_abd_cover" body2="l_pinky_middle_cover" />
+    <exclude body1="l_middle_finger_proximal_abd_cover" body2="l_ring_finger_middle" />
+    <exclude body1="l_middle_finger_proximal_abd_cover" body2="l_ring_finger_middle_cover" />
+    <exclude body1="l_middle_finger_proximal_abd_cover" body2="l_ring_finger_proximal" />
+    <exclude body1="l_middle_finger_proximal_abd_cover" body2="l_ring_finger_proximal_abd" />
+    <exclude body1="l_middle_finger_proximal_abd_cover" body2="l_ring_finger_proximal_abd_cover" />
+    <exclude body1="l_middle_finger_proximal_abd_cover" body2="l_ring_palm_cover" />
+    <exclude body1="l_middle_finger_proximal_abd_cover" body2="l_thumb_distal" />
+    <exclude body1="l_middle_finger_proximal_abd_cover" body2="l_thumb_middle" />
+    <exclude body1="l_middle_finger_proximal_abd_cover" body2="l_wrist" />
+    <exclude body1="l_middle_palm_cover" body2="l_palm_index_cover" />
+    <exclude body1="l_middle_palm_cover" body2="l_palm_middle_cover" />
+    <exclude body1="l_middle_palm_cover" body2="l_palm_ring_cover" />
+    <exclude body1="l_middle_palm_cover" body2="l_ring_finger_proximal" />
+    <exclude body1="l_middle_palm_cover" body2="l_ring_finger_proximal_abd" />
+    <exclude body1="l_middle_palm_cover" body2="l_ring_finger_proximal_abd_cover" />
+    <exclude body1="l_middle_palm_cover" body2="l_ring_palm_cover" />
+    <exclude body1="l_middle_palm_cover" body2="l_thumb_distal" />
+    <exclude body1="l_middle_palm_cover" body2="l_thumb_middle" />
+    <exclude body1="l_middle_palm_cover" body2="l_thumb_middle_cover" />
+    <exclude body1="l_middle_palm_cover" body2="l_thumb_palm_cover" />
+    <exclude body1="l_middle_palm_cover" body2="l_wrist" />
+    <exclude body1="l_midpalm_cover" body2="l_palm_middle_cover" />
+    <exclude body1="l_midpalm_cover" body2="l_palm_ring_cover" />
+    <exclude body1="l_midpalm_cover" body2="l_ring_finger_distal" />
+    <exclude body1="l_midpalm_cover" body2="l_ring_finger_proximal_abd_cover" />
+    <exclude body1="l_midpalm_cover" body2="l_ring_palm_cover" />
+    <exclude body1="l_midpalm_cover" body2="l_thenar_cover" />
+    <exclude body1="l_midpalm_cover" body2="l_thumb_distal" />
+    <exclude body1="l_midpalm_cover" body2="l_thumb_middle" />
+    <exclude body1="l_midpalm_cover" body2="l_thumb_middle_cover" />
+    <exclude body1="l_midpalm_cover" body2="l_thumb_palm_cover" />
+    <exclude body1="l_midpalm_cover" body2="l_thumb_proximal_abd" />
+    <exclude body1="l_midpalm_cover" body2="l_wrist" />
+    <exclude body1="l_mount" body2="l_thenar_cover" />
+    <exclude body1="l_mount" body2="l_thumb_middle_cover" />
+    <exclude body1="l_mount" body2="l_thumb_palm_cover" />
+    <exclude body1="l_palm_index_cover" body2="l_palm_middle_cover" />
+    <exclude body1="l_palm_index_cover" body2="l_thenar_cover" />
+    <exclude body1="l_palm_index_cover" body2="l_thumb_distal" />
+    <exclude body1="l_palm_index_cover" body2="l_thumb_middle" />
+    <exclude body1="l_palm_index_cover" body2="l_thumb_middle_cover" />
+    <exclude body1="l_palm_index_cover" body2="l_thumb_palm_cover" />
+    <exclude body1="l_palm_index_cover" body2="l_thumb_proximal_abd" />
+    <exclude body1="l_palm_index_cover" body2="l_wrist" />
+    <exclude body1="l_palm_middle_cover" body2="l_palm_ring_cover" />
+    <exclude body1="l_palm_middle_cover" body2="l_ring_finger_proximal" />
+    <exclude body1="l_palm_middle_cover" body2="l_ring_finger_proximal_abd" />
+    <exclude body1="l_palm_middle_cover" body2="l_ring_finger_proximal_abd_cover" />
+    <exclude body1="l_palm_middle_cover" body2="l_ring_palm_cover" />
+    <exclude body1="l_palm_middle_cover" body2="l_thumb_distal" />
+    <exclude body1="l_palm_middle_cover" body2="l_thumb_middle" />
+    <exclude body1="l_palm_middle_cover" body2="l_thumb_middle_cover" />
+    <exclude body1="l_palm_middle_cover" body2="l_thumb_palm_cover" />
+    <exclude body1="l_palm_middle_cover" body2="l_thumb_proximal_abd" />
+    <exclude body1="l_palm_middle_cover" body2="l_wrist" />
+    <exclude body1="l_palm_ring_cover" body2="l_pinky_proximal" />
+    <exclude body1="l_palm_ring_cover" body2="l_pinky_proximal_abd" />
+    <exclude body1="l_palm_ring_cover" body2="l_pinky_proximal_abd_cover" />
+    <exclude body1="l_palm_ring_cover" body2="l_pinky_proximal_cover" />
+    <exclude body1="l_palm_ring_cover" body2="l_ring_finger_distal" />
+    <exclude body1="l_palm_ring_cover" body2="l_ring_finger_proximal" />
+    <exclude body1="l_palm_ring_cover" body2="l_ring_finger_proximal_abd" />
+    <exclude body1="l_palm_ring_cover" body2="l_ring_finger_proximal_abd_cover" />
+    <exclude body1="l_palm_ring_cover" body2="l_ring_palm_cover" />
+    <exclude body1="l_palm_ring_cover" body2="l_thumb_distal" />
+    <exclude body1="l_palm_ring_cover" body2="l_wrist" />
+    <exclude body1="l_pinky_distal" body2="l_pinky_middle_cover" />
+    <exclude body1="l_pinky_distal" body2="l_pinky_proximal_abd_cover" />
+    <exclude body1="l_pinky_distal" body2="l_pinky_proximal_cover" />
+    <exclude body1="l_pinky_distal" body2="l_ring_finger_middle_cover" />
+    <exclude body1="l_pinky_middle" body2="l_pinky_middle_cover" />
+    <exclude body1="l_pinky_middle" body2="l_pinky_proximal_abd_cover" />
+    <exclude body1="l_pinky_middle" body2="l_ring_finger_middle_cover" />
+    <exclude body1="l_pinky_middle" body2="l_ring_finger_proximal_abd_cover" />
+    <exclude body1="l_pinky_middle_cover" body2="l_pinky_proximal_abd" />
+    <exclude body1="l_pinky_middle_cover" body2="l_pinky_proximal_abd_cover" />
+    <exclude body1="l_pinky_middle_cover" body2="l_ring_finger_distal" />
+    <exclude body1="l_pinky_middle_cover" body2="l_ring_finger_middle" />
+    <exclude body1="l_pinky_middle_cover" body2="l_ring_finger_middle_cover" />
+    <exclude body1="l_pinky_middle_cover" body2="l_ring_finger_proximal_abd" />
+    <exclude body1="l_pinky_middle_cover" body2="l_ring_finger_proximal_abd_cover" />
+    <exclude body1="l_pinky_proximal" body2="l_pinky_proximal_abd_cover" />
+    <exclude body1="l_pinky_proximal" body2="l_pinky_proximal_cover" />
+    <exclude body1="l_pinky_proximal" body2="l_ring_finger_middle_cover" />
+    <exclude body1="l_pinky_proximal" body2="l_ring_finger_proximal_abd_cover" />
+    <exclude body1="l_pinky_proximal" body2="l_ring_palm_cover" />
+    <exclude body1="l_pinky_proximal" body2="l_wrist" />
+    <exclude body1="l_pinky_proximal_abd" body2="l_pinky_proximal_abd_cover" />
+    <exclude body1="l_pinky_proximal_abd" body2="l_pinky_proximal_cover" />
+    <exclude body1="l_pinky_proximal_abd" body2="l_ring_finger_middle_cover" />
+    <exclude body1="l_pinky_proximal_abd" body2="l_ring_finger_proximal_abd_cover" />
+    <exclude body1="l_pinky_proximal_abd" body2="l_ring_palm_cover" />
+    <exclude body1="l_pinky_proximal_abd" body2="l_wrist" />
+    <exclude body1="l_pinky_proximal_abd_cover" body2="l_pinky_proximal_cover" />
+    <exclude body1="l_pinky_proximal_abd_cover" body2="l_ring_finger_distal" />
+    <exclude body1="l_pinky_proximal_abd_cover" body2="l_ring_finger_middle" />
+    <exclude body1="l_pinky_proximal_abd_cover" body2="l_ring_finger_middle_cover" />
+    <exclude body1="l_pinky_proximal_abd_cover" body2="l_ring_finger_proximal" />
+    <exclude body1="l_pinky_proximal_abd_cover" body2="l_ring_finger_proximal_abd" />
+    <exclude body1="l_pinky_proximal_abd_cover" body2="l_ring_finger_proximal_abd_cover" />
+    <exclude body1="l_pinky_proximal_abd_cover" body2="l_ring_palm_cover" />
+    <exclude body1="l_pinky_proximal_abd_cover" body2="l_wrist" />
+    <exclude body1="l_pinky_proximal_cover" body2="l_ring_finger_distal" />
+    <exclude body1="l_pinky_proximal_cover" body2="l_ring_finger_proximal" />
+    <exclude body1="l_pinky_proximal_cover" body2="l_ring_finger_proximal_abd" />
+    <exclude body1="l_pinky_proximal_cover" body2="l_ring_finger_proximal_abd_cover" />
+    <exclude body1="l_pinky_proximal_cover" body2="l_ring_palm_cover" />
+    <exclude body1="l_pinky_proximal_cover" body2="l_wrist" />
+    <exclude body1="l_ring_finger_distal" body2="l_ring_finger_middle_cover" />
+    <exclude body1="l_ring_finger_distal" body2="l_ring_finger_proximal_abd_cover" />
+    <exclude body1="l_ring_finger_distal" body2="l_ring_palm_cover" />
+    <exclude body1="l_ring_finger_middle" body2="l_ring_finger_middle_cover" />
+    <exclude body1="l_ring_finger_middle" body2="l_ring_finger_proximal_abd_cover" />
+    <exclude body1="l_ring_finger_middle_cover" body2="l_ring_finger_proximal_abd" />
+    <exclude body1="l_ring_finger_middle_cover" body2="l_ring_finger_proximal_abd_cover" />
+    <exclude body1="l_ring_finger_proximal" body2="l_ring_finger_proximal_abd_cover" />
+    <exclude body1="l_ring_finger_proximal" body2="l_ring_palm_cover" />
+    <exclude body1="l_ring_finger_proximal" body2="l_wrist" />
+    <exclude body1="l_ring_finger_proximal_abd" body2="l_ring_finger_proximal_abd_cover" />
+    <exclude body1="l_ring_finger_proximal_abd" body2="l_ring_palm_cover" />
+    <exclude body1="l_ring_finger_proximal_abd" body2="l_wrist" />
+    <exclude body1="l_ring_finger_proximal_abd_cover" body2="l_ring_palm_cover" />
+    <exclude body1="l_ring_finger_proximal_abd_cover" body2="l_thumb_distal" />
+    <exclude body1="l_ring_finger_proximal_abd_cover" body2="l_wrist" />
+    <exclude body1="l_ring_palm_cover" body2="l_thumb_distal" />
+    <exclude body1="l_ring_palm_cover" body2="l_thumb_middle" />
+    <exclude body1="l_ring_palm_cover" body2="l_thumb_middle_cover" />
+    <exclude body1="l_ring_palm_cover" body2="l_wrist" />
+    <exclude body1="l_thenar_cover" body2="l_thumb_middle" />
+    <exclude body1="l_thenar_cover" body2="l_thumb_middle_cover" />
+    <exclude body1="l_thenar_cover" body2="l_thumb_palm_cover" />
+    <exclude body1="l_thenar_cover" body2="l_thumb_proximal" />
+    <exclude body1="l_thenar_cover" body2="l_thumb_proximal_abd" />
+    <exclude body1="l_thenar_cover" body2="l_wrist" />
+    <exclude body1="l_thumb_distal" body2="l_thumb_middle_cover" />
+    <exclude body1="l_thumb_distal" body2="l_thumb_palm_cover" />
+    <exclude body1="l_thumb_middle" body2="l_thumb_middle_cover" />
+    <exclude body1="l_thumb_middle" body2="l_thumb_palm_cover" />
+    <exclude body1="l_thumb_middle_cover" body2="l_thumb_palm_cover" />
+    <exclude body1="l_thumb_middle_cover" body2="l_thumb_proximal_abd" />
+    <exclude body1="l_thumb_middle_cover" body2="l_wrist" />
+    <exclude body1="l_thumb_palm_cover" body2="l_thumb_proximal" />
+    <exclude body1="l_thumb_palm_cover" body2="l_thumb_proximal_abd" />
+    <exclude body1="l_thumb_palm_cover" body2="l_wrist" />
+    <exclude body1="l_thumb_proximal" body2="l_wrist" />
+    <exclude body1="l_thumb_proximal_abd" body2="l_wrist" />
+  </contact>
+</mujoco>

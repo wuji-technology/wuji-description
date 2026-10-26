@@ -2,8 +2,8 @@
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
   <name>wuji_hand2_1_description</name>
-  <version>2026.10.12</version>
-  <description>Robot model description package for Wuji Hand 2.1 with URDF, MJCF, and USD assets for simulation and ROS2 visualization. Hand 2.1 keeps the frozen Wuji Hand 2 coordinate contract, is rooted at its arm-flange mount link, and adds a wrist IMU frame. This package provides left and right models without covers.</description>
+  <version>2026.10.26</version>
+  <description>Robot model description package for Wuji Hand 2.1 with URDF, MJCF, and USD assets for simulation and ROS2 visualization. Hand 2.1 keeps the frozen Wuji Hand 2 coordinate contract, is rooted at its arm-flange mount link, and adds a wrist IMU frame. This package provides left and right models with and without covers. Both variants share the hardware meshes.</description>
 
   <maintainer email="support@wuji.tech">Wuji Technology</maintainer>
 

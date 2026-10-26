@@ -1,5 +1,3 @@
-asset_path: /home/hello/project/wuji-description-private/output/robots/hand2_1/urdf/left.urdf
-usd_dir: /home/hello/project/wuji-description-private/output/robots/hand2_1/_work/usd_physics/left
 usd_file_name: wujihand2_1
 force_usd_conversion: true
 make_instanceable: true

@@ -8,9 +8,10 @@ find_package(ament_cmake REQUIRED)
 # A distinct package name per revision (Hand 2.1: wuji_hand2_1_description,
 # Hand 2.2: wuji_hand2_2_description) so revisions can coexist in one workspace.
 #
-# This package provides left and right models without covers, rooted at the
-# arm-flange mount {l,r}_mount. Hardware meshes live in meshes/{left,right}/.
-# Keep each usd/{left,right}/ directory intact.
+# This package provides bare, cover, and glove appearances for both hands,
+# rooted at {l,r}_mount. Variants share canonical meshes/{left,right}/ assets.
+# Glove visual partitions live in meshes/{left,right}/visual_nails/.
+# Keep each USD variant directory intact, including its layers and textures.
 # Mechanical mounting-interface files live in ../attachment/ outside this
 # package root and are not installed by this rule.
 install(

@@ -1,5 +1,3 @@
-asset_path: ../output/robots/wuji_hand_soft/urdf/left_simplified.urdf
-usd_dir: ../output/robots/wuji_hand_soft/_work_simplified/usd_physics/left_simplified
 usd_file_name: wujihand
 force_usd_conversion: true
 make_instanceable: true
