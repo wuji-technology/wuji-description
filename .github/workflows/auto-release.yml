@@ -26,4 +26,4 @@ jobs:
             exit 0
           fi
           gh release create "$TAG" --repo "$GITHUB_REPOSITORY" --verify-tag --title "$TAG" \
-            --notes "Release notes: https://docs.wuji.tech/en/release-notes"
+            --notes "Release notes: https://docs.wuji.tech/docs/en/release-notes"

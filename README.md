@@ -6,7 +6,12 @@ Robot model description package for the Wuji Hand and related accessories. Provi
 
 Hand 2.1 and Hand 2.2 each provide left and right models in bare, cover, and glove appearance variants. Common hardware uses shared collision meshes, and all variants use the same ROS2 package for their revision.
 
-**Get started with [Quick Start](#quick-start). For detailed documentation, please refer to [Wuji Description](https://docs.wuji.tech/docs/en/wuji-description/latest/) on Wuji Docs Center.**
+**Get started with [Quick Start](#quick-start).** For detailed documentation, select the product, revision, and topic below on Wuji Docs Center.
+
+| Product | Documentation |
+|---------|---------------|
+| Wuji Hand 2 | <ul><li><a href="https://docs.wuji.tech/docs/en/wuji-hand/latest/model-integration">Model Assets and Loading (2.2 Beta)</a></li><li><a href="https://docs.wuji.tech/docs/en/wuji-hand/beta1/hardware-integration#get-and-load">Model Assets and Loading (2.1 Beta)</a></li><li><a href="https://docs.wuji.tech/docs/en/wuji-hand/latest/hardware-integration#palm-interface-step-and-drawings">Mechanical Integration</a></li></ul> |
+| Wuji Glove | <ul><li><a href="https://docs.wuji.tech/docs/en/wuji-glove/latest/model-integration">Model Assets and Loading</a></li><li><a href="https://docs.wuji.tech/docs/en/wuji-glove/latest/hardware-integration">Mechanical Integration</a></li></ul> |
 
 ## Repository Structure
 
