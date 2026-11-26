@@ -60,7 +60,7 @@ def "wujihand2_2_right_cover"
                 float[] primvars:displayOpacity = [1]
                 uniform token purpose = "default"
                 uniform token subdivisionScheme = "none"
-                double3 xformOp:translate = (5.08617436290322e-7, 8.924837305111644e-7, -0.015568132907152157)
+                double3 xformOp:translate = (5.086174362903373e-7, 8.924837305111355e-7, -0.015568132907152157)
                 uniform token[] xformOpOrder = ["xformOp:translate"]
             }
         }
@@ -94,7 +94,7 @@ def "wujihand2_2_right_cover"
                 float[] primvars:displayOpacity = [1]
                 uniform token purpose = "default"
                 uniform token subdivisionScheme = "none"
-                double3 xformOp:translate = (6.600289485257879e-7, 6.979037834284623e-7, -0.018599998742341972)
+                double3 xformOp:translate = (6.600289485257657e-7, 6.979037834284797e-7, -0.018599998742341972)
                 uniform token[] xformOpOrder = ["xformOp:translate"]
             }
         }
@@ -128,7 +128,7 @@ def "wujihand2_2_right_cover"
                 float[] primvars:displayOpacity = [1]
                 uniform token purpose = "default"
                 uniform token subdivisionScheme = "none"
-                double3 xformOp:translate = (5.086174362812631e-7, 8.924837305807874e-7, -0.015568132907152157)
+                double3 xformOp:translate = (5.086174362812855e-7, 8.924837305807868e-7, -0.015568132907152157)
                 uniform token[] xformOpOrder = ["xformOp:translate"]
             }
         }
@@ -162,7 +162,7 @@ def "wujihand2_2_right_cover"
                 float[] primvars:displayOpacity = [1]
                 uniform token purpose = "default"
                 uniform token subdivisionScheme = "none"
-                double3 xformOp:translate = (6.600289485482513e-7, 6.97903783494604e-7, -0.018599998742341972)
+                double3 xformOp:translate = (6.600289485482875e-7, 6.979037834945746e-7, -0.018599998742341972)
                 uniform token[] xformOpOrder = ["xformOp:translate"]
             }
         }
@@ -196,7 +196,7 @@ def "wujihand2_2_right_cover"
                 float[] primvars:displayOpacity = [1]
                 uniform token purpose = "default"
                 uniform token subdivisionScheme = "none"
-                double3 xformOp:translate = (1.88427106875835e-7, 0.0000011008093801131156, -0.014750002861022932)
+                double3 xformOp:translate = (1.884271068190658e-7, 0.000001100809380076227, -0.014750002861022932)
                 uniform token[] xformOpOrder = ["xformOp:translate"]
             }
         }
@@ -230,7 +230,7 @@ def "wujihand2_2_right_cover"
                 float[] primvars:displayOpacity = [1]
                 uniform token purpose = "default"
                 uniform token subdivisionScheme = "none"
-                double3 xformOp:translate = (0.0000015456553631555526, 5.194964668273652e-7, -0.01641813153028486)
+                double3 xformOp:translate = (0.0000015456553631555545, 5.194964668273917e-7, -0.01641813153028486)
                 uniform token[] xformOpOrder = ["xformOp:translate"]
             }
         }
@@ -264,7 +264,7 @@ def "wujihand2_2_right_cover"
                 float[] primvars:displayOpacity = [1]
                 uniform token purpose = "default"
                 uniform token subdivisionScheme = "none"
-                double3 xformOp:translate = (5.086174363051377e-7, 8.924837305672122e-7, -0.015568132907152157)
+                double3 xformOp:translate = (5.086174363051525e-7, 8.924837305671832e-7, -0.015568132907152157)
                 uniform token[] xformOpOrder = ["xformOp:translate"]
             }
         }
@@ -298,7 +298,7 @@ def "wujihand2_2_right_cover"
                 float[] primvars:displayOpacity = [1]
                 uniform token purpose = "default"
                 uniform token subdivisionScheme = "none"
-                double3 xformOp:translate = (6.600289485537554e-7, 6.979037834981827e-7, -0.018599998742341972)
+                double3 xformOp:translate = (6.600289485537252e-7, 6.979037834981945e-7, -0.018599998742341972)
                 uniform token[] xformOpOrder = ["xformOp:translate"]
             }
         }
@@ -315,7 +315,7 @@ def "wujihand2_2_right_cover"
                         string axis = "Z"
                         double length_m = 0.019000000000000017
                         int radial_segments = 96
-                        double radius_m = 0.0093000000093889
+                        double radius_m = 0.009300000009388902
                     }
                 }
             )
@@ -332,7 +332,7 @@ def "wujihand2_2_right_cover"
                 float[] primvars:displayOpacity = [1]
                 uniform token purpose = "default"
                 uniform token subdivisionScheme = "none"
-                double3 xformOp:translate = (0.00004999986621816891, -3.4609400851540888e-15, -0.017560667395591714)
+                double3 xformOp:translate = (0.00004999986621816709, -3.4647625103878114e-15, -0.017560667395591714)
                 uniform token[] xformOpOrder = ["xformOp:translate"]
             }
         }
@@ -349,7 +349,7 @@ def "wujihand2_2_right_cover"
                         string axis = "Z"
                         double length_m = 0.016500000000000015
                         int radial_segments = 96
-                        double radius_m = 0.009293191727582273
+                        double radius_m = 0.009293191727582271
                     }
                 }
             )
@@ -366,7 +366,7 @@ def "wujihand2_2_right_cover"
                 float[] primvars:displayOpacity = [1]
                 uniform token purpose = "default"
                 uniform token subdivisionScheme = "none"
-                double3 xformOp:translate = (-0.0000016662122060885226, 1.9648731149111849e-7, -0.015719718337059)
+                double3 xformOp:translate = (-0.0000016662122060388803, 1.9648731142555533e-7, -0.015719718337059)
                 uniform token[] xformOpOrder = ["xformOp:translate"]
             }
         }

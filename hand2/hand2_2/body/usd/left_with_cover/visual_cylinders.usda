@@ -60,7 +60,7 @@ def "wujihand2_2_left_cover"
                 float[] primvars:displayOpacity = [1]
                 uniform token purpose = "default"
                 uniform token subdivisionScheme = "none"
-                double3 xformOp:translate = (-1.8982466941196542e-7, -8.342667678464177e-7, -0.015568132907152157)
+                double3 xformOp:translate = (-1.8982466941193143e-7, -8.34266767846442e-7, -0.015568132907152157)
                 uniform token[] xformOpOrder = ["xformOp:translate"]
             }
         }
@@ -94,7 +94,7 @@ def "wujihand2_2_left_cover"
                 float[] primvars:displayOpacity = [1]
                 uniform token purpose = "default"
                 uniform token subdivisionScheme = "none"
-                double3 xformOp:translate = (6.519077949849109e-7, -0.0000013368400481965572, -0.018599998742341972)
+                double3 xformOp:translate = (6.519077949849247e-7, -0.000001336840048196559, -0.018599998742341972)
                 uniform token[] xformOpOrder = ["xformOp:translate"]
             }
         }
@@ -111,7 +111,7 @@ def "wujihand2_2_left_cover"
                         string axis = "Z"
                         double length_m = 0.015500000000000014
                         int radial_segments = 96
-                        double radius_m = 0.0077954310979924035
+                        double radius_m = 0.007795431097992406
                     }
                 }
             )
@@ -128,7 +128,7 @@ def "wujihand2_2_left_cover"
                 float[] primvars:displayOpacity = [1]
                 uniform token purpose = "default"
                 uniform token subdivisionScheme = "none"
-                double3 xformOp:translate = (-1.8982466940000314e-7, -8.342667678744991e-7, -0.015568132907152157)
+                double3 xformOp:translate = (-1.8982466945944828e-7, -8.342667678583435e-7, -0.015568132907152157)
                 uniform token[] xformOpOrder = ["xformOp:translate"]
             }
         }
@@ -145,7 +145,7 @@ def "wujihand2_2_left_cover"
                         string axis = "Z"
                         double length_m = 0.025250000000000022
                         int radial_segments = 96
-                        double radius_m = 0.007792848808582419
+                        double radius_m = 0.007792848808582415
                     }
                 }
             )
@@ -162,7 +162,7 @@ def "wujihand2_2_left_cover"
                 float[] primvars:displayOpacity = [1]
                 uniform token purpose = "default"
                 uniform token subdivisionScheme = "none"
-                double3 xformOp:translate = (6.519077949137232e-7, -0.0000013368400482070988, -0.018599998742341972)
+                double3 xformOp:translate = (6.519077950430592e-7, -0.000001336840048288368, -0.018599998742341972)
                 uniform token[] xformOpOrder = ["xformOp:translate"]
             }
         }
@@ -196,7 +196,7 @@ def "wujihand2_2_left_cover"
                 float[] primvars:displayOpacity = [1]
                 uniform token purpose = "default"
                 uniform token subdivisionScheme = "none"
-                double3 xformOp:translate = (5.0457982080370405e-8, -0.0000010782008713664286, -0.014750002861022932)
+                double3 xformOp:translate = (5.045798208034665e-8, -0.0000010782008713664595, -0.014750002861022932)
                 uniform token[] xformOpOrder = ["xformOp:translate"]
             }
         }
@@ -213,7 +213,7 @@ def "wujihand2_2_left_cover"
                         string axis = "Z"
                         double length_m = 0.02150000000000002
                         int radial_segments = 96
-                        double radius_m = 0.007794342041681441
+                        double radius_m = 0.0077943420416814345
                     }
                 }
             )
@@ -230,7 +230,7 @@ def "wujihand2_2_left_cover"
                 float[] primvars:displayOpacity = [1]
                 uniform token purpose = "default"
                 uniform token subdivisionScheme = "none"
-                double3 xformOp:translate = (0.0000010740149385498, -4.866127054950016e-7, -0.01641813153028486)
+                double3 xformOp:translate = (0.0000010740149386116958, -4.866127055124282e-7, -0.01641813153028486)
                 uniform token[] xformOpOrder = ["xformOp:translate"]
             }
         }
@@ -247,7 +247,7 @@ def "wujihand2_2_left_cover"
                         string axis = "Z"
                         double length_m = 0.015500000000000014
                         int radial_segments = 96
-                        double radius_m = 0.0077954310979924035
+                        double radius_m = 0.007795431097992404
                     }
                 }
             )
@@ -264,7 +264,7 @@ def "wujihand2_2_left_cover"
                 float[] primvars:displayOpacity = [1]
                 uniform token purpose = "default"
                 uniform token subdivisionScheme = "none"
-                double3 xformOp:translate = (-1.898246694094285e-7, -8.342667678644208e-7, -0.015568132907152157)
+                double3 xformOp:translate = (-1.89824669427401e-7, -8.342667678562802e-7, -0.015568132907152157)
                 uniform token[] xformOpOrder = ["xformOp:translate"]
             }
         }
@@ -298,7 +298,7 @@ def "wujihand2_2_left_cover"
                 float[] primvars:displayOpacity = [1]
                 uniform token purpose = "default"
                 uniform token subdivisionScheme = "none"
-                double3 xformOp:translate = (6.519077950109133e-7, -0.0000013368400482512986, -0.018599998742341972)
+                double3 xformOp:translate = (6.519077950108983e-7, -0.0000013368400482512878, -0.018599998742341972)
                 uniform token[] xformOpOrder = ["xformOp:translate"]
             }
         }
@@ -315,7 +315,7 @@ def "wujihand2_2_left_cover"
                         string axis = "Z"
                         double length_m = 0.019000000000000017
                         int radial_segments = 96
-                        double radius_m = 0.0093000000093889
+                        double radius_m = 0.009300000009388902
                     }
                 }
             )
@@ -332,7 +332,7 @@ def "wujihand2_2_left_cover"
                 float[] primvars:displayOpacity = [1]
                 uniform token purpose = "default"
                 uniform token subdivisionScheme = "none"
-                double3 xformOp:translate = (0.00004999986621816891, -3.4609400851540888e-15, -0.017560667395591714)
+                double3 xformOp:translate = (0.00004999986621816709, -3.4647625103878114e-15, -0.017560667395591714)
                 uniform token[] xformOpOrder = ["xformOp:translate"]
             }
         }
@@ -366,7 +366,7 @@ def "wujihand2_2_left_cover"
                 float[] primvars:displayOpacity = [1]
                 uniform token purpose = "default"
                 uniform token subdivisionScheme = "none"
-                double3 xformOp:translate = (5.88625685972842e-7, -0.0000018427287242252893, -0.015719718337059)
+                double3 xformOp:translate = (5.886256859080399e-7, -0.000001842728724328576, -0.015719718337059)
                 uniform token[] xformOpOrder = ["xformOp:translate"]
             }
         }
