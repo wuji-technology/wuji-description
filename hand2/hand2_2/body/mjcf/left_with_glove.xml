@@ -107,14 +107,14 @@
                 <site name="l_thumb_tip" pos="0.000441885683058085 0.00147203036358472 -0.0298671735300184" group="3" size="0.002" rgba="1 0 0 1" />
               </body>
               <body name="l_thumb_middle_cover" pos="0 0 0">
-                <inertial pos="4.93553480301e-05 -0.0080706058583 -0.0123895034479" mass="0.001" quat="0.03394405 -0.70617273 0.70640836 0.03398691" diaginertia="1.33565625e-07 1.09373094e-07 4.16128893e-08" />
+                <inertial pos="4.93553480301e-05 -0.0080706058583 -0.0123895034479" mass="0.004" quat="0.03394405 -0.70617273 0.70640836 0.03398691" diaginertia="5.34262501e-07 4.37492378e-07 1.66451557e-07" />
                 <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0 0 0 1" mesh="l_thumb_middle_cover" material="soft_rubber" />
                 <geom type="mesh" rgba="0.8 0.6 1 0.3" mesh="l_thumb_middle_cover" group="2" />
               </body>
             </body>
           </body>
           <body name="l_thumb_palm_cover" pos="0 0 0">
-            <inertial pos="0.00367377968186 -0.0146022037391 -0.00660999482518" mass="0.001" quat="0.43485027 0.63766747 -0.49437528 -0.39984811" diaginertia="3.88934352e-07 2.79950630e-07 1.42410329e-07" />
+            <inertial pos="0.00367377968186 -0.0146022037391 -0.00660999482518" mass="0.01365" quat="0.43485027 0.63766747 -0.49437528 -0.39984811" diaginertia="5.30895391e-06 3.82132610e-06 1.94390100e-06" />
             <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0 0 0 1" mesh="l_thumb_palm_cover" material="soft_rubber" />
             <geom type="mesh" rgba="0.8 0.6 1 0.3" mesh="l_thumb_palm_cover" group="2" />
           </body>
@@ -148,19 +148,19 @@
                 <site name="l_index_finger_tip" pos="-3.35365900396567E-05 -0.000137600691732409 -0.0245946067668388" group="3" size="0.002" rgba="1 0 0 1" />
               </body>
               <body name="l_index_finger_middle_cover" pos="0 0 0">
-                <inertial pos="0.000157246534023 -0.00568382471376 -0.0142973734129" mass="0.001" quat="-0.51772928 0.47408914 0.52359102 -0.48275080" diaginertia="5.74443772e-08 4.92806075e-08 3.29463886e-08" />
+                <inertial pos="0.000157246534023 -0.00568382471376 -0.0142973734129" mass="0.0018" quat="-0.51772928 0.47408914 0.52359102 -0.48275080" diaginertia="1.03399879e-07 8.87050935e-08 5.93034994e-08" />
                 <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0 0 0 1" mesh="l_index_finger_middle_cover" material="soft_rubber" />
                 <geom type="mesh" rgba="0.8 0.6 1 0.3" mesh="l_index_finger_middle_cover" group="2" />
               </body>
             </body>
             <body name="l_index_finger_proximal_abd_cover" pos="0 0 0">
-              <inertial pos="0.000104033344031 -0.00680689334204 -0.0140112727286" mass="0.001" quat="-0.01466343 0.71013409 -0.70381202 -0.01196623" diaginertia="1.10436174e-07 8.44318499e-08 5.34058351e-08" />
+              <inertial pos="0.000104033344031 -0.00680689334204 -0.0140112727286" mass="0.0047" quat="-0.01466343 0.71013409 -0.70381202 -0.01196623" diaginertia="5.19050019e-07 3.96829695e-07 2.51007425e-07" />
               <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0 0 0 1" mesh="l_index_finger_proximal_abd_cover" material="soft_rubber" />
               <geom type="mesh" rgba="0.8 0.6 1 0.3" mesh="l_index_finger_proximal_abd_cover" group="2" />
             </body>
           </body>
           <body name="l_index_palm_cover" pos="0 0 0">
-            <inertial pos="0.0037146817147 -0.00912825069671 -0.00169804452529" mass="0.001" quat="-0.39809088 0.28465299 0.64582869 -0.58600480" diaginertia="8.60593631e-08 6.08469146e-08 4.45034526e-08" />
+            <inertial pos="0.0037146817147 -0.00912825069671 -0.00169804452529" mass="0.00245" quat="-0.39809088 0.28465299 0.64582869 -0.58600480" diaginertia="2.10845440e-07 1.49074941e-07 1.09033459e-07" />
             <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0 0 0 1" mesh="l_index_palm_cover" material="soft_rubber" />
             <geom type="mesh" rgba="0.8 0.6 1 0.3" mesh="l_index_palm_cover" group="2" />
           </body>
@@ -194,19 +194,19 @@
                 <site name="l_middle_finger_tip" pos="-3.35365900397677E-05 -0.000137600691732465 -0.0245946067668388" group="3" size="0.002" rgba="1 0 0 1" />
               </body>
               <body name="l_middle_finger_middle_cover" pos="0 0 0">
-                <inertial pos="0.000157246534023 -0.00568382471376 -0.0142973734129" mass="0.001" quat="-0.51772928 0.47408914 0.52359102 -0.48275080" diaginertia="5.74443772e-08 4.92806075e-08 3.29463886e-08" />
+                <inertial pos="0.000157246534023 -0.00568382471376 -0.0142973734129" mass="0.0018" quat="-0.51772928 0.47408914 0.52359102 -0.48275080" diaginertia="1.03399879e-07 8.87050935e-08 5.93034994e-08" />
                 <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0 0 0 1" mesh="l_middle_finger_middle_cover" material="soft_rubber" />
                 <geom type="mesh" rgba="0.8 0.6 1 0.3" mesh="l_middle_finger_middle_cover" group="2" />
               </body>
             </body>
             <body name="l_middle_finger_proximal_abd_cover" pos="0 0 0">
-              <inertial pos="0.000104033344031 -0.00680689334204 -0.0140112727286" mass="0.001" quat="-0.01466343 0.71013409 -0.70381202 -0.01196623" diaginertia="1.10436174e-07 8.44318499e-08 5.34058351e-08" />
+              <inertial pos="0.000104033344031 -0.00680689334204 -0.0140112727286" mass="0.0047" quat="-0.01466343 0.71013409 -0.70381202 -0.01196623" diaginertia="5.19050019e-07 3.96829695e-07 2.51007425e-07" />
               <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0 0 0 1" mesh="l_middle_finger_proximal_abd_cover" material="soft_rubber" />
               <geom type="mesh" rgba="0.8 0.6 1 0.3" mesh="l_middle_finger_proximal_abd_cover" group="2" />
             </body>
           </body>
           <body name="l_middle_palm_cover" pos="0 0 0">
-            <inertial pos="0.000226759452817 -0.0132240526041 -0.00173646446336" mass="0.001" quat="-0.19150164 0.70881616 0.67247750 -0.09317070" diaginertia="6.38710564e-08 3.96282458e-08 3.74552969e-08" />
+            <inertial pos="0.000226759452817 -0.0132240526041 -0.00173646446336" mass="0.0021" quat="-0.19150164 0.70881616 0.67247750 -0.09317070" diaginertia="1.34129218e-07 8.32193162e-08 7.86561234e-08" />
             <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0 0 0 1" mesh="l_middle_palm_cover" material="soft_rubber" />
             <geom type="mesh" rgba="0.8 0.6 1 0.3" mesh="l_middle_palm_cover" group="2" />
           </body>
@@ -240,19 +240,19 @@
                 <site name="l_ring_finger_tip" pos="-3.35365634959658E-05 -0.000137600691743345 -0.024594606766875" group="3" size="0.002" rgba="1 0 0 1" />
               </body>
               <body name="l_ring_finger_middle_cover" pos="0 0 0">
-                <inertial pos="0.000157246534023 -0.00568382471376 -0.0142973734129" mass="0.001" quat="-0.51772928 0.47408914 0.52359102 -0.48275080" diaginertia="5.74443772e-08 4.92806075e-08 3.29463886e-08" />
+                <inertial pos="0.000157246534023 -0.00568382471376 -0.0142973734129" mass="0.0018" quat="-0.51772928 0.47408914 0.52359102 -0.48275080" diaginertia="1.03399879e-07 8.87050935e-08 5.93034994e-08" />
                 <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0 0 0 1" mesh="l_ring_finger_middle_cover" material="soft_rubber" />
                 <geom type="mesh" rgba="0.8 0.6 1 0.3" mesh="l_ring_finger_middle_cover" group="2" />
               </body>
             </body>
             <body name="l_ring_finger_proximal_abd_cover" pos="0 0 0">
-              <inertial pos="0.000104033344031 -0.00680689334204 -0.0140112727286" mass="0.001" quat="-0.01466343 0.71013409 -0.70381202 -0.01196623" diaginertia="1.10436174e-07 8.44318499e-08 5.34058351e-08" />
+              <inertial pos="0.000104033344031 -0.00680689334204 -0.0140112727286" mass="0.0047" quat="-0.01466343 0.71013409 -0.70381202 -0.01196623" diaginertia="5.19050019e-07 3.96829695e-07 2.51007425e-07" />
               <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0 0 0 1" mesh="l_ring_finger_proximal_abd_cover" material="soft_rubber" />
               <geom type="mesh" rgba="0.8 0.6 1 0.3" mesh="l_ring_finger_proximal_abd_cover" group="2" />
             </body>
           </body>
           <body name="l_ring_palm_cover" pos="0 0 0">
-            <inertial pos="-0.000724525899558 -0.0126207896835 -0.00206943111222" mass="0.001" quat="0.73577942 -0.02429823 0.08137662 -0.67187506" diaginertia="6.27874352e-08 4.38819922e-08 3.23715280e-08" />
+            <inertial pos="-0.000724525899558 -0.0126207896835 -0.00206943111222" mass="0.0015" quat="0.73577942 -0.02429823 0.08137662 -0.67187506" diaginertia="9.41811527e-08 6.58229883e-08 4.85572921e-08" />
             <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0 0 0 1" mesh="l_ring_palm_cover" material="soft_rubber" />
             <geom type="mesh" rgba="0.8 0.6 1 0.3" mesh="l_ring_palm_cover" group="2" />
           </body>
@@ -286,55 +286,55 @@
                 <site name="l_pinky_tip" pos="-3.35366128460107E-05 0.000495057777001429 -0.0245900088198784" group="3" size="0.002" rgba="1 0 0 1" />
               </body>
               <body name="l_pinky_middle_cover" pos="0 0 0">
-                <inertial pos="-0.000101158926373 -0.00559213886366 -0.013398122145" mass="0.001" quat="-0.52407606 0.47465465 0.52411144 -0.47471512" diaginertia="5.14980709e-08 4.77986176e-08 2.75707169e-08" />
+                <inertial pos="-0.000101158926373 -0.00559213886366 -0.013398122145" mass="0.0013" quat="-0.52407606 0.47465465 0.52411144 -0.47471512" diaginertia="6.69474922e-08 6.21382028e-08 3.58419320e-08" />
                 <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0 0 0 1" mesh="l_pinky_middle_cover" material="soft_rubber" />
                 <geom type="mesh" rgba="0.8 0.6 1 0.3" mesh="l_pinky_middle_cover" group="2" />
               </body>
             </body>
             <body name="l_pinky_proximal_abd_cover" pos="0 0 0">
-              <inertial pos="-1.06898802197e-06 -0.00669258402898 -0.0120938434425" mass="0.001" quat="0.01952837 -0.70679442 0.70687884 0.01956018" diaginertia="9.08902185e-08 6.58120215e-08 5.08731221e-08" />
+              <inertial pos="-1.06898802197e-06 -0.00669258402898 -0.0120938434425" mass="0.0036" quat="0.01952837 -0.70679442 0.70687884 0.01956018" diaginertia="3.27204787e-07 2.36923278e-07 1.83143239e-07" />
               <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0 0 0 1" mesh="l_pinky_proximal_abd_cover" material="soft_rubber" />
               <geom type="mesh" rgba="0.8 0.6 1 0.3" mesh="l_pinky_proximal_abd_cover" group="2" />
             </body>
           </body>
           <body name="l_pinky_proximal_cover" pos="0 0 0">
-            <inertial pos="-0.00357146630247 -0.0104082821504 -0.00293772082793" mass="0.001" quat="0.63254139 -0.58794910 -0.37626762 0.33560381" diaginertia="8.35344615e-08 6.66326309e-08 3.61833868e-08" />
+            <inertial pos="-0.00357146630247 -0.0104082821504 -0.00293772082793" mass="0.0026" quat="0.63254139 -0.58794910 -0.37626762 0.33560381" diaginertia="2.17189600e-07 1.73244840e-07 9.40768056e-08" />
             <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0 0 0 1" mesh="l_pinky_proximal_cover" material="soft_rubber" />
             <geom type="mesh" rgba="0.8 0.6 1 0.3" mesh="l_pinky_proximal_cover" group="2" />
           </body>
         </body>
         <body name="l_adductor_pollicis_cover" pos="0 0 0">
-          <inertial pos="0.037648146911 -0.000697612822087 -0.0306995970617" mass="0.001" quat="-0.00122595 -0.39587104 0.91740137 0.04073501" diaginertia="1.05667869e-07 8.42327396e-08 3.52248864e-08" />
+          <inertial pos="0.037648146911 -0.000697612822087 -0.0306995970617" mass="0.0043" quat="-0.00122595 -0.39587104 0.91740137 0.04073501" diaginertia="4.54371838e-07 3.62200780e-07 1.51467012e-07" />
           <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0 0 0 1" mesh="l_adductor_pollicis_cover" material="soft_rubber" />
           <geom type="mesh" rgba="0.8 0.6 1 0.3" mesh="l_adductor_pollicis_cover" group="2" />
         </body>
         <body name="l_thenar_cover" pos="0 0 0">
-          <inertial pos="0.0148237528252 -0.0232480647162 -0.0189733313342" mass="0.001" quat="-0.63453707 -0.19839155 -0.00045907 0.74699618" diaginertia="3.65094857e-07 2.97182330e-07 1.01725415e-07" />
+          <inertial pos="0.0148237528252 -0.0232480647162 -0.0189733313342" mass="0.01365" quat="-0.63453707 -0.19839155 -0.00045907 0.74699618" diaginertia="4.98354480e-06 4.05653881e-06 1.38855192e-06" />
           <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0 0 0 1" mesh="l_thenar_cover" material="soft_rubber" />
           <geom type="mesh" rgba="0.8 0.6 1 0.3" mesh="l_thenar_cover" group="2" />
         </body>
         <body name="l_midpalm_cover" pos="0 0 0">
-          <inertial pos="-0.0038802867333 -0.0121457595298 -0.0424905664748" mass="0.001" quat="0.08131626 0.69669648 0.66042560 0.26802931" diaginertia="1.00392773e-07 7.29209271e-08 4.06097461e-08" />
+          <inertial pos="-0.0038802867333 -0.0121457595298 -0.0424905664748" mass="0.003" quat="0.08131626 0.69669648 0.66042560 0.26802931" diaginertia="3.01178319e-07 2.18762781e-07 1.21829238e-07" />
           <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0 0 0 1" mesh="l_midpalm_cover" material="soft_rubber" />
           <geom type="mesh" rgba="0.8 0.6 1 0.3" mesh="l_midpalm_cover" group="2" />
         </body>
         <body name="l_hypothenar_cover" pos="0 0 0">
-          <inertial pos="-0.0273107320648 -0.0164067851136 -0.021659684113" mass="0.001" quat="-0.19302626 0.80313556 0.55931066 -0.06989788" diaginertia="3.11321118e-07 2.46643272e-07 1.10834917e-07" />
+          <inertial pos="-0.0273107320648 -0.0164067851136 -0.021659684113" mass="0.0181" quat="-0.19302626 0.80313556 0.55931066 -0.06989788" diaginertia="5.63491224e-06 4.46424322e-06 2.00611199e-06" />
           <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0 0 0 1" mesh="l_hypothenar_cover" material="soft_rubber" />
           <geom type="mesh" rgba="0.8 0.6 1 0.3" mesh="l_hypothenar_cover" group="2" />
         </body>
         <body name="l_palm_index_cover" pos="0 0 0">
-          <inertial pos="0.0287363880983 -0.00778221283973 -0.0642172348435" mass="0.001" quat="0.36674388 0.79569462 -0.32149120 -0.35918298" diaginertia="9.93684273e-08 7.41817857e-08 4.93915273e-08" />
+          <inertial pos="0.0287363880983 -0.00778221283973 -0.0642172348435" mass="0.00245" quat="0.36674388 0.79569462 -0.32149120 -0.35918298" diaginertia="2.43452647e-07 1.81745375e-07 1.21009242e-07" />
           <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0 0 0 1" mesh="l_palm_index_cover" material="soft_rubber" />
           <geom type="mesh" rgba="0.8 0.6 1 0.3" mesh="l_palm_index_cover" group="2" />
         </body>
         <body name="l_palm_middle_cover" pos="0 0 0">
-          <inertial pos="0.00402354854428 -0.0103283146595 -0.0635870253992" mass="0.001" quat="-0.53264379 -0.40836452 0.50996865 0.53801579" diaginertia="5.15669709e-08 3.31902959e-08 2.48613778e-08" />
+          <inertial pos="0.00402354854428 -0.0103283146595 -0.0635870253992" mass="0.0021" quat="-0.53264379 -0.40836452 0.50996865 0.53801579" diaginertia="1.08290639e-07 6.96996213e-08 5.22088935e-08" />
           <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0 0 0 1" mesh="l_palm_middle_cover" material="soft_rubber" />
           <geom type="mesh" rgba="0.8 0.6 1 0.3" mesh="l_palm_middle_cover" group="2" />
         </body>
         <body name="l_palm_ring_cover" pos="0 0 0">
-          <inertial pos="-0.0172129453634 -0.00779571788904 -0.0664263142104" mass="0.001" quat="0.74937886 -0.03850809 0.19937715 -0.63023583" diaginertia="6.94255513e-08 5.20144620e-08 3.12263255e-08" />
+          <inertial pos="-0.0172129453634 -0.00779571788904 -0.0664263142104" mass="0.0015" quat="0.74937886 -0.03850809 0.19937715 -0.63023583" diaginertia="1.04138327e-07 7.80216929e-08 4.68394882e-08" />
           <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0 0 0 1" mesh="l_palm_ring_cover" material="soft_rubber" />
           <geom type="mesh" rgba="0.8 0.6 1 0.3" mesh="l_palm_ring_cover" group="2" />
         </body>

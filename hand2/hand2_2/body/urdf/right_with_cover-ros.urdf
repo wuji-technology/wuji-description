@@ -83,7 +83,7 @@
         <mesh filename="package://wuji_hand2_2_description/meshes/right/r_thumb_proximal_abd.STL" />
       </geometry>
     </collision>
-  <visual name="visual_cylinder_r_thumb_proximal_abd"><origin xyz="-1.66621220609e-06 1.96487311491e-07 -0.0157197183371" rpy="0 0 0" /><geometry><cylinder radius="0.00929319172758" length="0.0165" /></geometry><material name="visual_black_shell"><color rgba="0.02 0.02 0.02 1" /></material></visual></link>
+  <visual name="visual_cylinder_r_thumb_proximal_abd"><origin xyz="-1.66621220604e-06 1.96487311426e-07 -0.0157197183371" rpy="0 0 0" /><geometry><cylinder radius="0.00929319172758" length="0.0165" /></geometry><material name="visual_black_shell"><color rgba="0.02 0.02 0.02 1" /></material></visual></link>
   <joint name="r_thumb_cmc_abd" type="revolute">
     <origin xyz="0.000247877880364761 -0.000536582606662728 -0.0147535410912521" rpy="0.205291589964814 0.700508227161011 0.0252375581380418" />
     <parent link="r_thumb_proximal" />
@@ -108,7 +108,7 @@
         <mesh filename="package://wuji_hand2_2_description/meshes/right/r_thumb_middle.STL" />
       </geometry>
     </collision>
-  <visual name="visual_cylinder_r_thumb_middle"><origin xyz="4.99998662182e-05 -3.46094008515e-15 -0.0175606673956" rpy="0 0 0" /><geometry><cylinder radius="0.00930000000939" length="0.019" /></geometry><material name="visual_black_shell"><color rgba="0.02 0.02 0.02 1" /></material></visual></link>
+  <visual name="visual_cylinder_r_thumb_middle"><origin xyz="4.99998662182e-05 -3.46476251039e-15 -0.0175606673956" rpy="0 0 0" /><geometry><cylinder radius="0.00930000000939" length="0.019" /></geometry><material name="visual_black_shell"><color rgba="0.02 0.02 0.02 1" /></material></visual></link>
   <joint name="r_thumb_mcp" type="revolute">
     <origin xyz="-4.20091043367432E-05 -2.67626611737126E-05 -0.0324956422128884" rpy="0 0.087266462599711 0.567232006898158" />
     <parent link="r_thumb_proximal_abd" />
@@ -171,7 +171,7 @@
     <child link="r_thumb_tip_sensor_frame" />
   </joint>
   <link name="r_thumb_middle_cover">
-    <inertial><origin xyz="4.86153146156458e-05 0.00807154920151545 -0.0123894547291069" rpy="0 0 0" /><mass value="0.001" /><inertia ixx="1.09384751632344e-07" ixy="-1.42523325845582e-11" ixz="-1.92805713082863e-11" iyy="1.32730478853411e-07" iyz="-8.78041856460635e-09" izz="4.24485507213179e-08" /></inertial>
+    <inertial><origin xyz="4.86153146156458e-05 0.00807154920151545 -0.0123894547291069" rpy="0 0 0" /><mass value="0.004" /><inertia ixx="4.37539006529375e-07" ixy="-5.70093303382326e-11" ixz="-7.71222852331453e-11" iyy="5.30921915413642e-07" iyz="-3.51216742584254e-08" izz="1.69794202885271e-07" /></inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
@@ -194,7 +194,7 @@
     <child link="r_thumb_middle_cover" />
   </joint>
   <link name="r_thumb_palm_cover">
-    <inertial><origin xyz="0.00367457302411319 0.0146025838406066 -0.0066104539039829" rpy="0 0 0" /><mass value="0.001" /><inertia ixx="1.6242579826397e-07" ixy="4.09805952875424e-08" ixz="-4.06947653448514e-08" iyy="3.80752317243133e-07" iyz="-1.92088091277811e-09" izz="2.68088073786272e-07" /></inertial>
+    <inertial><origin xyz="0.00367457302411319 0.0146025838406066 -0.0066104539039829" rpy="0 0 0" /><mass value="0.01365" /><inertia ixx="2.21711214630319e-06" ixy="5.59385125674954e-07" ixz="-5.55483546957222e-07" iyy="5.19726913036877e-06" iyz="-2.62200244594212e-08" izz="3.65940220718261e-06" /></inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
@@ -346,7 +346,7 @@
     <child link="r_index_finger_tip_sensor_frame" />
   </joint>
   <link name="r_index_finger_middle_cover">
-    <inertial><origin xyz="0.000155973202271014 0.00568466593097675 -0.0142966923746885" rpy="0 0 0" /><mass value="0.001" /><inertia ixx="3.29449531569511e-08" ixy="3.47123176841064e-10" ixz="2.40518680575928e-11" iyy="5.7377008245487e-08" iyz="-6.83803386536792e-10" izz="4.93302579656438e-08" /></inertial>
+    <inertial><origin xyz="0.000155973202271014 0.00568466593097675 -0.0142966923746885" rpy="0 0 0" /><mass value="0.0018" /><inertia ixx="5.9300915682512e-08" ixy="6.24821718313914e-10" ixz="4.3293362503667e-11" iyy="1.03278614841876e-07" iyz="-1.23084609576623e-09" izz="8.87944643381589e-08" /></inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
@@ -369,7 +369,7 @@
     <child link="r_index_finger_middle_cover" />
   </joint>
   <link name="r_index_finger_proximal_abd_cover">
-    <inertial><origin xyz="0.000104891880591339 0.00680675243077469 -0.0140116696131927" rpy="0 0 0" /><mass value="0.001" /><inertia ixx="8.44454609149554e-08" ixy="2.34868230239289e-10" ixz="9.99728462746313e-11" iyy="1.10363451393885e-07" iyz="-2.14965504496656e-09" izz="5.34939226997439e-08" /></inertial>
+    <inertial><origin xyz="0.000104891880591339 0.00680675243077469 -0.0140116696131927" rpy="0 0 0" /><mass value="0.0047" /><inertia ixx="3.96893666300291e-07" ixy="1.10388068212466e-09" ixz="4.69872377490767e-10" iyy="5.18708221551262e-07" iyz="-1.01033787113428e-08" izz="2.51421436688796e-07" /></inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
@@ -392,7 +392,7 @@
     <child link="r_index_finger_proximal_abd_cover" />
   </joint>
   <link name="r_index_palm_cover">
-    <inertial><origin xyz="0.00371530722503524 0.00912801632503399 -0.00169820061183701" rpy="0 0 0" /><mass value="0.001" /><inertia ixx="5.59443323436841e-08" ixy="1.83022503011531e-08" ixz="-2.32005076375634e-09" iyy="7.37907627742733e-08" iyz="-3.83277127215613e-09" izz="6.1658933077469e-08" /></inertial>
+    <inertial><origin xyz="0.00371530722503524 0.00912801632503399 -0.00169820061183701" rpy="0 0 0" /><mass value="0.00245" /><inertia ixx="1.37063614242026e-07" ixy="4.48405132378252e-08" ixz="-5.68412437120303e-09" iyy="1.8078736879697e-07" iyz="-9.39028961678252e-09" izz="1.51064386039799e-07" /></inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
@@ -544,7 +544,7 @@
     <child link="r_middle_finger_tip_sensor_frame" />
   </joint>
   <link name="r_middle_finger_middle_cover">
-    <inertial><origin xyz="0.000155973202271014 0.00568466593097675 -0.0142966923746885" rpy="0 0 0" /><mass value="0.001" /><inertia ixx="3.29449531569511e-08" ixy="3.47123176841064e-10" ixz="2.40518680575928e-11" iyy="5.7377008245487e-08" iyz="-6.83803386536792e-10" izz="4.93302579656438e-08" /></inertial>
+    <inertial><origin xyz="0.000155973202271014 0.00568466593097675 -0.0142966923746885" rpy="0 0 0" /><mass value="0.0018" /><inertia ixx="5.93009156825121e-08" ixy="6.24821718313914e-10" ixz="4.3293362503667e-11" iyy="1.03278614841877e-07" iyz="-1.23084609576623e-09" izz="8.87944643381589e-08" /></inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
@@ -567,7 +567,7 @@
     <child link="r_middle_finger_middle_cover" />
   </joint>
   <link name="r_middle_finger_proximal_abd_cover">
-    <inertial><origin xyz="0.00010489188059134 0.00680675243077469 -0.0140116696131928" rpy="0 0 0" /><mass value="0.001" /><inertia ixx="8.4445460914955e-08" ixy="2.34868230239297e-10" ixz="9.99728462746175e-11" iyy="1.10363451393885e-07" iyz="-2.1496550449665e-09" izz="5.34939226997439e-08" /></inertial>
+    <inertial><origin xyz="0.00010489188059134 0.00680675243077469 -0.0140116696131928" rpy="0 0 0" /><mass value="0.0047" /><inertia ixx="3.96893666300288e-07" ixy="1.1038806821247e-09" ixz="4.69872377490702e-10" iyy="5.1870822155126e-07" iyz="-1.01033787113425e-08" izz="2.51421436688796e-07" /></inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
@@ -590,7 +590,7 @@
     <child link="r_middle_finger_proximal_abd_cover" />
   </joint>
   <link name="r_middle_palm_cover">
-    <inertial><origin xyz="0.000225970014640622 0.0132243728334469 -0.00173663649021901" rpy="0 0 0" /><mass value="0.001" /><inertia ixx="3.9447120801167e-08" ixy="-1.99734749150076e-09" ixz="-5.30459964042165e-10" iyy="6.32883813159025e-08" iyz="-3.29523212455086e-09" izz="3.82048967976533e-08" /></inertial>
+    <inertial><origin xyz="0.000225970014640622 0.0132243728334469 -0.00173663649021901" rpy="0 0 0" /><mass value="0.0021" /><inertia ixx="8.28389536824507e-08" ixy="-4.19442973215161e-09" ixz="-1.11396592448855e-09" iyy="1.32905600763395e-07" iyz="-6.9199874615568e-09" izz="8.02302832750719e-08" /></inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
@@ -742,7 +742,7 @@
     <child link="r_ring_finger_tip_sensor_frame" />
   </joint>
   <link name="r_ring_finger_middle_cover">
-    <inertial><origin xyz="0.000155973202271014 0.00568466593097675 -0.0142966923746885" rpy="0 0 0" /><mass value="0.001" /><inertia ixx="3.29449531569511e-08" ixy="3.47123176841064e-10" ixz="2.40518680575928e-11" iyy="5.7377008245487e-08" iyz="-6.83803386536792e-10" izz="4.93302579656438e-08" /></inertial>
+    <inertial><origin xyz="0.000155973202271014 0.00568466593097675 -0.0142966923746885" rpy="0 0 0" /><mass value="0.0018" /><inertia ixx="5.93009156825121e-08" ixy="6.24821718313914e-10" ixz="4.3293362503667e-11" iyy="1.03278614841877e-07" iyz="-1.23084609576623e-09" izz="8.87944643381589e-08" /></inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
@@ -765,7 +765,7 @@
     <child link="r_ring_finger_middle_cover" />
   </joint>
   <link name="r_ring_finger_proximal_abd_cover">
-    <inertial><origin xyz="0.000104891880591339 0.00680675243077469 -0.0140116696131928" rpy="0 0 0" /><mass value="0.001" /><inertia ixx="8.44454609149551e-08" ixy="2.34868230239291e-10" ixz="9.99728462746269e-11" iyy="1.10363451393885e-07" iyz="-2.14965504496651e-09" izz="5.34939226997439e-08" /></inertial>
+    <inertial><origin xyz="0.000104891880591339 0.00680675243077469 -0.0140116696131928" rpy="0 0 0" /><mass value="0.0047" /><inertia ixx="3.96893666300289e-07" ixy="1.10388068212467e-09" ixz="4.69872377490746e-10" iyy="5.1870822155126e-07" iyz="-1.01033787113426e-08" izz="2.51421436688796e-07" /></inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
@@ -788,7 +788,7 @@
     <child link="r_ring_finger_proximal_abd_cover" />
   </joint>
   <link name="r_ring_palm_cover">
-    <inertial><origin xyz="-0.000724552714023561 0.0126209617657282 -0.00206887805382018" rpy="0 0 0" /><mass value="0.001" /><inertia ixx="4.37489453925346e-08" ixy="1.44590918044217e-09" ixz="-1.86462834011225e-09" iyy="6.24492168220495e-08" iyz="-2.46746050854757e-09" izz="3.28453283398675e-08" /></inertial>
+    <inertial><origin xyz="-0.000724552714023561 0.0126209617657282 -0.00206887805382018" rpy="0 0 0" /><mass value="0.0015" /><inertia ixx="6.56234180888019e-08" ixy="2.16886377066326e-09" ixz="-2.79694251016838e-09" iyy="9.36738252330743e-08" iyz="-3.70119076282135e-09" izz="4.92679925098013e-08" /></inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
@@ -877,7 +877,7 @@
         <mesh filename="package://wuji_hand2_2_description/meshes/right/r_pinky_middle.STL" />
       </geometry>
     </collision>
-  <visual name="visual_cylinder_r_pinky_middle"><origin xyz="1.88427106876e-07 1.10080938011e-06 -0.014750002861" rpy="0 0 0" /><geometry><cylinder radius="0.00779580567391" length="0.01375" /></geometry><material name="visual_black_shell"><color rgba="0.02 0.02 0.02 1" /></material></visual></link>
+  <visual name="visual_cylinder_r_pinky_middle"><origin xyz="1.88427106819e-07 1.10080938008e-06 -0.014750002861" rpy="0 0 0" /><geometry><cylinder radius="0.00779580567391" length="0.01375" /></geometry><material name="visual_black_shell"><color rgba="0.02 0.02 0.02 1" /></material></visual></link>
   <joint name="r_pinky_pip" type="revolute">
     <origin xyz="0 0 -0.0336000000238952" rpy="0 0 0" />
     <parent link="r_pinky_proximal_abd" />
@@ -940,7 +940,7 @@
     <child link="r_pinky_tip_sensor_frame" />
   </joint>
   <link name="r_pinky_middle_cover">
-    <inertial><origin xyz="-0.000100288480724923 0.00559190033030055 -0.0133981656638349" rpy="0 0 0" /><mass value="0.001" /><inertia ixx="2.75727093996868e-08" ixy="-4.12786409702887e-13" ixz="1.26647879257788e-12" iyy="5.14630134884588e-08" iyz="-3.64706561186948e-10" izz="4.78398264386011e-08" /></inertial>
+    <inertial><origin xyz="-0.000100288480724923 0.00559190033030055 -0.0133981656638349" rpy="0 0 0" /><mass value="0.0013" /><inertia ixx="3.58445222195929e-08" ixy="-5.36622332613753e-13" ixz="1.64642243035124e-12" iyy="6.69019175349965e-08" iyz="-4.74118529543032e-10" izz="6.21917743701815e-08" /></inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
@@ -963,7 +963,7 @@
     <child link="r_pinky_middle_cover" />
   </joint>
   <link name="r_pinky_proximal_abd_cover">
-    <inertial><origin xyz="9.59519553027387e-07 0.00669185739104407 -0.0120933163517118" rpy="0 0 0" /><mass value="0.001" /><inertia ixx="6.5816951182759e-08" ixy="-2.44695698363715e-12" ixz="-4.1082652524792e-12" iyy="9.07810891418036e-08" iyz="-2.20746326578069e-09" izz="5.10088165092313e-08" /></inertial>
+    <inertial><origin xyz="9.59519553027387e-07 0.00669185739104407 -0.0120933163517118" rpy="0 0 0" /><mass value="0.0036" /><inertia ixx="2.36941024257932e-07" ixy="-8.80904514109372e-12" ixz="-1.47897549089251e-11" iyy="3.26811920910493e-07" iyz="-7.94686775681048e-09" izz="1.83631739433233e-07" /></inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
@@ -986,7 +986,7 @@
     <child link="r_pinky_proximal_abd_cover" />
   </joint>
   <link name="r_pinky_proximal_cover">
-    <inertial><origin xyz="-0.00357239471856893 0.0104084581532704 -0.00293757663596219" rpy="0 0 0" /><mass value="0.001" /><inertia ixx="4.76429033694274e-08" ixy="-2.02308197887728e-08" ixz="1.35225950507271e-09" iyy="7.19832328940838e-08" iyz="-8.11081965408255e-10" izz="6.67278809101056e-08" /></inertial>
+    <inertial><origin xyz="-0.00357239471856893 0.0104084581532704 -0.00293757663596219" rpy="0 0 0" /><mass value="0.0026" /><inertia ixx="1.23871548760511e-07" ixy="-5.26001314508094e-08" ixz="3.51587471318905e-09" iyy="1.87156405524618e-07" iyz="-2.10881311006146e-09" izz="1.73492490366275e-07" /></inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
@@ -1009,7 +1009,7 @@
     <child link="r_pinky_proximal_cover" />
   </joint>
   <link name="r_adductor_pollicis_cover">
-    <inertial><origin xyz="0.0376481356534107 0.000697464996344718 -0.0307021008968308" rpy="0 0 0" /><mass value="0.001" /><inertia ixx="9.42607439240167e-08" ixy="-1.08133127313931e-08" ixz="-1.23841345445641e-09" iyy="9.52597623341809e-08" iyz="-4.06757825963154e-09" izz="3.55645733673512e-08" /></inertial>
+    <inertial><origin xyz="0.0376481356534107 0.000697464996344718 -0.0307021008968308" rpy="0 0 0" /><mass value="0.0043" /><inertia ixx="4.05321198873272e-07" ixy="-4.64972447449903e-08" ixz="-5.32517785416257e-09" iyy="4.09616978036978e-07" iyz="-1.74905865164156e-08" izz="1.5292766547961e-07" /></inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
@@ -1032,7 +1032,7 @@
     <child link="r_adductor_pollicis_cover" />
   </joint>
   <link name="r_thenar_cover">
-    <inertial><origin xyz="0.0148238798043208 0.02324756322608 -0.0189803757439898" rpy="0 0 0" /><mass value="0.001" /><inertia ixx="2.80987757563943e-07" ixy="7.12614848265212e-09" ixz="5.56021643328345e-08" iyy="3.45730209544493e-07" iyz="-6.45824067614487e-08" izz="1.37271348533703e-07" /></inertial>
+    <inertial><origin xyz="0.0148238798043208 0.02324756322608 -0.0189803757439898" rpy="0 0 0" /><mass value="0.01365" /><inertia ixx="3.83548289074782e-06" ixy="9.72719267882014e-08" ixz="7.58969543143192e-07" iyy="4.71921736028233e-06" iyz="-8.81549852293775e-07" izz="1.87375390748504e-06" /></inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
@@ -1055,7 +1055,7 @@
     <child link="r_thenar_cover" />
   </joint>
   <link name="r_midpalm_cover">
-    <inertial><origin xyz="-0.00387908422620603 0.012146226309278 -0.0424932808608179" rpy="0 0 0" /><mass value="0.001" /><inertia ixx="6.54668813513848e-08" ixy="4.16514826749323e-09" ixz="1.29799059747537e-08" iyy="9.6573258815076e-08" iyz="-1.3603645981695e-08" izz="5.18984345335695e-08" /></inertial>
+    <inertial><origin xyz="-0.00387908422620603 0.012146226309278 -0.0424932808608179" rpy="0 0 0" /><mass value="0.003" /><inertia ixx="1.96400644054155e-07" ixy="1.24954448024797e-08" ixz="3.8939717924261e-08" iyy="2.89719776445228e-07" iyz="-4.08109379450849e-08" izz="1.55695303600708e-07" /></inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
@@ -1078,7 +1078,7 @@
     <child link="r_midpalm_cover" />
   </joint>
   <link name="r_hypothenar_cover">
-    <inertial><origin xyz="-0.0273108033005543 0.0164066711500063 -0.0216632269418243" rpy="0 0 0" /><mass value="0.001" /><inertia ixx="2.40610973831646e-07" ixy="-3.2159426003157e-08" ixz="-3.8361506193512e-08" iyy="2.94738936989838e-07" iyz="-3.50374368767185e-08" izz="1.33473595569619e-07" /></inertial>
+    <inertial><origin xyz="-0.0273108033005543 0.0164066711500063 -0.0216632269418243" rpy="0 0 0" /><mass value="0.0181" /><inertia ixx="4.3550586263528e-06" ixy="-5.82085610657142e-07" ixz="-6.94343262102568e-07" iyy="5.33477475951606e-06" iyz="-6.34177607468605e-07" izz="2.41587207981011e-06" /></inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
@@ -1101,7 +1101,7 @@
     <child link="r_hypothenar_cover" />
   </joint>
   <link name="r_palm_index_cover">
-    <inertial><origin xyz="0.0287369731303751 0.00778168375457171 -0.0642197775660467" rpy="0 0 0" /><mass value="0.001" /><inertia ixx="6.52302387290496e-08" ixy="1.75063826709767e-08" ixz="-1.39927535906953e-08" iyy="8.62244988756371e-08" iyz="-2.41899357391761e-09" izz="7.14675936009594e-08" /></inertial>
+    <inertial><origin xyz="0.0287369731303751 0.00778168375457171 -0.0642197775660467" rpy="0 0 0" /><mass value="0.00245" /><inertia ixx="1.59814084886172e-07" ixy="4.28906375438929e-08" ixz="-3.42822462972034e-08" iyy="2.11250022245311e-07" iyz="-5.92653425609814e-09" izz="1.75095604322351e-07" /></inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
@@ -1124,7 +1124,7 @@
     <child link="r_palm_index_cover" />
   </joint>
   <link name="r_palm_middle_cover">
-    <inertial><origin xyz="0.0040235065872822 0.0103283275850879 -0.0635874546673159" rpy="0 0 0" /><mass value="0.001" /><inertia ixx="2.53172655781879e-08" ixy="-2.73194572683989e-09" ixz="1.00797119069093e-09" iyy="5.1067918185368e-08" iyz="2.02372877511096e-09" izz="3.32086122397111e-08" /></inertial>
+    <inertial><origin xyz="0.0040235065872822 0.0103283275850879 -0.0635874546673159" rpy="0 0 0" /><mass value="0.0021" /><inertia ixx="5.31662577141945e-08" ixy="-5.73708602636377e-09" ixz="2.11673950045095e-09" iyy="1.07242628189273e-07" iyz="4.24983042773302e-09" izz="6.97380857033933e-08" /></inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
@@ -1147,7 +1147,7 @@
     <child link="r_palm_middle_cover" />
   </joint>
   <link name="r_palm_ring_cover">
-    <inertial><origin xyz="-0.0172130118024858 0.00779560697361436 -0.0664297970393425" rpy="0 0 0" /><mass value="0.001" /><inertia ixx="4.97777881983934e-08" ixy="7.10250376631276e-10" ixz="-7.1732153647193e-09" iyy="6.72693544443552e-08" iyz="-7.87276099987529e-09" izz="3.56013824042323e-08" /></inertial>
+    <inertial><origin xyz="-0.0172130118024858 0.00779560697361436 -0.0664297970393425" rpy="0 0 0" /><mass value="0.0015" /><inertia ixx="7.46666822975901e-08" ixy="1.06537556494691e-09" ixz="-1.0759823047079e-08" iyy="1.00904031666533e-07" iyz="-1.18091414998129e-08" izz="5.34020736063485e-08" /></inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
